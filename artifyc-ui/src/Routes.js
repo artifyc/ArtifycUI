@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Grid from "./components/grid";
 import NotFound from "./components/NotFound";
 import Search from "./components/search";
 

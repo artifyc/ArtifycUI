@@ -1,40 +1,32 @@
-import React from 'react';
-import './style/App.css';
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import GridListTile from '@material-ui/core/GridListTile';
-import Example from './assets/example.jpg';
-import GridList from "@material-ui/core/GridList";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Link } from "react-router-dom";
+import Footer from './components/footer';
+import Header from './components/header';
+import Grid from './components/grid';
+import Routes from "./Routes";
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-        <GridListTile>
-          <img src={Example} alt="Example Pic"/>
-          <p> Hello </p>
-        </GridListTile>
-        <GridListTile>
-          <img src={Example} alt="Example Pic"/>
-          <p> Hello </p>
-        </GridListTile>
-        <GridListTile>
-          <img src={Example} alt="Example Pic"/>
-          <p> Hello </p>
-        </GridListTile>
-        </Grid>
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div class="nav">
+          <Navbar>
+            <Link to="/">Home</Link>
+            <Link to="/artists">Become a Creator</Link>
+            <Link to="/messages">Messages</Link>
+            <Link to="/orders">Orders</Link>
+          </Navbar>
+          <Routes />
+        </div>
 
 
-      </header>
-    </div>
-  );
+        <Footer />
+      </div>
+    )
+  }
 }
+
 
 export default App;

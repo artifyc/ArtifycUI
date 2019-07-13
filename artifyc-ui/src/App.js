@@ -9,6 +9,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import './style/app.css'
 import Search from "./components/search";
 import Logo from "./assets/artifyc.jpeg";
+import SearchResultComponent from "./components/SearchResults/SearchResultComponent";
 
 class App extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Routes />
         </div>
         <Grid />
+        <SearchResultComponent/>
         <Footer />
       </div>
     )

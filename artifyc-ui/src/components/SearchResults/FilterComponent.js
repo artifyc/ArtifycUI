@@ -32,7 +32,7 @@ export default function SingleFilterComponent() {
 
   return (
     <div className={classes.root}>
-    <Collapsible trigger="Artist Availability">
+    <Collapsible trigger="Artist Availability" open>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormGroup>
           <FormControlLabel

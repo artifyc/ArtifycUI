@@ -5,10 +5,7 @@ import { withStyles } from '@material-ui/styles';
 
 const styles = {
     root: {
-        width: '15vw',
-        position: 'relative',
-        marginLeft: '15px',
-        marginTop: '15px',
+        
     }
 }
 

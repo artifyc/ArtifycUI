@@ -6,7 +6,7 @@ import Header from './components/header';
 import Grid from './components/grid';
 import Routes from "./Routes";
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import './style/app.css'
+import './style/App.css'
 import Search from "./components/search";
 import Logo from "./assets/artifyc.jpeg";
 import SearchResultComponent from "./components/SearchResults/SearchResultComponent";

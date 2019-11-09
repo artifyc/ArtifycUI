@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import SearchResultGrid from './SearchResultGrid';
 import FilterContainer from './FilterContainer';
+import '../../style/filterContainer.css'
 
 export default function SearchResultComponent() {
     return (
@@ -19,5 +20,5 @@ export default function SearchResultComponent() {
                 <SearchResultGrid/>
             </Grid>
         </Grid>
-    ) 
+    )
 };

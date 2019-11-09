@@ -2,10 +2,10 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import CardComponent from './CardComponent';
 import { withStyles } from '@material-ui/styles';
+import '../../style/grid.css'
 
 const styles = {
     root: {
-        
     }
 }
 

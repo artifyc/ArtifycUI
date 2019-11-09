@@ -10,7 +10,7 @@ import Example from '../../assets/example.jpg'
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    maxWidth: 250,
   },
   media: {
     height: 300,

@@ -1,11 +1,13 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import FilterComponent from './FilterComponent';
+import AvailabilityFilterComponent from './AvailabilityFilterComponent';
+import PriceRangeFilterComponent from './PriceRangeFilterComponent';
+import TypeFilterComponent from './TypeFilterComponent';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
     root: {
-        
+        width: 200
     }
 }
 
@@ -13,9 +15,9 @@ function FilterContainer(props) {
     const { classes } = props;
     return (
         <Paper className={classes.root}>
-            {[0,1,2,3].map(value => (
-                <FilterComponent/> 
-            ))}
+            <AvailabilityFilterComponent/>
+            <PriceRangeFilterComponent/>
+            <TypeFilterComponent/>
         </Paper>
     )
 

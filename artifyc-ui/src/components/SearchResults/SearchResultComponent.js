@@ -12,10 +12,10 @@ export default function SearchResultComponent() {
         alignItems="left"
         spacing={2}
         >
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <FilterContainer/>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={10}>
                 <SearchResultGrid/>
             </Grid>
         </Grid>

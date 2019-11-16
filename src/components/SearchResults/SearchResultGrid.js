@@ -18,7 +18,6 @@ function SearchResultGrid(props) {
           const result = await axios(
             `http://localhost:9000/searchResults`,
           );
-          console.log(result);
           setData(result.data);
         };
         fetchData();

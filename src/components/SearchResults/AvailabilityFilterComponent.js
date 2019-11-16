@@ -5,6 +5,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Collapsible from 'react-collapsible';
+import '../../style/filterContainer.css'
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -4,6 +4,7 @@ import AvailabilityFilterComponent from './AvailabilityFilterComponent';
 import PriceRangeFilterComponent from './PriceRangeFilterComponent';
 import TypeFilterComponent from './TypeFilterComponent';
 import { withStyles } from '@material-ui/styles';
+import '../../style/filterContainer.css'
 
 const styles = {
     root: {

@@ -3,10 +3,10 @@ import Grid from '@material-ui/core/Grid';
 import CardComponent from './CardComponent';
 import { withStyles } from '@material-ui/styles';
 import axios from 'axios';
+import '../../style/grid.css'
 
 const styles = {
     root: {
-        
     }
 }
 

@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Example from '../../assets/example.jpg'
 
 const useStyles = makeStyles({
   card: {
@@ -17,42 +16,30 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardComponent() {
+export default function CardComponent({artworkTitle, artistName, commissionType, priceRange, artistAvailability, imageSource}) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={Example}
-          title="starry_night"
+          image={imageSource}
+          title={artworkTitle}
         />
         <CardContent>
           <Typography gutterBottom variant="h5">
-            Starry Night {/*Replace with this.props.whatever.the.data.structure.is.title*/}
+            {artworkTitle}
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            by Vincent Van Gogh {/*Replace with this.props.whatever.the.data.structure.is.artist*/}
+            by {artistName}
           </Typography>
           <Typography component="p">
-           Full Body - $$ {/*Replace with this.props.whatever.the.data.structure.is.commissionType and .priceRange*/}
+           {commissionType} - {priceRange}
           </Typography>
           <Typography component="p">
-            Artist Availability:
-          </Typography>
-          <Typography component="p">
-            Open {/*Replace with this.props.whatever.the.data.structure.is.artistAvailability
-            Also make the color reactive with open, closed, waitlist*/}
+            Artist Availability: {artistAvailability}
           </Typography>
         </CardContent>
-      <CardActions>
-        <Button size="small" color="primary">
-          Commission This Artist
-        </Button>
-        <Button size="small" color="primary">
-          View Profile
-        </Button>
-      </CardActions>
     </Card>
   );
 }

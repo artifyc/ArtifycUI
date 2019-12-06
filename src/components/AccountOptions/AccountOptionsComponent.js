@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import UserLandingCard from './UserLandingCard';
+import AccountOptionsCard from './AccountOptionsCard';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
@@ -9,7 +9,7 @@ const styles = {
     }
 }
 
-function UserLandingComponent(props) {
+function AccountOptionsComponent(props) {
     const { classes } = props;
 
     const descriptionArray = [
@@ -40,11 +40,11 @@ function UserLandingComponent(props) {
             >
             {descriptionArray.map(value => (
             <Grid key={value.title} item>
-                <UserLandingCard />
+                <AccountOptionsCard {...value}/>
             </Grid>
             ))}
         </Grid>
     )
 }
 
-export default withStyles(styles)(UserLandingComponent);
+export default withStyles(styles)(AccountOptionsComponent);

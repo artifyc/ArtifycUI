@@ -25,9 +25,9 @@ class App extends React.Component {
             <Nav.Link href="/messages">Messages</Nav.Link>
             <Nav.Link href="/orders">Orders</Nav.Link>
           </Navbar>
-          <Routes />
+          <Search />
         </div>
-        <SearchResultComponent/>
+        <Routes />
         <Footer />
       </div>
     )

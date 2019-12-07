@@ -30,6 +30,12 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     maxHeight: '100%',
   },
+  actionArea: {
+    "&:hover $focusHighlight": {
+      opacity: 0.5,
+    }
+  },
+  focusHighlight: {}
 }));
 
 export default function ComplexGrid({title, description}) {
@@ -45,7 +51,10 @@ export default function ComplexGrid({title, description}) {
   var path = titleToPathMap[title]
 
   return (
-    <CardActionArea className={classes.root} component={Link} to={path} disableRipple>
+    <CardActionArea className={classes.root} classes={{
+      root: classes.actionArea,
+      focusHighlight: classes.focusHighlight
+    }} component={Link} to={path} disableRipple>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm>
@@ -54,7 +63,7 @@ export default function ComplexGrid({title, description}) {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="h4">
                 {title}
                 </Typography>
                 <Typography variant="body2" gutterBottom>

@@ -8,11 +8,11 @@ import GearsIcon from '../../assets/settings-gears.png';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    maxWidth: "50%",
   },
   paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    maxWidth: 500,
+    margin: '20px 10px',
+    maxWidth: "100%",
   },
   image: {
     width: 128,
@@ -43,7 +43,7 @@ export default function ComplexGrid({title, description}) {
                 {title}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                   Option Description
+                {description}
                 </Typography>
               </Grid>
             </Grid>

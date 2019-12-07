@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/styles';
 
 const styles = {
     root: {
-        
+        margin: "20px",
     }
 }
 
@@ -31,18 +31,27 @@ function AccountOptionsComponent(props) {
         }
     ]
     return (
-        <Grid className={classes.root}
-            container
-            direction="row"
-            justify="left"
-            alignItems="center"
-            spacing={2}
-            >
-            {descriptionArray.map(value => (
-            <Grid key={value.title} item>
-                <AccountOptionsCard {...value}/>
+        <Grid container>
+            <Grid
+                container item
+                lg={3}
+            ></Grid>
+            <Grid className={classes.root}
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={2}
+                lg={6}
+                >
+                {descriptionArray.map(value => (
+                    <AccountOptionsCard {...value}/>
+                ))}
             </Grid>
-            ))}
+            <Grid
+                container item
+                lg={3}
+            ></Grid>
         </Grid>
     )
 }

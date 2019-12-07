@@ -2,10 +2,16 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AccountOptionsCard from './AccountOptionsCard';
 import { withStyles } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
     root: {
-        margin: "20px",
+        margin: "10px",
+    },
+    header: {
+        width: "100%",
+        maxWidth: "50%",
+        margin: "0 auto",
     }
 }
 
@@ -31,10 +37,17 @@ function AccountOptionsComponent(props) {
         }
     ]
     return (
+        <div>
+            <div className={classes.header}>
+        <Typography variant="h2" gutterBottom>
+        My Account
+        </Typography>
+        </div>
         <Grid container>
             <Grid
                 container item
-                lg={3}
+                md={3}
+                sm={0}
             ></Grid>
             <Grid className={classes.root}
                 container
@@ -42,7 +55,8 @@ function AccountOptionsComponent(props) {
                 justify="center"
                 alignItems="center"
                 spacing={2}
-                lg={6}
+                md={6}
+                sm={12}
                 >
                 {descriptionArray.map(value => (
                     <AccountOptionsCard {...value}/>
@@ -50,9 +64,11 @@ function AccountOptionsComponent(props) {
             </Grid>
             <Grid
                 container item
-                lg={3}
+                md={3}
+                sm={0}
             ></Grid>
         </Grid>
+        </div>
     )
 }
 

@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import GearsIcon from '../../assets/settings-gears.png';
+import { CardActionArea } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,6 +19,10 @@ const useStyles = makeStyles(theme => ({
   image: {
     width: 128,
     height: 128,
+    background: "#f1f1f1",
+    '&:hover': {
+      background: "#f00",
+    }
   },
   img: {
     margin: 'auto',
@@ -29,8 +35,17 @@ const useStyles = makeStyles(theme => ({
 export default function ComplexGrid({title, description}) {
   const classes = useStyles();
 
+  const titleToPathMap = {
+    "View Orders": "orders",
+    "View Messages": "messages",
+    "Account Settings": "settings",
+    "Portfolio Settings": "portfolio",
+  }
+
+  var path = titleToPathMap[title]
+
   return (
-    <div className={classes.root}>
+    <CardActionArea className={classes.root} component={Link} to={path} disableRipple>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm>
@@ -50,6 +65,6 @@ export default function ComplexGrid({title, description}) {
           </Grid>
         </Grid>
       </Paper>
-    </div>
+    </CardActionArea>
   );
 }

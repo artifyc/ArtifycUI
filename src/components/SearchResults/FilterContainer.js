@@ -16,9 +16,9 @@ function FilterContainer(props) {
     const { classes } = props;
     return (
         <Paper className={classes.root}>
-            <AvailabilityFilterComponent/>
-            <PriceRangeFilterComponent/>
-            <TypeFilterComponent/>
+            {[0,1,2,3].map(value => (
+                <FilterComponent/> 
+            ))}
         </Paper>
     )
 

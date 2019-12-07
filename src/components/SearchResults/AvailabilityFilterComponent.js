@@ -5,6 +5,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Collapsible from 'react-collapsible';
+import '../../style/filterContainer.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,7 +33,7 @@ export default function SingleFilterComponent() {
 
   return (
     <div className={classes.root}>
-    <Collapsible trigger="Artist Availability">
+    <Collapsible trigger="Artist Availability" open>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormGroup>
           <FormControlLabel

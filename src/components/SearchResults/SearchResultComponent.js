@@ -1,19 +1,24 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import SearchResultGrid from './SearchResultGrid';
 import FilterContainer from './FilterContainer';
-import DropDownFilter from './DropDownFilter';
+import '../../style/filterContainer.css'
 
-class SearchResultComponent extends React.Component {
-    render() {
-        return (
-            <div>
-            <h3> Search Results For... </h3>
-            <DropDownFilter />
-            <FilterContainer />
-            <SearchResultGrid />
-            </div>
-        )
-    }
-}
-
-export default SearchResultComponent;
+export default function SearchResultComponent() {
+    return (
+        <Grid
+        container
+        direction="row"
+        justify="left"
+        alignItems="left"
+        spacing={2}
+        >
+            <Grid item xs={2}>
+                <FilterContainer/>
+            </Grid>
+            <Grid item xs={10}>
+                <SearchResultGrid/>
+            </Grid>
+        </Grid>
+    )
+};

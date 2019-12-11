@@ -1,0 +1,11 @@
+Button {
+  display: none !important;
+}
+
+CardMedia image{
+  display: none !important;
+}
+
+CardMedia image:hover {
+  display: inline-block !important;
+}

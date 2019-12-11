@@ -5,7 +5,12 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Collapsible from 'react-collapsible';
-import '../../style/filterContainer.css'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import '../../style/priceRangeFilter.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,8 +37,10 @@ export default function SingleFilterComponent() {
   const error = [singledollarsign, doubledollarsign, tripledollarsign].filter(v => v).length !== 2;
 
   return (
-    <div className={classes.root}>
-      <Collapsible trigger="Price range" open>
+    <div className={classes.root} style={{color: '#696969', fontSize: '12px'}}>
+    
+      <Collapsible trigger="Price Range" open>
+      <div class="newOrange"> </div>
       <FormControl component="fieldset" className={classes.formControl}>
       <FormGroup>
           <FormControlLabel

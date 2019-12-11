@@ -26,19 +26,21 @@ function SearchResultGrid(props) {
     const { classes } = props;
 
     return (
-        <Grid className={classes.root}
-            container
-            direction="row"
-            justify="left"
-            alignItems="center"
-            spacing={1}
-            >
-            {data.map(item => (
-            <Grid key={item.id} item>
-                <CardComponent {...item}/>
-            </Grid>
-            ))}
-        </Grid>
+        <div className="srgrid">
+          <Grid className={classes.root}
+              container
+              direction="row"
+              justify="left"
+              alignItems="center"
+              spacing={1}
+              >
+              {data.map(item => (
+              <Grid key={item.id} item>
+                  <CardComponent {...item}/>
+              </Grid>
+              ))}
+          </Grid>
+        </div>
     )
 }
 

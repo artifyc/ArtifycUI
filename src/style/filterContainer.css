@@ -1,0 +1,21 @@
+.filter {
+  margin-left: 30px;
+  margin-right: 0px;
+}
+
+#refine {
+  font-size: 12px;
+  color: #696969;
+}
+
+h5 {
+  color: #696969;
+}
+
+.black-line {
+  width: 160px;
+  height: 1.5px;
+  background: #696969;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}

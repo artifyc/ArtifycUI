@@ -18,8 +18,15 @@ function SearchResultGrid(props) {
           const result = await axios(
             `https://deioiwruf2.execute-api.us-east-1.amazonaws.com/dev/search`,
           );
-          console.log(result)
-          setData(result.data);
+
+          var mockResponseArray = []
+          var mockResponse = (Object.entries(result))[0];
+          console.log("mock Reponse", mockResponse)
+          for (var i=0; i<mockResponse.length-1; i++){
+            mockResponseArray[i] = mockResponse[i+1]
+          }
+          console.log("final array", mockResponseArray)
+          setData(mockResponseArray);
         };
         fetchData();
       }, []);

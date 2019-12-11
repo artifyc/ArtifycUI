@@ -18,6 +18,7 @@ function SearchResultGrid(props) {
           const result = await axios(
             `https://deioiwruf2.execute-api.us-east-1.amazonaws.com/dev/search`,
           );
+          console.log(result)
           setData(result.data);
         };
         fetchData();

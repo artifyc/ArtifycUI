@@ -24,6 +24,7 @@ function SearchResultGrid(props) {
           console.log("mock Reponse", mockResponse)
           for (var i=0; i<mockResponse.length-1; i++){
             mockResponseArray[i] = mockResponse[i+1]
+            mockResponseArray[i].imageSource = `data:image/jpeg;base64, ${mockResponseArray[0].imageSource}`
           }
           console.log("final array", mockResponseArray)
           setData(mockResponseArray);

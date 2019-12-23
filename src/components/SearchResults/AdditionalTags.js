@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SingleFilterComponent() {
+export default function AdditionalTags(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     singledollarsign: true,
@@ -31,19 +31,21 @@ export default function SingleFilterComponent() {
   const { singledollarsign, doubledollarsign, tripledollarsign } = state;
   const error = [singledollarsign, doubledollarsign, tripledollarsign].filter(v => v).length !== 2;
 
+  var elements = props.data
   return (
-    <div className={classes.root} style={{color: '#696969', fontSize: '12px'}}>
-      <Collapsible trigger="Additional Tags" open>
-      <div class="newBlue"> </div>
+    <div style={{color: '#696969', fontSize: '12px'}} crossorigin src="...">
+      <p id="refine"> Additional Tags </p>
       <FormControl component="fieldset" className={classes.formControl}>
       <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
-            label="Night"
-          />
+          {elements.map((value, index) => {
+              return <FormControlLabel
+                          control={<Checkbox checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
+                          label={value}
+                        />
+
+          })}
         </FormGroup>
         </FormControl>
-      </Collapsible>
     </div>
   );
 }

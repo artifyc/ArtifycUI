@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -20,22 +20,25 @@ export default function SingleFilterComponent() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     bust: true,
-    waistup: false,
-    fullbody: false,
-    portrait: false
+    waistup: true,
+    fullbody: true,
+    portrait: true
   });
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
   };
 
+  useEffect(() => {
+      console.log('Commission type filter state', state);
+    }, [state])
+
   const { bust, waistup, fullbody, portrait } = state;
   const error = [bust, waistup, fullbody, portrait].filter(v => v).length !== 2;
 
   return (
-    <div className={classes.root} style={{color: '#696969', fontSize: '12px'}}>
-    <Collapsible trigger="Commission Type" bust>
-      <div class="newGreen"> </div>
+    <div style={{color: '#696969', fontSize: '12px'}}>
+      <p id="refine"> Commission Type </p>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormGroup>
           <FormControlLabel
@@ -60,7 +63,6 @@ export default function SingleFilterComponent() {
           />
         </FormGroup>
       </FormControl>
-      </Collapsible>
     </div>
   );
 }

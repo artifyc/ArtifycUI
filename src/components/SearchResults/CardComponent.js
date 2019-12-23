@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardComponent({artworkTitle, artistName, commissionType, priceRange, artistAvailability, imageSource}) {
+export default function CardComponent({artworkTitle, artistName, commissionType, priceRange, artistAvailability, imageSource, tags}) {
   const classes = useStyles();
   const theme = createMuiTheme({
     typography: {

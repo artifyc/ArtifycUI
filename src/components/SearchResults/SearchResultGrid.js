@@ -11,30 +11,19 @@ const styles = {
 }
 
 function SearchResultGrid(props) {
-    const [data, setData] = useState( [] );
 
-    useEffect(() => {
-        const fetchData = async () => {
-          const result = await axios(
-            `http://localhost:9000/searchResults`,
-          );
-          setData(result.data);
-        };
-        fetchData();
-      }, []);
-
-    const { classes } = props;
+  console.log(props.data)
 
     return (
         <div className="srgrid">
-          <Grid className={classes.root}
+          <Grid
               container
               direction="row"
               justify="left"
               alignItems="center"
               spacing={1}
               >
-              {data.map(item => (
+              {props.data.map(item => (
               <Grid key={item.id} item>
                   <CardComponent {...item}/>
               </Grid>

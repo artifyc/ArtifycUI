@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SingleFilterComponent() {
+export default function TypeFilterComponent(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     bust: true,
@@ -31,6 +31,7 @@ export default function SingleFilterComponent() {
 
   useEffect(() => {
       console.log('Commission type filter state', state);
+      props.changeState(state)
     }, [state])
 
   const { bust, waistup, fullbody, portrait } = state;

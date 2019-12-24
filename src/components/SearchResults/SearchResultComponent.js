@@ -47,6 +47,39 @@ export default function SearchResultComponent() {
       fetchData();
       }, []);
 */
+    const [state, setState] = React.useState({
+      open: true,
+      waitlist: true,
+      closed: true,
+      singledollarsign: true,
+      doubledollarsign: true,
+      tripledollarsign: true,
+      bust: true,
+      waistup: true,
+      fullbody: true,
+      portrait: true
+    });
+
+    const changeState = stateValueFromChild => {
+      setState({
+        ...state,
+        [Object.keys(stateValueFromChild)[0]]: Object.values(stateValueFromChild)[0],
+        [Object.keys(stateValueFromChild)[1]]: Object.values(stateValueFromChild)[1],
+        [Object.keys(stateValueFromChild)[2]]: Object.values(stateValueFromChild)[2],
+        [Object.keys(stateValueFromChild)[3]]: Object.values(stateValueFromChild)[3],
+        [Object.keys(stateValueFromChild)[4]]: Object.values(stateValueFromChild)[4],
+        [Object.keys(stateValueFromChild)[5]]: Object.values(stateValueFromChild)[5],
+        [Object.keys(stateValueFromChild)[6]]: Object.values(stateValueFromChild)[6],
+        [Object.keys(stateValueFromChild)[7]]: Object.values(stateValueFromChild)[7],
+        [Object.keys(stateValueFromChild)[8]]: Object.values(stateValueFromChild)[8],
+        [Object.keys(stateValueFromChild)[9]]: Object.values(stateValueFromChild)[9],
+        [Object.keys(stateValueFromChild)[10]]: Object.values(stateValueFromChild)[10],
+        [Object.keys(stateValueFromChild)[11]]: Object.values(stateValueFromChild)[11],
+        [Object.keys(stateValueFromChild)[12]]: Object.values(stateValueFromChild)[12],
+        [Object.keys(stateValueFromChild)[13]]: Object.values(stateValueFromChild)[13],
+        [Object.keys(stateValueFromChild)[14]]: Object.values(stateValueFromChild)[14],
+      })
+    };
 
     return (
         <div crossorigin src="...">
@@ -54,20 +87,8 @@ export default function SearchResultComponent() {
             <p id="name-results"> Search Results: Castlevania </p>
             <p id="num-results"> 827 results </p>
           </div>
-        <Grid
-        container
-        direction="row"
-        justify="left"
-        alignItems="left"
-        spacing={2}
-        >
-            <Grid item sm={4}>
-                <FilterContainer data={data}/>
-            </Grid>
-            <Grid item sm={8}>
-                <SearchResultGrid data={data} />
-            </Grid>
-        </Grid>
+          <FilterContainer data={data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+          <SearchResultGrid data={data} newState={state}/>
         </div>
     )
 };

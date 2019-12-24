@@ -8,7 +8,7 @@ import Collapsible from 'react-collapsible';
 import '../../style/availabilityFilter.css'
 
 
-export default function SingleFilterComponent() {
+export default function SingleFilterComponent(props) {
   const [state, setState] = React.useState({
     open: true,
     waitlist: true,
@@ -22,6 +22,7 @@ export default function SingleFilterComponent() {
 
   useEffect(() => {
     console.log('Availability state', state);
+    props.changeState(state)
   }, [state])
 
   const error = [open, waitlist, closed].filter(v => v).length !== 2;

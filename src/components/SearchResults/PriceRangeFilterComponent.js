@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function SingleFilterComponent() {
+export default function PriceRangeFilterComponent(props) {
 
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -36,33 +36,50 @@ export default function SingleFilterComponent() {
     setState({ ...state, [name]: event.target.checked });
   };
 
+
+
   useEffect(() => {
       console.log('Price range filter state', state);
+      props.changeState(state)
     }, [state])
 
   const { singledollarsign, doubledollarsign, tripledollarsign } = state;
   const error = [singledollarsign, doubledollarsign, tripledollarsign].filter(v => v).length !== 2;
 
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      console.log(content)
+      console.log(content.style.display)
+      content.style.display = "block"
+    });
+  }
+
   return (
     <div style={{color: '#696969', fontSize: '12px'}}>
-      <p id="refine"> Price Range </p>
-      <FormControl component="fieldset" className={classes.formControl}>
-      <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
-            label="$"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={doubledollarsign} onChange={handleChange('doubledollarsign')} value="doubledollarsign" />}
-            label="$$"
-          />
-          <FormControlLabel
-            control={<Checkbox icon={<Checkbox />} checkedIcon={<Close />} checked={tripledollarsign} onChange={handleChange('tripledollarsign')} value="tripledollarsign" />}
-            label="$$$"
-          />
-          <hi />
-        </FormGroup>
+    <p class="collapsible"> Price Range </p>
+      <div class="content">
+        <FormControl component="fieldset" className={classes.formControl}>
+          <FormGroup>
+              <FormControlLabel
+                control={<Checkbox checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
+                label="$"
+              />
+              <FormControlLabel
+                control={<Checkbox checked={doubledollarsign} onChange={handleChange('doubledollarsign')} value="doubledollarsign" />}
+                label="$$"
+              />
+              <FormControlLabel
+                control={<Checkbox icon={<Checkbox />} checkedIcon={<Close />} checked={tripledollarsign} onChange={handleChange('tripledollarsign')} value="tripledollarsign" />}
+                label="$$$"
+              />
+          </FormGroup>
         </FormControl>
+      </div>
     </div>
   );
 }

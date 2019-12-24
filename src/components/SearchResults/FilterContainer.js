@@ -15,43 +15,52 @@ const styles = {
     }
 }
 
+function FilterContainer(props) {
+  const [state, setState] = React.useState({
+    open: true,
+    waitlist: true,
+    closed: true,
+    singledollarsign: true,
+    doubledollarsign: true,
+    tripledollarsign: true,
+    bust: true,
+    waistup: true,
+    fullbody: true,
+    portrait: true
+  });
+
+  const changeState = stateValueFromChild => {
+
+    var val = Object.values(stateValueFromChild);
+    var ky = Object.keys(stateValueFromChild);
+    var temp=[];
 
 
-function FilterContainer() {
-  const [data, setData] = useState( [] );
-  var tags = [];
+    console.log(temp)
+    setState({
+      ...state,
+      [Object.keys(stateValueFromChild)[0]]: Object.values(stateValueFromChild)[0],
+      [Object.keys(stateValueFromChild)[1]]: Object.values(stateValueFromChild)[1],
+      [Object.keys(stateValueFromChild)[2]]: Object.values(stateValueFromChild)[2],
+      [Object.keys(stateValueFromChild)[3]]: Object.values(stateValueFromChild)[3],
+      [Object.keys(stateValueFromChild)[4]]: Object.values(stateValueFromChild)[4]
+
+    })
+  };
+
   useEffect(() => {
-  /*  const fetchData = async () => {
-      const result = await axios(
-        `http://localhost:9000/searchResults`, { crossdomain: true, headers: {'X-Requested-With': 'XMLHttpRequest'}, responseType: 'json', responseEncoding: 'utf8'}
-      );
-  */
-      fetch("http://localhost:9000/searchResults")
-      .then(response => response.json())
-        .then(function(data){
-          for (var i=0; i<data.length; i++){
-            if (data[i].tags.length > 1){
-              for (var ii=0; ii<data[i].tags.length; ii++){
-                tags.push(data[i].tags[ii])
-              }
-            }
-            else {
-              tags.push(data[i].tags)
-            }
-          }
-          setData(tags);
-        })
-  }, [])
+    console.log('Filter state', state);
+    props.changeState(state)
+  }, [state])
 
-console.log(data)
     return (
       <div class="filter" crossorigin src="...">
         <p id="refine"> Refine Search </p>
         <div className="black-line"> </div>
-            <AvailabilityFilterComponent/>
-            <PriceRangeFilterComponent/>
-            <TypeFilterComponent/>
-            <AdditionalTags data={data}/>
+            <AvailabilityFilterComponent changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <PriceRangeFilterComponent changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <TypeFilterComponent changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <AdditionalTags data={props.data}/>
       </div>
     )
 

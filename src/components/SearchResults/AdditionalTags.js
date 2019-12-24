@@ -31,7 +31,20 @@ export default function AdditionalTags(props) {
   const { singledollarsign, doubledollarsign, tripledollarsign } = state;
   const error = [singledollarsign, doubledollarsign, tripledollarsign].filter(v => v).length !== 2;
 
-  var elements = props.data
+  var tags = []
+
+  props.data.forEach(function (img) {
+      if (img.tags.length > 1){
+        for (var i=0; i<img.tags.length; i++){
+          tags.push(img.tags[i])
+        }
+      }
+      else {
+        tags.push(img.tags);
+      }
+  });
+
+  var elements = tags
   return (
     <div style={{color: '#696969', fontSize: '12px'}} crossorigin src="...">
       <p id="refine"> Additional Tags </p>

@@ -6,7 +6,7 @@ import CardComponent from './CardComponent';
 import { withStyles } from '@material-ui/styles';
 import axios from 'axios';
 import '../../style/grid.css'
-
+import Paper from '@material-ui/core/Paper';
 const styles = {
     root: {
     }
@@ -17,9 +17,7 @@ function SearchResultGrid(props) {
   var filteredList = []
 
   props.data.forEach(function (img) {
-  //  if (img.artworkTitle == "Zelda Sketch") {
-  //    filteredList.push(img);
-  //  }
+
     var tempState = {open: false,
       waitlist: false,
       closed: false,
@@ -87,43 +85,26 @@ function SearchResultGrid(props) {
               || (props.newState.bust && tempState.bust)
               || (props.newState.portrait && tempState.portrait)))
 
-
       {
          filteredList.push(img);
       }
 
   });
 
+const [spacing, setSpacing] = React.useState(2);
     return (
         <div className="srgrid">
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-            spacing={1}
-          >
-          {filteredList.map(item => (
-            <Grid key={item.id}>
-                <CardComponent {...item}/>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Grid container justify="left" spacing={spacing}>
+              {filteredList.map(value => (
+                <Grid key={value} item>
+                  <CardComponent {...value}/>
+                </Grid>
+              ))}
             </Grid>
-          ))}
           </Grid>
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-            spacing={1}
-          >
-          {props.data
-            .filter(key => props.data.priceRange == "$")
-            .map(item => (
-            <Grid key={item.id}>
-                <CardComponent {...item}/>
-            </Grid>
-          ))}
-          </Grid>
+        </Grid>
         </div>
     )
 }

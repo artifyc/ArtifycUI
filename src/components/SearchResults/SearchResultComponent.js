@@ -87,8 +87,10 @@ export default function SearchResultComponent() {
             <p id="name-results"> Search Results: Castlevania </p>
             <p id="num-results"> 827 results </p>
           </div>
-          <FilterContainer data={data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
-          <SearchResultGrid data={data} newState={state}/>
+          <div class="grid-container">
+            <FilterContainer data={data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <SearchResultGrid data={data} newState={state}/>
+          </div>
         </div>
     )
 };

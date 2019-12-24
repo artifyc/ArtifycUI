@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -18,19 +18,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function AdditionalTags(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    singledollarsign: true,
-    doubledollarsign: false,
-    tripledollarsign: false
-  });
-
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
-
-  const { singledollarsign, doubledollarsign, tripledollarsign } = state;
-  const error = [singledollarsign, doubledollarsign, tripledollarsign].filter(v => v).length !== 2;
-
   var tags = []
 
   props.data.forEach(function (img) {
@@ -44,6 +31,27 @@ export default function AdditionalTags(props) {
       }
   });
 
+  const result = tags.map(value => ({[value]: true}));
+  const result2 = tags.reduce((obj, arrValue) => (obj[arrValue] = true, obj), []);
+  var result3 = tags.reduce((obj, arrValue) => (obj[arrValue] = true, obj), {});
+
+  const [state, setState] = React.useState({
+  //  [Object.keys(result2)[0]]: Object.values(result2)[0],
+    prince: true,
+    jack: true,
+    zelda: true
+  });
+
+
+  const handleChange = name => event => {
+    setState({ ...state, [name]: event.target.checked });
+  };
+
+  useEffect(() => {
+    console.log('fdgsdfgdgfsdfg state', state);
+  }, [state])
+
+
   var elements = tags
   return (
     <div style={{color: '#696969', fontSize: '12px'}} crossorigin src="...">
@@ -52,8 +60,8 @@ export default function AdditionalTags(props) {
       <FormGroup>
           {elements.map((value, index) => {
               return <FormControlLabel
-                          control={<Checkbox checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
-                          label={value}
+                          control={<Checkbox checked={elements[index]} onChange={handleChange(elements[index])} value="default" />}
+                          label={elements[index]}
                         />
 
           })}

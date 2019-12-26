@@ -1,3 +1,15 @@
 .minus {
+  display:inline-block;
+  margin-left: 50px;
+}
 
+#refine {
+  display: inline-block;
+}
+
+.black-line {
+  width: 150px;
+  height: 2px;
+  background: #696969;
+  margin-bottom: 30px;
 }

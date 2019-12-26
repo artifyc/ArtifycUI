@@ -57,9 +57,9 @@ function FilterContainer(props) {
       <div class="filter" crossorigin src="...">
         <p id="refine"> Refine Search </p>
         <div className="black-line"> </div>
-            <AvailabilityFilterComponent changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
-            <PriceRangeFilterComponent changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
-            <TypeFilterComponent changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <AvailabilityFilterComponent data={props.data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <PriceRangeFilterComponent data={props.data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
+            <TypeFilterComponent data={props.data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
             <AdditionalTags data={props.data}/>
       </div>
     )

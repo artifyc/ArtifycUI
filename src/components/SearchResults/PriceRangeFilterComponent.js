@@ -10,8 +10,12 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Button from '@material-ui/core/Button';
+import Collapse from '@material-ui/core/Collapse';
+import Popper from '@material-ui/core/Popper';
 import '../../style/priceRangeFilter.css'
 import Close from '@material-ui/icons/Close';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +23,24 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(3),
+  },
+  icon: {
+    borderRadius: 0,
+    width: 16,
+    height: 16,
+    boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
+    backgroundColor: '#d3d3d3'
+  },
+  checkedIcon: {
+    backgroundColor: '#d3d3d3',
+      display: 'block',
+      width: 16,
+      height: 16,
+      backgroundImage:
+        "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
+        " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
+        "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
+      content: '""',
   },
 }));
 
@@ -29,14 +51,30 @@ export default function PriceRangeFilterComponent(props) {
   const [state, setState] = React.useState({
     singledollarsign: true,
     doubledollarsign: true,
-    tripledollarsign: true
+    tripledollarsign: true,
+    hide: "none",
+    icon: "+"
   });
+
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
   };
 
-
+  const dropdown = () => event => {
+    if (state.hide == 'none'){
+      setState({ ...state,
+         hide: "block",
+         icon: "−"
+      });
+    }
+    else {
+      setState({ ...state,
+         hide: "none",
+         icon: "+"
+      });
+    }
+ };
 
   useEffect(() => {
       console.log('Price range filter state', state);
@@ -46,40 +84,58 @@ export default function PriceRangeFilterComponent(props) {
   const { singledollarsign, doubledollarsign, tripledollarsign } = state;
   const error = [singledollarsign, doubledollarsign, tripledollarsign].filter(v => v).length !== 2;
 
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
-
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      console.log(content)
-      console.log(content.style.display)
-      content.style.display = "block"
-    });
+  var numSingle = 0;
+  for (var i=0; i<props.data.length; i++){
+    if ([Object.values(props.data[i])[5]] == "$"){
+      numSingle = numSingle + 1;
+    }
   }
+  numSingle = "$ (" + numSingle + ")"
+
+
+  var numDouble = 0;
+  for (var i=0; i<props.data.length; i++){
+    if ([Object.values(props.data[i])[5]] == "$$"){
+      numDouble = numDouble + 1;
+    }
+  }
+  numDouble = "$$ (" + numDouble + ")"
+
+
+  var numTriple = 0;
+  for (var i=0; i<props.data.length; i++){
+    if ([Object.values(props.data[i])[5]] == "$$$"){
+      numTriple = numTriple + 1;
+    }
+  }
+  numTriple = "$$$ (" + numTriple + ")"
 
   return (
-    <div style={{color: '#696969', fontSize: '12px'}}>
-    <p class="collapsible"> Price Range </p>
-      <div class="content">
-        <FormControl component="fieldset" className={classes.formControl}>
-          <FormGroup>
-              <FormControlLabel
-                control={<Checkbox checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
-                label="$"
-              />
-              <FormControlLabel
-                control={<Checkbox checked={doubledollarsign} onChange={handleChange('doubledollarsign')} value="doubledollarsign" />}
-                label="$$"
-              />
-              <FormControlLabel
-                control={<Checkbox icon={<Checkbox />} checkedIcon={<Close />} checked={tripledollarsign} onChange={handleChange('tripledollarsign')} value="tripledollarsign" />}
-                label="$$$"
-              />
-          </FormGroup>
-        </FormControl>
+    <div style={{color: '#696969', fontSize: '12px'}} id="pr">
+    <div onClick={dropdown()}>
+        <p id="refine"> Price Range </p>
+        <p class="minus" > {state.icon} </p>
       </div>
+                  <FormControl component="fieldset" style={{ display: state.hide}}>
+                    <FormGroup>
+                        <FormControlLabel
+                          control={<Checkbox style={{ backgroundColor: 'transparent' }}        disableRipple   checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+                    icon={<span className={classes.icon} />} checked={singledollarsign} onChange={handleChange('singledollarsign')} value="singledollarsign" />}
+                          label={`${numSingle}`}
+                        />
+                        <FormControlLabel
+                          control={<Checkbox style={{ backgroundColor: 'transparent' }}        disableRipple   checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+                    icon={<span className={classes.icon} />} checked={doubledollarsign} onChange={handleChange('doubledollarsign')} value="doubledollarsign" />}
+                          label={`${numDouble}`}
+                        />
+                        <FormControlLabel
+                          control={<Checkbox style={{ backgroundColor: 'transparent' }}        disableRipple   checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+                    icon={<span className={classes.icon} />} checked={tripledollarsign} onChange={handleChange('tripledollarsign')} value="tripledollarsign" />}
+                          label={`${numTriple}`}
+                        />
+                    </FormGroup>
+                  </FormControl>
+      <div className="black-line"> </div>
     </div>
   );
 }

@@ -98,7 +98,7 @@ const [spacing, setSpacing] = React.useState(2);
           <Grid item xs={12}>
             <Grid container justify="left" spacing={spacing}>
               {filteredList.map(value => (
-                <Grid key={value} item>
+                <Grid key={value.id} item>
                   <CardComponent {...value}/>
                 </Grid>
               ))}

@@ -21,5 +21,7 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-  'menu main main main main'
+  'menu main main main main main';
+  grid-template-columns: 210px auto;
+  margin-right: 10px;
 }

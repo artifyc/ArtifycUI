@@ -85,7 +85,7 @@ export default function SearchResultComponent() {
         <div crossorigin src="...">
           <div class="search-return-title">
             <p id="name-results"> Search Results: Castlevania </p>
-            <p id="num-results"> 827 results </p>
+            <p id="num-results"> {data.length} results </p>
           </div>
           <div class="grid-container">
             <FilterContainer data={data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>

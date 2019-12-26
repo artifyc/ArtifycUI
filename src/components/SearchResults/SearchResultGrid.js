@@ -29,6 +29,7 @@ function SearchResultGrid(props) {
       fullbody: false,
       portrait: false}
 
+
       switch(img.priceRange){
         case "$":
           tempState.singledollarsign = true;
@@ -68,6 +69,32 @@ function SearchResultGrid(props) {
         break;
       }
 
+      var tagUnselected = [];
+      console.log(img.tags)
+      for (var i=0; i<img.tags.length; i++){
+          var tname = img.tags[i]
+          console.log(tname)
+          if (Object.keys(props.newState).includes(tname)){
+            if (props.newState[tname] == false){
+              tagUnselected.push(true);
+            }
+            else {
+              tagUnselected.push(false);
+            }
+          }
+          else {
+              tagUnselected.push(false);
+          }
+      }
+
+      var tagDoNotInclude = false;
+      if (tagUnselected.includes(true)){
+        tagDoNotInclude = true;
+      }
+
+      console.log(tagDoNotInclude)
+
+
       if (((props.newState.singledollarsign && tempState.singledollarsign)
           || (props.newState.doubledollarsign && tempState.doubledollarsign)
           || (props.newState.tripledollarsign && tempState.tripledollarsign))
@@ -83,7 +110,10 @@ function SearchResultGrid(props) {
           ((props.newState.waistup && tempState.waistup)
               || (props.newState.fullbody && tempState.fullbody)
               || (props.newState.bust && tempState.bust)
-              || (props.newState.portrait && tempState.portrait)))
+              || (props.newState.portrait && tempState.portrait))
+
+          && !tagDoNotInclude
+    )
 
       {
          filteredList.push(img);

@@ -1,7 +1,10 @@
-
-.black-line {
-  width: 150px;
+.yellow-line {
+  width: 135px;
   height: 2px;
-  background: #696969;
-  margin-bottom: 30px;
+  background: orange;
+  margin-bottom: 10px;
+}
+
+#priceMinus {
+  margin-left: 98px;
 }

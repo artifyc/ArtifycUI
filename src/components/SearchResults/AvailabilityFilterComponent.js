@@ -96,13 +96,13 @@ export default function AvailabilityFilterComponent(props) {
   const error = [open, waitlist, closed].filter(v => v).length !== 2;
 
   return (
-    <div style={{color: '#696969', fontSize: '12px'}}>
+    <div style={{color: '#696969', fontSize: '12px', marginLeft: '15px'}}>
     <div onClick={dropdown()}>
         <p id="refine"> Artist Availability </p>
-        <p class="minus" > {state.icon} </p>
+        <p class="minus" id="availMinus" > {state.icon} </p>
       </div>
 
-  <FormControl component="fieldset" style={{ display: state.hide}}>
+  <FormControl class="form" component="fieldset" style={{ display: state.hide}}>
         <FormGroup>
           <FormControlLabel
             control={<Checkbox style={{ backgroundColor: 'transparent' }}        disableRipple   checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
@@ -124,7 +124,7 @@ export default function AvailabilityFilterComponent(props) {
           />
         </FormGroup>
       </FormControl>
-      <div className="black-line"> </div>
+      <div className="red-line"> </div>
     </div>
   )
 }

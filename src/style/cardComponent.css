@@ -6,6 +6,10 @@ CardMedia image{
   display: none !important;
 }
 
-CardMedia image:hover {
+CardMedia imageser:hover {
   display: inline-block !important;
+}
+
+#title {
+  margin-top: -10px;
 }

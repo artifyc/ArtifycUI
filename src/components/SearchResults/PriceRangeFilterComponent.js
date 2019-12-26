@@ -8,7 +8,6 @@ import Collapsible from 'react-collapsible';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Collapse from '@material-ui/core/Collapse';
@@ -18,6 +17,21 @@ import Close from '@material-ui/icons/Close';
 import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({
+    typography: {
+      fontFamily: [
+        'Geneva'
+      ].join(','),
+      htmlFontSize: 24,
+      spacing: 4
+    },
+    palette: {
+      primary: {
+        // light: will be calculated from palette.primary.main,
+        main: '#696969',
+        // dark: will be calculated from palette.primary.main,
+        // contrastText: will be calculated to contrast with palette.primary.main
+      }
+    },
   root: {
     display: 'flex',
   },
@@ -111,12 +125,12 @@ export default function PriceRangeFilterComponent(props) {
   numTriple = "$$$ (" + numTriple + ")"
 
   return (
-    <div style={{color: '#696969', fontSize: '12px'}} id="pr">
+    <div style={{color: '#696969', fontSize: '12px', marginLeft: '15px'}} id="pr">
     <div onClick={dropdown()}>
-        <p id="refine"> Price Range </p>
-        <p class="minus" > {state.icon} </p>
+        <p id="refine"> Price </p>
+        <p class="minus" id="priceMinus" > {state.icon} </p>
       </div>
-                  <FormControl component="fieldset" style={{ display: state.hide}}>
+                  <FormControl class="form" component="fieldset" style={{ display: state.hide}}>
                     <FormGroup>
                         <FormControlLabel
                           control={<Checkbox style={{ backgroundColor: 'transparent' }}        disableRipple   checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
@@ -135,7 +149,7 @@ export default function PriceRangeFilterComponent(props) {
                         />
                     </FormGroup>
                   </FormControl>
-      <div className="black-line"> </div>
+      <div className="yellow-line"> </div>
     </div>
   );
 }

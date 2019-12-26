@@ -33,17 +33,19 @@ function FilterContainer(props) {
 
     var val = Object.values(stateValueFromChild);
     var ky = Object.keys(stateValueFromChild);
-    var temp=[];
 
-
-    console.log(temp)
     setState({
       ...state,
       [Object.keys(stateValueFromChild)[0]]: Object.values(stateValueFromChild)[0],
       [Object.keys(stateValueFromChild)[1]]: Object.values(stateValueFromChild)[1],
       [Object.keys(stateValueFromChild)[2]]: Object.values(stateValueFromChild)[2],
       [Object.keys(stateValueFromChild)[3]]: Object.values(stateValueFromChild)[3],
-      [Object.keys(stateValueFromChild)[4]]: Object.values(stateValueFromChild)[4]
+      [Object.keys(stateValueFromChild)[4]]: Object.values(stateValueFromChild)[4],
+[Object.keys(stateValueFromChild)[5]]: Object.values(stateValueFromChild)[5],
+[Object.keys(stateValueFromChild)[6]]: Object.values(stateValueFromChild)[6],
+[Object.keys(stateValueFromChild)[7]]: Object.values(stateValueFromChild)[7],
+[Object.keys(stateValueFromChild)[8]]: Object.values(stateValueFromChild)[8],
+[Object.keys(stateValueFromChild)[9]]: Object.values(stateValueFromChild)[9],
 
     })
   };
@@ -60,7 +62,7 @@ function FilterContainer(props) {
             <AvailabilityFilterComponent data={props.data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
             <PriceRangeFilterComponent data={props.data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
             <TypeFilterComponent data={props.data} changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
-            <AdditionalTags data={props.data}/>
+            <AdditionalTags data={props.data}  changeState={(stateValueFromChild) => changeState(stateValueFromChild)}/>
       </div>
     )
 

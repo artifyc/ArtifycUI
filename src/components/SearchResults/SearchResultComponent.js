@@ -4,9 +4,28 @@ import SearchResultGrid from './SearchResultGrid';
 import FilterContainer from './FilterContainer';
 import '../../style/searchResult.css';
 import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export default function SearchResultComponent() {
   const [data, setData] = useState( [] );
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Geneva'
+      ].join(','),
+      htmlFontSize: 24,
+      spacing: 4
+    },
+    palette: {
+      primary: {
+        // light: will be calculated from palette.primary.main,
+        main: '#696969',
+        // dark: will be calculated from palette.primary.main,
+        // contrastText: will be calculated to contrast with palette.primary.main
+      },
+    }
+  })
 
   useEffect(() => {
   /*  const fetchData = async () => {
@@ -78,6 +97,11 @@ export default function SearchResultComponent() {
         [Object.keys(stateValueFromChild)[12]]: Object.values(stateValueFromChild)[12],
         [Object.keys(stateValueFromChild)[13]]: Object.values(stateValueFromChild)[13],
         [Object.keys(stateValueFromChild)[14]]: Object.values(stateValueFromChild)[14],
+                [Object.keys(stateValueFromChild)[15]]: Object.values(stateValueFromChild)[15],
+                        [Object.keys(stateValueFromChild)[16]]: Object.values(stateValueFromChild)[16],
+                                [Object.keys(stateValueFromChild)[17]]: Object.values(stateValueFromChild)[17],
+                                        [Object.keys(stateValueFromChild)[18]]: Object.values(stateValueFromChild)[18],
+                                                [Object.keys(stateValueFromChild)[19]]: Object.values(stateValueFromChild)[19],
       })
     };
 

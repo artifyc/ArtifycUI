@@ -1,16 +1,18 @@
 #name-results {
-  font-size: 15px;
+  font-size: 14px;
   font-family: 'Geneva';
   letter-spacing: normal;
   margin: 0;
+  color: #373737;
 }
 
 #num-results {
+  margin-top: 0px;
   font-size: 12px;
   font-family: 'Geneva';
   letter-spacing: normal;
   color: #696969;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 
 .search-return-title {

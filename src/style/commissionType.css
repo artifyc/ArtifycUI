@@ -1,13 +1,10 @@
-.newGreen{
-  width: 160px;
-  height: 1.5px;
-  background-color: green;
-  margin-top: 2px;
+.green-line {
+  width: 135px;
+  height: 2px;
+  background: green;
+  margin-bottom: 10px;
 }
 
-.black-line {
-  width: 150px;
-  height: 2px;
-  background: #696969;
-  margin-bottom: 30px;
+#typeMinus {
+  margin-left: 99px;
 }

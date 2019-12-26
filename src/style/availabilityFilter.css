@@ -1,15 +1,17 @@
 .minus {
   display:inline-block;
-  margin-left: 50px;
 }
 
+#AvailMinus {
+  margin-left: 35px;
+}
 #refine {
   display: inline-block;
 }
 
-.black-line {
-  width: 150px;
+.red-line {
+  width: 135px;
   height: 2px;
-  background: #696969;
-  margin-bottom: 30px;
+  background: red;
+  margin-bottom: 10px;
 }

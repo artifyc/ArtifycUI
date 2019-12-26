@@ -108,12 +108,12 @@ export default function TypeFilterComponent(props) {
 
 
   return (
-    <div style={{color: '#696969', fontSize: '12px'}}>
+    <div style={{color: '#696969', fontSize: '12px', marginLeft: '15px'}}>
     <div onClick={dropdown()}>
-        <p id="refine"> Commission Type </p>
-        <p class="minus" > {state.icon} </p>
+        <p id="refine"> Type </p>
+        <p class="minus" id="typeMinus"> {state.icon} </p>
       </div>
-      <FormControl component="fieldset" className={classes.formControl} style={{ display: state.hide}}>
+      <FormControl class="form" component="fieldset"  style={{ display: state.hide}}>
         <FormGroup>
           <FormControlLabel
             control={<Checkbox style={{ backgroundColor: 'transparent' }}        disableRipple   checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
@@ -141,7 +141,7 @@ export default function TypeFilterComponent(props) {
           />
         </FormGroup>
       </FormControl>
-      <div className="black-line"> </div>
+      <div className="green-line"> </div>
     </div>
   );
 }

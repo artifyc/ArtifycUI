@@ -42,7 +42,9 @@ export default function AdditionalTags(props) {
   props.data.forEach(function (img) {
       if (img.tags.length > 1){
         for (var i=0; i<img.tags.length; i++){
-          tags.push(img.tags[i])
+          if (!tags.includes(img.tags[i]) && tags.length < 15){
+            tags.push(img.tags[i])
+          }
         }
       }
       else {
@@ -84,16 +86,17 @@ const [state, setState] = React.useState({
 
   useEffect(() => {
     console.log('Tag state', state);
+    props.changeState(state)
   }, [state])
 
   var elements = tags
   return (
-    <div style={{color: '#696969', fontSize: '12px'}} crossorigin src="...">
+    <div style={{color: '#696969', fontSize: '12px', marginLeft: '15px'}} crossorigin src="...">
     <div onClick={dropdown()}>
-        <p id="refine"> Additional Tags </p>
-        <p class="minus" > {state.icon} </p>
+        <p id="refine"> Tags </p>
+        <p class="minus" id="tagMinus" > {state.icon} </p>
     </div>
-      <FormControl component="fieldset" className={classes.formControl} style={{ display: state.hide}}>
+      <FormControl class="form" component="fieldset" style={{ display: state.hide}}>
       <FormGroup>
           {elements.map((value, index) => {
               return <FormControlLabel
@@ -105,7 +108,7 @@ const [state, setState] = React.useState({
           })}
         </FormGroup>
         </FormControl>
-        <div className="black-line"> </div>
+        <div className="blue-line"> </div>
     </div>
   );
 }

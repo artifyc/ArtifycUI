@@ -1,13 +1,15 @@
-.newBlue{
-  width: 160px;
-  height: 1.5px;
-  background-color: blue;
-  margin-top: 2px;
+.blue-line {
+  width: 135px;
+  height: 2px;
+  background: #00007f;
+  margin-bottom: 30px;
 }
 
-.black-line {
-  width: 150px;
-  height: 2px;
-  background: #696969;
-  margin-bottom: 30px;
+#tagMinus {
+  margin-left: 99px;
+}
+
+.form {
+  margin-left: 10px;
+  border: none;
 }

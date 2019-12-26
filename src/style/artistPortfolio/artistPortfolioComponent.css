@@ -1,0 +1,7 @@
+.grid-container2 {
+  display: grid;
+  grid-template-areas:
+  'menu menu main main main main';
+  grid-template-columns: 210px auto;
+  margin-right: 10px;
+}

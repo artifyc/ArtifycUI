@@ -4,7 +4,9 @@ import './index.css';
 import { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
 import SearchResultComponent from './components/SearchResults/SearchResultComponent';
 import NotFound from './components/NotFound';
+import ArtistPortfolioComponent from './components/ArtistPortfolio/ArtistPortfolioComponent';
 import App from './App';
+
 
 const routing = (
   <BrowserRouter>
@@ -12,6 +14,7 @@ const routing = (
      <Switch>
       <Route exact path="/" component={ App } />
       <Route path="/searchResult" component={ SearchResultComponent } />
+      <Route path="/artistPortfolio" component={ ArtistPortfolioComponent } />
       <Route component={ NotFound } />
      </Switch>
     </div>

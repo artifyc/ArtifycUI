@@ -1,0 +1,16 @@
+Button {
+  display: block !important
+}
+
+.gray-line {
+  width: 135px;
+  height: 1px;
+  background: #d3d3d3;
+  margin-bottom: 10px;
+}
+
+.artistProfilePic {
+  height: 100px;
+  width: 100px;
+  margin-left: 50px;
+}

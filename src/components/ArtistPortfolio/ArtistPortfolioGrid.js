@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
-import CardComponent from '../SearchResults/CardComponent';
+import ArtistCardComponent from './ArtistCard';
 import { withStyles } from '@material-ui/styles';
 import axios from 'axios';
-import '../../style/grid.css'
 
 
 function ArtistPortfolioGrid(props) {
@@ -21,21 +20,18 @@ function ArtistPortfolioGrid(props) {
 
   });
 
-filteredList = props.data
+  var artistWork = props.data.map(function (el) {
+        return el.artistWork
+  })
+
+console.log(artistWork)
+
 const [spacing, setSpacing] = React.useState(2);
     return (
         <div className="srgrid">
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Grid container justify="left" spacing={spacing}>
-              {filteredList.map(value => (
-                <Grid key={value.id} item>
-                  <CardComponent {...value}/>
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-        </Grid>
+        {artistWork.map (value => (
+              <ArtistCardComponent data={value[2].src}/>
+            ))}
         </div>
     )
 }

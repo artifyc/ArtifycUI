@@ -4,6 +4,12 @@ import '../../style/artistPortfolio/artistAbout.css';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from "@material-ui/styles";
+import Rating from 'material-ui-rating'
+import Ig from '../../assets/ig.svg'
+import Fb from '../../assets/fb.svg'
+import Tw from '../../assets/twitter.svg'
+import Tu from '../../assets/tumblr.svg'
+import Box from '@material-ui/core/Box';
 
 export default function ArtistAbout(props) {
   const theme = createMuiTheme({
@@ -54,7 +60,13 @@ console.log(artistProfilePic)
       <img class="artistProfilePic" src={artistProfilePic[0]} />
       <ThemeProvider theme={theme}>
       <div>
-      <Typography component="p" style={{display: 'inline-block'}} color="primary"> {artistName[0]} </Typography>
+      <Typography component="p" style={{display: 'inline-block', fontSize: '14px'}} color="primary"> {artistName[0]} </Typography>
+      </div>
+      <div>
+      <Box display="flex" flexDirection="column">
+      <Rating name="half-rating" value={2.5} precision={0.5} max={5} readOnly/>
+      </Box>
+      <Typography component="p" style={{display: 'inline-block'}} color="primary"> 2.5 (23 reviews) </Typography>
       </div>
       <div>
       <Typography component="p" style={{display: 'inline-block', textAlign: 'center', marginBottom: '20px'}} color="primary"> {artistDescription[0]} </Typography>
@@ -77,19 +89,24 @@ console.log(artistProfilePic)
       <Typography component="p" style={{display: 'inline-block'}} color="primary"> Social </Typography>
       </div>
       <div>
+      <img class="socialIcon" src={Ig} />
       <Typography component="p" style={{display: 'inline-block'}} color="primary"> {artistSocialIg[0]}  </Typography>
       </div>
       <div>
+      <img class="socialIcon" src={Tw} />
       <Typography component="p" style={{display: 'inline-block'}} color="primary"> {artistSocialTwit[0]}  </Typography>
       </div>
       <div>
+      <img class="socialIcon" src={Tu} />
       <Typography component="p" style={{display: 'inline-block'}} color="primary"> {artistSocialTumb[0]}  </Typography>
       </div>
       <div>
+      <img class="socialIcon" src={Fb} />
       <Typography component="p" style={{display: 'inline-block'}} color="primary"> {artistSocialFb[0]}  </Typography>
       </div>
+      <div class="gray-line"> </div>
       </ThemeProvider>
-      <button> Commissions Open </button>
+      <button disabled> Commissions Open </button>
     </div>
   );
 }

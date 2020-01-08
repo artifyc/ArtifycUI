@@ -1,5 +1,13 @@
 Button {
-  display: block !important
+  display: block !important;
+  background: green;
+  color: white;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
 }
 
 .gray-line {
@@ -13,4 +21,8 @@ Button {
   height: 100px;
   width: 100px;
   margin-left: 50px;
+}
+
+.socialIcon {
+  width: 20px;
 }

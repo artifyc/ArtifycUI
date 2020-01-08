@@ -2,19 +2,19 @@
   width: 200px;
   margin-left: 20px;
   border: 1px #c7c7c7 solid;
-  border-top: 2px #5d5d5d solid;
+  border-top: 2px navy solid;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   display: inline-block;
-  margin-top: 50px;
+  margin-top: -100px;
 }
 
 .ending-black-line {
   width: 221px;
   height: 2px;
   margin-left: -10px;
-  background: #5d5d5d;
+  background: navy;
   margin-bottom: 10px;
   margin-top: 10px;
 }

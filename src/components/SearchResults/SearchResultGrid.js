@@ -121,6 +121,7 @@ function SearchResultGrid(props) {
 
   });
 
+
 const [spacing, setSpacing] = React.useState(2);
     return (
         <div className="srgrid">

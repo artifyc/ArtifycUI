@@ -1,6 +1,7 @@
 .filter {
   width: 200px;
   margin-left: 20px;
+  margin-top: -52px;
 }
 
 #refine {
@@ -16,5 +17,5 @@ h5 {
   width: 150px;
   height: 2px;
   background: #696969;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }

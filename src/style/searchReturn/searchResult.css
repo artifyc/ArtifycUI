@@ -23,7 +23,30 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-  'menu main main main main main';
+    'menu main main main main main';
   grid-template-columns: 210px auto;
   margin-right: 10px;
+}
+
+.noResults {
+  font-size: large;
+  color: #373737;
+  margin-top: 30vh;
+  margin-left: 25vw;
+}
+
+button {
+  background-color: white !important;
+  color: black;
+  margin-left: 32vw;
+}
+
+.reset {
+  color: gray;
+  font-size: 12px;
+}
+
+.sortDropdown {
+  float: right;
+  margin-top: -50px;
 }

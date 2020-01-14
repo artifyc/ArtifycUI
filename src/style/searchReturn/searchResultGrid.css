@@ -1,0 +1,12 @@
+.resetFilter {
+  background-color: white !important;
+  color: black !important;
+  float: left;
+}
+
+.noResultsFound {
+  font-size: large;
+  color: #373737;
+  margin-left: 10vw;
+  ;
+}

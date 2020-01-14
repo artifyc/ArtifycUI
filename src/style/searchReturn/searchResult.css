@@ -47,6 +47,15 @@ button {
 }
 
 .sortDropdown {
+  right: 70;
+  margin-top: -40px;
+  position: absolute;
+  z-index: 1;
+}
+
+#sortingBy {
   float: right;
-  margin-top: -50px;
+  margin-top: -30px;
+  margin-right: 215px;
+  color: #696969;
 }

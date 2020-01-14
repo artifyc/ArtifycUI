@@ -1,0 +1,29 @@
+.menuDropdown {
+  background-color: white !important;
+  color: #696969 !important;
+  width: 140px;
+  border: none !important;
+  border-radius: 0 !important;
+  border-left: 1.5px solid #d3d3d3 !important;
+  border-right: 1.5px solid #d3d3d3 !important;
+}
+
+.menuDropdown:hover {
+  background-color: #d3d3d3 !important;
+}
+
+button:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+#sortBy {
+  border-top: 1.5px solid #696969 !important;
+  border-left: 1.5px solid #696969 !important;
+  border-right: 1.5px solid #696969 !important;
+  border-bottom: 1.5px solid #696969 !important;
+}
+
+#sortByEnd {
+  border-bottom: 1.5px solid #d3d3d3 !important;
+}

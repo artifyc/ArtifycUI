@@ -6,6 +6,8 @@ import CardComponent from "./CardComponent";
 import {withStyles} from "@material-ui/styles";
 import axios from "axios";
 import Paper from "@material-ui/core/Paper";
+import "../../style/searchReturn/searchResultGrid.css";
+
 const styles = {
   root: {}
 };
@@ -108,26 +110,25 @@ function SearchResultGrid(props) {
 
   const [spacing, setSpacing] = React.useState(2);
   return (
-    <div className="srgrid">
+    <div>
       {filteredList != "" ? (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Grid container justify="left" spacing={spacing}>
-              {filteredList.map(value => (
-                <Grid key={value.id} item>
-                  <CardComponent {...value} />
-                </Grid>
-              ))}
+        <div className="srgrid">
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Grid container justify="left" spacing={spacing}>
+                {filteredList.map(value => (
+                  <Grid key={value.id} item>
+                    <CardComponent {...value} />
+                  </Grid>
+                ))}
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </div>
       ) : (
         <div>
-          <p class="noResults"> Sorry, no results found ☹️</p>
-          <button>
-            {" "}
-            <p class="reset"> Reset filters </p>{" "}
-          </button>
+          <p class="noResultsFound"> Sorry, no results found ☹️</p>
+          <button class="resetFilter">Reset filters</button>
         </div>
       )}
     </div>

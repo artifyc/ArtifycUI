@@ -12,7 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Select from "@material-ui/core/Select";
-
+import SortDropdown from "./SortDropdown";
 export default function SearchResultComponent() {
   const [data, setData] = useState([]);
   const theme = createMuiTheme({
@@ -120,15 +120,10 @@ export default function SearchResultComponent() {
         <p id="name-results"> Search Results: Castlevania </p>{" "}
         <p id="num-results"> {data.length} results </p>{" "}
       </div>{" "}
-      <FormControl class="sortDropdown">
-        <FormHelperText> Sort By: </FormHelperText>
-        <Select labelId="demo-simple-select-label" id="demo-simple-select">
-          <MenuItem value="">Featured</MenuItem>
-          <MenuItem value={10}>Price: Low to High</MenuItem>
-          <MenuItem value={20}>Price: High to Low</MenuItem>
-          <MenuItem value={30}>Artist Availability</MenuItem>
-        </Select>
-      </FormControl>
+      <p id="sortingBy"> Sort By: </p>
+      <div class="sortDropdown">
+        <SortDropdown />
+      </div>
       <div class="grid-container">
         <FilterContainer
           data={data}

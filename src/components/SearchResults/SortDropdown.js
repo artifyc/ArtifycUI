@@ -33,8 +33,13 @@ class SortDropdown extends Component {
     return (
       <div>
         <button class="menuDropdown" id="sortBy" onClick={this.showMenu}>
-          Featured ▲ ▼
-        </button>
+          Featured{" "}
+          {this.state.showMenu ? (
+            <span class="sortArrow"> ˄ </span>
+          ) : (
+            <span class="sortArrow"> ˅ </span>
+          )}
+        </button>{" "}
         {this.state.showMenu ? (
           <div
             className="menu"

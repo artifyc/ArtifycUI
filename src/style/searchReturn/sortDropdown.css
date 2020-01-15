@@ -27,3 +27,10 @@ button:focus {
 #sortByEnd {
   border-bottom: 1.5px solid #d3d3d3 !important;
 }
+
+.sortArrow {
+  float: right;
+  font-size: x-large;
+  margin-bottom: -20px;
+  margin-top: -1px;
+}

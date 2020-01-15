@@ -28,13 +28,6 @@
   margin-right: 10px;
 }
 
-.noResults {
-  font-size: large;
-  color: #373737;
-  margin-top: 30vh;
-  margin-left: 25vw;
-}
-
 button {
   background-color: white !important;
   color: black;
@@ -55,7 +48,7 @@ button {
 
 #sortingBy {
   float: right;
-  margin-top: -30px;
+  margin-top: -33px;
   margin-right: 215px;
   color: #696969;
 }

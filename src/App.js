@@ -2,28 +2,26 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from "react-router-dom";
 import Footer from './components/footer';
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css';
 import Dropdown from './components/dropdown'
-import Header from './components/header';
-import Grid from './components/grid';
-import Routes from "./Routes";
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import './style/App.css'
-import Search from "./components/search";
-import Logo from "./assets/artifyc.jpeg";
-import SearchResultComponent from "./components/SearchResults/SearchResultComponent";
 
 class App extends React.Component {
 
     constructor(props)  {
         super(props);
         this.state = {
+            theme: 'red',
+            typing: true,
             first: '',
             last: '',
             email: '',
             value: 'Becoming a founding artist',
             message: '',
             show: false,
-            font: ''
+            font: '',
+            thanks: false
           };
         
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -41,6 +39,12 @@ class App extends React.Component {
     
   handleChange = (font) => () => {
       this.setState({ value: font, show: false });
+  }
+
+  done = () => {
+    this.setState({ typing: false }, () => {
+      this.setState({ typing: true })
+    });
   }
 
   handleSubmit(event) {
@@ -65,6 +69,7 @@ class App extends React.Component {
     })
       .then(res => res.json())
       .then(res => console.log(res))
+      this.setState({first: '', last: '', email: '', value: 'Becoming a founding artist', show: false, message: '', thanks: true});
   }
 
   handleToggle = (e) => {
@@ -92,12 +97,33 @@ class App extends React.Component {
         <div className="top-section">
             <div className="centerfold">
                 <img className="logo" src={ require("./assets/logo.jpg") }/>
-                <h1 className="header-main">commission <span className="word-change"> unique </span> works of art</h1>
+                <h1 className="header-main">commission &thinsp;
+                    {this.state.typing ? <Typist onTypingDone={this.done} cursor={{ hideWhenDone: false, blink: true }}>
+                        <span className="word-change-red"> 
+                        unique
+                            <Typist.Delay ms={1250} />
+                            <Typist.Backspace count={6} delay={1000} />
+                        </span>
+                        <span handleColor="blue" className="word-change-blue"> 
+                        vivid
+                            <Typist.Delay ms={1250} />
+                            <Typist.Backspace count={7} delay={1000} />
+                        </span>
+                        <span className="word-change-orange">
+                        beautiful
+                        </span>
+                            <Typist.Delay ms={1250} />
+                            <Typist.Backspace count={11} delay={1000} />
+                    </Typist> : ''}
+                    &thinsp;
+                    works of art
+                </h1>
             </div>
             <div className="bottom-grid">
                 <p className="artist-credit">birch by sabimaki</p>
                 <img className="main-photo" src={ require("./assets/owls.jpg") }/>
-                <a id="main-button" href="#form-section" >SIGN UP FOR THE BETA</a>
+            
+                <a id={this.state.theme + '-main-button'} href="#form-section" >SIGN UP FOR THE BETA</a>
             </div>
         </div>
         <div className="description-section">
@@ -144,25 +170,25 @@ class App extends React.Component {
             <form id="form-top" onSubmit={this.handleSubmit}>
                 <div className="name-section">
                     <label className="label-padding">
-                        First Name:<span className="word-change">*</span>
+                        First Name:<span className="word-change-red">*</span>
                         <input className="input-margin" onChange={this.handleInputChange} value={this.state.first} type="text" name="first" />
                     </label>
                 </div>
                 <div className="name-section">
                     <label className="label-padding">
-                                Last Name:<span className="word-change">*</span>
-                                <input className="input-margin" type="text" name="last" />
+                                Last Name:<span className="word-change-red">*</span>
+                                <input className="input-margin" onChange={this.handleInputChange} value={this.state.last} type="text" name="last" />
                     </label>
                 </div>
                 <div className="name-section">
                     <label className="label-padding">
-                            Email:<span className="word-change">*</span> <span id="word-change-grey">Test.</span>
-                            <input className="input-margin" type="text" name="email" />
+                            Email:<span className="word-change-red">*</span> <span id="word-change-grey">Test.</span>
+                            <input className="input-margin" onChange={this.handleInputChange} value={this.state.email} type="text" name="email" />
                     </label>
                 </div>
                 <div className="name-section">
                     <label className="label-padding">
-                        I'm interested in:<span className="word-change">*</span>
+                        I'm interested in:<span className="word-change-red">*</span>
                         <Dropdown
                         show={this.state.show}
                         value={this.state.value}
@@ -175,9 +201,15 @@ class App extends React.Component {
                 <div className="name-section">
                     <label className="label-padding">
                             Message: <span id="word-change-grey">Te.</span>
-                            <textarea className="textarea-message-margin" type="text" name="message" />
+                            <textarea className="textarea-message-margin" type="text" onChange={this.handleInputChange} value={this.state.message} name="message" />
                     </label>
                 </div>
+                <div>
+                { this.state.thanks
+                    ? <div className="label-padding ">Thanks for signing up!</div>
+                    : null
+                }
+                </div>  
                 <div className="name-section">
                 <input id="submit-button" type="submit" value="SIGN UP" />
                 </div>

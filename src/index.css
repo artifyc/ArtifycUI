@@ -28,6 +28,10 @@ a:hover{
   text-decoration: none;
 }
 
+input:focus {outline:none;}
+
+textarea:focus {outline:none;}
+
 .nav-bar {
   background: #e47911;
   margin-bottom: 20px;
@@ -96,13 +100,10 @@ a:hover{
 .header-main {
   font-family: Geneva;
   font-size: 2.5rem;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
   font-weight: 100;
   padding: 0.5em 2em 0 0;
-}
-
-.word-change {
-  color:#b62722;
 }
 
 .main-photo { 
@@ -211,10 +212,9 @@ a:hover{
   margin: 0em 0 2em 0;
 }
 
-
-#main-button {
-  background-color: #080707;
-  background-image: -webkit-linear-gradient(100deg, #92211d 50%, #aa2b27 50%);
+#red-main-button {
+  -webkit-animation: button-a 9.91s linear infinite;
+  animation: button-a 9.91s linear infinite;
   min-height: 4.15em;
   min-width: 15em;
   font-family: Geneva;
@@ -226,6 +226,39 @@ a:hover{
   padding: 1.25em;
   text-align: center;
 }
+
+@-webkit-keyframes button-a {
+  0% { background-color: #b62722;}
+  30% { background-color: #b62722;}
+  35% { background-color: #0654d1;}
+  65% { background-color: #0654d1;}  
+  70% { background-color: #9F6DE7;}
+  95% { background-color: #9F6DE7;}
+  100% { background-color: #b62722;}
+}
+
+@keyframes button-a {
+  0% { background-color: #b62722;}
+  30% { background-color: #b62722;}
+  35% { background-color: #0654d1;}
+  65% { background-color: #0654d1;}  
+  70% { background-color: #9F6DE7;}
+  95% { background-color: #9F6DE7;}
+  100% { background-color: #b62722;}
+}
+
+.word-change-red {
+  color:#b62722;
+}
+
+.word-change-blue {
+  color:#0654d1;
+}
+
+.word-change-orange {
+  color:#9F6DE7;
+}
+
 
 #description-small-text {
   font-size: small;

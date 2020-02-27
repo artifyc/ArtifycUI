@@ -106,15 +106,34 @@ textarea:focus {outline:none;}
   padding: 0.5em 2em 0 0;
 }
 
-.main-photo { 
-  max-width: 35%;
-  height: auto;
-  display: inline-block;
-  vertical-align: bottom;
+.word-change-red {
+  color:#b62722;
+}
+
+.word-change-blue {
+  color:#0654d1;
+}
+
+.word-change-orange {
+  color:#aa7ce6;
+}
+
+.word-change-green {
+  color:#1a9c21;
+}
+
+#photo-load {
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .top-section{
   background-color: #f0f0f0;
+}
+
+.main-photo{
+  width: 35%;
 }
 
 .artist-credit {
@@ -213,8 +232,9 @@ textarea:focus {outline:none;}
 }
 
 #red-main-button {
-  -webkit-animation: button-a 9.91s linear infinite;
-  animation: button-a 9.91s linear infinite;
+  -webkit-animation: button-a 9.83s linear infinite;
+  background-image: -webkit-linear-gradient(100deg, #92211d 50%, #aa2b27 50%);
+  animation: button-a 9.83s linear infinite;
   min-height: 4.15em;
   min-width: 15em;
   font-family: Geneva;
@@ -227,42 +247,42 @@ textarea:focus {outline:none;}
   text-align: center;
 }
 
-@-webkit-keyframes button-a {
-  0% { background-color: #b62722;}
-  30% { background-color: #b62722;}
-  35% { background-color: #0654d1;}
-  65% { background-color: #0654d1;}  
-  70% { background-color: #9F6DE7;}
-  95% { background-color: #9F6DE7;}
-  100% { background-color: #b62722;}
+@keyframes cf4FadeInOut {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }
 
-@keyframes button-a {
-  0% { background-color: #b62722;}
-  30% { background-color: #b62722;}
-  35% { background-color: #0654d1;}
-  65% { background-color: #0654d1;}  
-  70% { background-color: #9F6DE7;}
-  95% { background-color: #9F6DE7;}
-  100% { background-color: #b62722;}
+#cf4a img:nth-of-type(1) {
+  animation-delay: 6s;
 }
-
-.word-change-red {
-  color:#b62722;
+#cf4a img:nth-of-type(2) {
+  animation-delay: 4s;
 }
-
-.word-change-blue {
-  color:#0654d1;
+#cf4a img:nth-of-type(3) {
+  animation-delay: 2s;
 }
-
-.word-change-orange {
-  color:#9F6DE7;
-}
-
 
 #description-small-text {
   font-size: small;
   color: #7b7b7b;
+}
+
+.thanks {
+  text-align: center;
+  padding: 0 0 2em 0;
 }
 
 #cat-photo {

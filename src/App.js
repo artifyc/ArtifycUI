@@ -12,7 +12,6 @@ class App extends React.Component {
     constructor(props)  {
         super(props);
         this.state = {
-            theme: 'red',
             typing: true,
             first: '',
             last: '',
@@ -97,33 +96,29 @@ class App extends React.Component {
         <div className="top-section">
             <div className="centerfold">
                 <img className="logo" src={ require("./assets/logo.jpg") }/>
-                <h1 className="header-main">commission &thinsp;
+                <h1 className="header-main">enabling more &thinsp;
                     {this.state.typing ? <Typist onTypingDone={this.done} cursor={{ hideWhenDone: false, blink: true }}>
                         <span className="word-change-red"> 
-                        unique
-                            <Typist.Delay ms={1250} />
-                            <Typist.Backspace count={6} delay={1000} />
-                        </span>
-                        <span handleColor="blue" className="word-change-blue"> 
-                        vivid
-                            <Typist.Delay ms={1250} />
-                            <Typist.Backspace count={7} delay={1000} />
-                        </span>
-                        <span className="word-change-orange">
-                        beautiful
-                        </span>
-                            <Typist.Delay ms={1250} />
+                        fairly-paid
+                            <Typist.Delay ms={1550} />
                             <Typist.Backspace count={11} delay={1000} />
+                        organized
+                            <Typist.Delay ms={1550} />
+                            <Typist.Backspace count={9} delay={1000} />
+                        carbon negative
+                            <Typist.Delay ms={1550} />
+                            <Typist.Backspace count={15} delay={1000} />
+                        </span>
                     </Typist> : ''}
                     &thinsp;
-                    works of art
+                    artists
                 </h1>
             </div>
             <div className="bottom-grid">
                 <p className="artist-credit">birch by sabimaki</p>
                 <img className="main-photo" src={ require("./assets/owls.jpg") }/>
             
-                <a id={this.state.theme + '-main-button'} href="#form-section" >SIGN UP FOR THE BETA</a>
+                <a id='red-main-button' href="#form-section" >SIGN UP FOR THE BETA</a>
             </div>
         </div>
         <div className="description-section">
@@ -140,7 +135,7 @@ class App extends React.Component {
             </div>
             <div className="description-blurb">
                 <h1 className="description-blurb-font">state of the art</h1>
-                <p>our fair-pricing algorithm reccommends <br />accurate rates to artists based on their <br />experience, location, and art style</p>
+                <p>our all-in-one platform handles <br /> payments, customer notifications, <br /> and scheduling for your commissions.<br />leave it all to us, you just focus on the art</p>
                 <img className="description-photo" src={ require("./assets/circuit.jpg") }/>
             </div>
         </div>
@@ -153,15 +148,15 @@ class App extends React.Component {
             <div className="how-it-works-section"> 
                 <div className="how-it-works-blurb">
                     <img className="how-it-works-photo" src={ require("./assets/1.jpg") }/>
-                    <p className="decription-blurb-font">find an artist whose style <br/ >tickles your pickle</p>
+                    <p className="decription-blurb-font">send your Artifyc <br/> link to your clients</p>
                 </div>
                 <div className="how-it-works-blurb">
                     <img className="how-it-works-photo" src={ require("./assets/2.jpg") }/>
-                    <p className="decription-blurb-font">message your artist <br/ >and receive a quote</p>
+                    <p className="decription-blurb-font">complete commissions<br/ >through the platform</p>
                 </div>
                 <div className="how-it-works-blurb">
                     <img className="how-it-works-photo" src={ require("./assets/3.jpg") }/>
-                    <p className="decription-blurb-font">get your commission <br/ > delivered to your inbox</p>
+                    <p className="decription-blurb-font">get paid, earn rewards,<br/ > and plant trees!</p>
                 </div>
             </div>
         </div>

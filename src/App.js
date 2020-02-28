@@ -7,6 +7,7 @@ import 'react-typist/dist/Typist.css';
 import Dropdown from './components/dropdown'
 import './style/App.css'
 
+
 class App extends React.Component {
 
     constructor(props)  {

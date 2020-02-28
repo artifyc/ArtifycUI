@@ -62,7 +62,7 @@ class App extends React.Component {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        "Access-Control-Allow-Origin": "nqga4cwr46.execute-api.us-east-1.amazonaws.com",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 

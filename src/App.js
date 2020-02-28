@@ -204,7 +204,7 @@ class App extends React.Component {
                 </div>
                 <div>
                 { this.state.thanks
-                    ? <div className="label-padding ">Thanks for signing up!</div>
+                    ? <div className="label-padding thanks">Thanks for signing up!</div>
                     : null
                 }
                 </div>  

@@ -118,6 +118,10 @@ textarea:focus {outline:none;}
   color:#aa7ce6;
 }
 
+.thanks {
+  text-align: center;
+}
+
 .word-change-green {
   color:#1a9c21;
 }

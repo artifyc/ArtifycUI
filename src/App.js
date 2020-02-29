@@ -63,7 +63,6 @@ class App extends React.Component {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(data),
     })

@@ -1,5 +1,6 @@
 import React from 'react';
-import '../index.css';
+import '../../index.css';
+import uuid from 'react-uuid';
 
 const fonts = ['Becoming a founding artist', 'Becoming a customer', 'Joining the mailing list'];
 
@@ -31,6 +32,7 @@ class Dropdown extends React.Component {
           {
             fonts.map((font) => (
             <li
+              key={uuid()}
               className="option"
               style={{ fontFamily: font }}
               onClick={handleChange(font)}

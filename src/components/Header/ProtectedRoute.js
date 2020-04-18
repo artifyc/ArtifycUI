@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../style/HeaderBar.css'
 import { Auth } from 'aws-amplify';
 import { Route, Redirect } from "react-router-dom";
@@ -10,7 +10,7 @@ class ProtectedRoute extends React.Component {
     this.state = {
         loggedIn: '',
         currUser: '',
-        run: []
+        checked: []
       };
   }
 
@@ -24,21 +24,21 @@ class ProtectedRoute extends React.Component {
         this.setState ({
           loggedIn: true,
           currUser: user,
-          run: 1
+          checked: 1
         })
         console.log(this.state.currUser);
     } catch (err) {
         this.setState ({
           loggedIn: false,
           currUser: null,
-          run: 1
+          checked: 1
         })
     }
   }
 
   render() {
 
-    if(!this.state.run) return null;
+    if(!this.state.checked) return null;
 
     const { component: Component, ...props } = this.props
     console.log(this.state.loggedIn);

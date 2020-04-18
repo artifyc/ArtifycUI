@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from '../dropdown'
+import Dropdown from '../Deprecated/dropdown'
 import '../../style/HomePage.css'
 
 class Form extends React.Component {

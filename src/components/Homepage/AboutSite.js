@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import uuid from 'react-uuid';
 import '../../style/HomePage.css'
 
@@ -42,7 +41,7 @@ class Benefit extends React.Component {
     	<div className="description-blurb">
             <h1 className="description-blurb-font">{profile.h1}</h1>
     	    <p className="render-break">{profile.p}</p>
-            <img className="description-photo" src={ profile.img }/>
+            <img alt="description" className="description-photo" src={ profile.img }/>
     	</div>
     );
   }

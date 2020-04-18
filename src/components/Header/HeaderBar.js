@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../style/HeaderBar.css'
 import logo from '../../assets/logo.jpg'
 import { Auth } from 'aws-amplify';
-import { Route, Switch, Link, Redirect, Router } from "react-router-dom";
+import { Route, Switch, Link, Router } from "react-router-dom";
 import ProtectedRoute from './ProtectedRoute'
 import history from '../History/history'
 
@@ -39,7 +39,7 @@ class HeaderBar extends React.Component {
         <Router history={history}>
           <div>
             <div className="bar">
-              <img className="logo" src={logo} height={75}/>
+              <img alt="logo "className="logo" src={logo} height={75}/>
               <Link to='/' className="item" onClick={() => Auth.federatedSignIn()}>Sign In</Link>
               <Link to='/' className="item" onClick={() => Auth.federatedSignIn()}>Become a Creator</Link>
             </div>

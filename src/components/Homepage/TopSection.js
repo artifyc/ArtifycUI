@@ -1,7 +1,6 @@
 import Typist from 'react-typist';
 import '../../../node_modules/react-typist/dist/Typist.css';
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 
 
 class TopSection extends React.Component {
@@ -43,7 +42,7 @@ class TopSection extends React.Component {
             </div>
             <div className="bottom-grid">
                 <p className="artist-credit">birch by sabimaki</p>
-                <img className="main-photo" src={ require("../../assets/owls.jpg") }/>
+                <img alt="owl" className="main-photo" src={ require("../../assets/owls.jpg") }/>
     
                 <a id='red-main-button' href="#form-section" >SIGN UP FOR THE BETA</a>
             </div>

@@ -5,11 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
-import Dashboard from './components/Dashboard/Dashboard';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import { Auth } from 'aws-amplify';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './style/App.css'
-import Header from './components/Header/HeaderBar';
 Amplify.configure(config)
 
 const routing = (

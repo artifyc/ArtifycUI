@@ -1,0 +1,38 @@
+.root {
+    background-color: 'white';
+  }
+
+.bar {
+    background-color: 'white';
+    position: 'fixed';
+    top: 0;
+    width:'100%';
+    z-index:100;
+    box-shadow: '2px 3px 5px #888888';
+  }
+
+  .menuButton {
+    margin-right: 2;
+  }
+
+  .noBoxShadow {
+    border-style: 'solid';
+  }
+
+  .logo {
+    max-width: 150;
+    height: 'auto';
+    margin: '1.15em 1em';
+  }
+
+  .item {
+      padding: '2em 2.5em 1.5em 2em';
+      float: 'right';
+      font-weight: 200;
+      text-align: 'center';
+      font-size: '1em';
+  }
+
+  .inputRoot {
+    color: '#ffffff';
+  }

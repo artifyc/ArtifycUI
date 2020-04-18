@@ -5,16 +5,18 @@
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
-    "aws-amplify": "^1.1.30",
+    "aws-amplify": "^1.3.3",
     "bootstrap": "^4.3.1",
+    "history": "^4.10.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.6",
-    "react-router": "^5.0.1",
+    "react-router": "^5.1.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.3.1",
-    "react-typist": "^2.0.5"
+    "react-typist": "^2.0.5",
+    "react-uuid": "^1.0.2"
   },
   "scripts": {
     "start": "REACT_APP_STAGE=dev react-scripts start",

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import uuid from 'react-uuid';
 import '../../style/HomePage.css'
 
 const blocks = [
@@ -21,7 +22,7 @@ const blocks = [
 
 const BonusList = (props) => (
 	<div className="how-it-works-section">
-  	    {props.profiles.map(profile => <Bonus {...profile}/>)}
+  	    {props.profiles.map(profile => <Bonus key={uuid()} {...profile}/>)}
 	</div>
 );
 

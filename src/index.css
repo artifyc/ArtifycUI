@@ -103,7 +103,7 @@ textarea:focus {outline:none;}
   display: flex;
   justify-content: flex-end;
   font-weight: 100;
-  padding: 0.5em 2em 0 0;
+  padding: 2em 2em 0 0;
 }
 
 .word-change-red {
@@ -133,6 +133,7 @@ textarea:focus {outline:none;}
 }
 
 .top-section{
+  margin-top: 1em;
   background-color: #f0f0f0;
 }
 

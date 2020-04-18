@@ -1,6 +1,7 @@
 import Typist from 'react-typist';
-import 'react-typist/dist/Typist.css';
+import '../../../node_modules/react-typist/dist/Typist.css';
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 
 class TopSection extends React.Component {
@@ -22,7 +23,6 @@ class TopSection extends React.Component {
         return(
             <div className="top-section">
             <div className="centerfold">
-                <img className="logo" src={ require("../../assets/logo.jpg") }/>
                 <h1 className="header-main">enabling more &thinsp;
                     {this.state.typing ? <Typist onTypingDone={this.done} cursor={{ hideWhenDone: false, blink: true }}>
                         <span className="word-change-red"> 

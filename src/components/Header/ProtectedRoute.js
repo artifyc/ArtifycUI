@@ -7,42 +7,27 @@ class ProtectedRoute extends React.Component {
 
     constructor(props)  {
     super(props);
+    console.log(props);
     this.state = {
-        loggedIn: '',
-        currUser: '',
+        loggedIn: this.props.isLoggedIn,
+        currUser: this.props.currUser,
         checked: []
       };
   }
 
-  componentDidMount() {
-    this.isLoggedIn();
-  }
-
-  isLoggedIn = async () => {
-    try {
-        const user = await Auth.currentAuthenticatedUser({bypassCache:false});
-        this.setState ({
-          loggedIn: true,
-          currUser: user,
-          checked: 1
-        })
-        console.log(this.state.currUser);
-    } catch (err) {
-        this.setState ({
-          loggedIn: false,
-          currUser: null,
-          checked: 1
-        })
+  componentDidUpdate(prevProps) {
+    if (this.props.currUser != prevProps.user) {
+      this.setState ({
+        loggedIn: true,
+        currUser: this.props.currUser,
+        checked: 1
+      })
     }
   }
 
   render() {
-
     if(!this.state.checked) return null;
-
     const { component: Component, ...props } = this.props
-    console.log(this.state.loggedIn);
-    console.log(this.state.user);
 
     return (
 
@@ -50,7 +35,7 @@ class ProtectedRoute extends React.Component {
         {...props} 
         render={props => (
           this.state.loggedIn ?
-            <Redirect to='/dashboard' /> :
+            <Redirect to='/dashboard' user={ this.state.user }/> :
             <Component {...props} />
         )} 
       />

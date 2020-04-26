@@ -4,7 +4,6 @@
 
 .bar {
     background-color: white;
-    position: fixed;
     top: 0;
     width: 100%;
     z-index:100;
@@ -31,6 +30,13 @@
       font-weight: 200;
       text-align: center;
       font-size: 1em;
+  }
+
+  .icon {
+    padding: 1.5em 1.75em 1em 0em;
+    max-width: 65px;
+    height: auto;
+    float: right;
   }
 
   .inputRoot {

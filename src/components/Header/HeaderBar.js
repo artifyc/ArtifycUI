@@ -46,6 +46,8 @@ class HeaderBar extends React.Component {
     }
   }
 
+  
+
   loggedInView() {
     return this.state.loggedIn ?
       <div>
@@ -53,6 +55,7 @@ class HeaderBar extends React.Component {
           <img alt="logo" className="logo" src={logo} height={75}/>
           <img alt="user-img" className="icon" src={user} height={90}/>
           <Link to='/settings' className="item">Account</Link>
+          <Link to='/' className="item" onClick={() =>Auth.signOut({ global: true })}>Sign Out</Link>
         </div>
         <Switch>
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />

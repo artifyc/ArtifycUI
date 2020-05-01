@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../style/HomePage.css'
 import Board from '@lourenci/react-kanban'
-
+import { Auth } from 'aws-amplify'
+import Hello from '../Auth/Hello'
 
 const board = {
     columns: [
@@ -31,11 +32,10 @@ const board = {
   }
 
 class Dashboard extends React.Component {
-
-
     render() {
         return (
             <div>
+                <Hello/>
                 <Board initialBoard={board} />
             </div>
         )

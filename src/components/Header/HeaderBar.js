@@ -1,15 +1,15 @@
 import React from 'react';
 import '../../style/HeaderBar.css'
 import { Auth } from 'aws-amplify';
-import { Route, Switch, Link, Router } from "react-router-dom";
+import { Route, Switch, Link, Router, Redirect } from "react-router-dom"
 import ProtectedRoute from './ProtectedRoute'
 import history from '../History/history'
 
 import logo from '../../assets/logo.jpg'
 import user from '../../assets/user-default.jpg'
 
-import Dashboard from '../Dashboard/Dashboard';
-import HomePage from '../HomePage/HomePage';
+import Dashboard from '../Dashboard/Dashboard'
+import HomePage from '../HomePage/HomePage'
 
 class HeaderBar extends React.Component {
 
@@ -57,10 +57,12 @@ class HeaderBar extends React.Component {
           <Link to='/settings' className="item">Account</Link>
           <Link to='/' className="item" onClick={() =>Auth.signOut({ global: true })}>Sign Out</Link>
         </div>
+
         <Switch>
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
           <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
           <Route path="/settings" component={Dashboard} user={ this.state.user} />
+          
         </Switch>
       </div>
 
@@ -75,7 +77,9 @@ class HeaderBar extends React.Component {
       <Switch>
         <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
         <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
+        <Route path="/" component={Dashboard} user={ this.state.user} />
       </Switch>
+      <Redirect to='/' user={ this.state.user }/>
     </div>
 
   }
@@ -87,6 +91,7 @@ class HeaderBar extends React.Component {
           {this.loggedInView()}
         </Router>
     </div>
+    
       )
   }
 }

@@ -396,3 +396,8 @@ textarea:focus {outline:none;}
   color: white;
   background: #4db8ff;
 }
+
+.form-group {
+  width: 40%;
+  margin: auto, auto;
+}

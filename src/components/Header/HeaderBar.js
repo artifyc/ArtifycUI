@@ -9,6 +9,7 @@ import logo from '../../assets/logo.jpg'
 import user from '../../assets/user-default.jpg'
 
 import Dashboard from '../Dashboard/Dashboard';
+import SignUpParentForm from '../SignUp/SignUpParentForm';
 import HomePage from '../HomePage/HomePage';
 
 class HeaderBar extends React.Component {
@@ -31,6 +32,8 @@ class HeaderBar extends React.Component {
   isLoggedIn = async () => {
     try {
         const user = await Auth.currentAuthenticatedUser({bypassCache:false});
+        //const token = user.signInUserSession.idToken.jwtToken;
+        //console.log(token);
         this.setState ({
           loggedIn: true,
           currUser: user,
@@ -67,10 +70,11 @@ class HeaderBar extends React.Component {
       <div className="bar">
         <img alt="logo "className="logo" src={logo} height={75}/>
         <Link to='/' className="item" onClick={() => Auth.federatedSignIn()}>Sign In</Link>
-        <Link to='/' className="item">Become a Creator</Link>
+        <Link to='/signup' className="item">Become a Creator</Link>
       </div>
       <Switch>
         <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
+        <Route path="/signup" component={SignUpParentForm} />
         <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
       </Switch>
     </div>

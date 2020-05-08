@@ -10,6 +10,8 @@ import user from '../../assets/user-default.jpg'
 
 import Dashboard from '../Dashboard/Dashboard'
 import HomePage from '../HomePage/HomePage'
+import AccountOptionsComponent from './components/AccountOptions/AccountOptionsComponent';
+
 
 class HeaderBar extends React.Component {
 
@@ -62,7 +64,7 @@ class HeaderBar extends React.Component {
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
           <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
           <Route path="/settings" component={Dashboard} user={ this.state.user} />
-          
+          <Route path="/accountOptions" exact component={AccountOptionsComponent}/>
         </Switch>
       </div>
 
@@ -77,9 +79,7 @@ class HeaderBar extends React.Component {
       <Switch>
         <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
         <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
-        <Route path="/" component={Dashboard} user={ this.state.user} />
       </Switch>
-      <Redirect to='/' user={ this.state.user }/>
     </div>
 
   }

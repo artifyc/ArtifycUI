@@ -22,7 +22,8 @@
   .logo {
     max-width: 150px;
     height: auto;
-    margin: 1.15em 1em;
+    margin: 1em 4em;
+    float: left;
   }
 
   .item {
@@ -34,12 +35,13 @@
   }
 
   .icon {
-    padding: 1.5em 1.75em 1em 0em;
-    max-width: 65px;
+    max-width: 50px;
     height: auto;
-    float: right;
+    float: center;
   }
 
   .inputRoot {
     color: #ffffff;
   }
+
+

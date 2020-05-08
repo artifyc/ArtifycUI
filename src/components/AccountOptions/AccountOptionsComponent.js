@@ -11,6 +11,7 @@ const styles = {
     header: {
         maxWidth: "50%",
         margin: "0 auto",
+        top: 0
     }
 }
 

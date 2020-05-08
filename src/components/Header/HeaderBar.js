@@ -10,7 +10,7 @@ import user from '../../assets/user-default.jpg'
 
 import Dashboard from '../Dashboard/Dashboard'
 import HomePage from '../HomePage/HomePage'
-import AccountOptionsComponent from './components/AccountOptions/AccountOptionsComponent';
+import AccountOptionsComponent from '../AccountOptions/AccountOptionsComponent';
 
 
 class HeaderBar extends React.Component {
@@ -55,15 +55,16 @@ class HeaderBar extends React.Component {
       <div>
         <div className="bar">
           <img alt="logo" className="logo" src={logo} height={75}/>
-          <img alt="user-img" className="icon" src={user} height={90}/>
-          <Link to='/settings' className="item">Account</Link>
+          <Link to='/dashboard'> 
+            <img alt="user-img" className="icon" src={user} height={90}/>
+          </Link>
+          <Link to='/accountOptions' className="item">Account</Link>
           <Link to='/' className="item" onClick={() =>Auth.signOut({ global: true })}>Sign Out</Link>
         </div>
 
         <Switch>
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
           <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
-          <Route path="/settings" component={Dashboard} user={ this.state.user} />
           <Route path="/accountOptions" exact component={AccountOptionsComponent}/>
         </Switch>
       </div>

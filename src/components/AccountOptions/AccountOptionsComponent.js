@@ -47,7 +47,6 @@ function AccountOptionsComponent(props) {
             <Grid
                 container item
                 md={3}
-                sm={0}
             ></Grid>
             <Grid className={classes.root}
                 container
@@ -57,15 +56,15 @@ function AccountOptionsComponent(props) {
                 spacing={2}
                 md={6}
                 sm={12}
+                item={true}
                 >
                 {descriptionArray.map(value => (
-                    <AccountOptionsCard {...value}/>
+                    <AccountOptionsCard key={value.title} {...value}/>
                 ))}
             </Grid>
             <Grid
                 container item
                 md={3}
-                sm={0}
             ></Grid>
         </Grid>
         </div>

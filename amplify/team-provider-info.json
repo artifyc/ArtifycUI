@@ -1,0 +1,22 @@
+{
+    "local": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-artifycui-local-223508-authRole",
+            "UnauthRoleArn": "arn:aws:iam::845011419631:role/amplify-artifycui-local-223508-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::845011419631:role/amplify-artifycui-local-223508-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-artifycui-local-223508-deployment",
+            "UnauthRoleName": "amplify-artifycui-local-223508-unauthRole",
+            "StackName": "amplify-artifycui-local-223508",
+            "StackId": "arn:aws:cloudformation:us-east-1:845011419631:stack/amplify-artifycui-local-223508/e6216da0-7ad3-11ea-97ef-0a803f1342f3",
+            "AmplifyAppId": "d3fkqk3wl3eh2x"
+        },
+        "categories": {
+            "auth": {
+                "artifycui840109d2": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"663825565509-s43n1n3cb90bl42dnto58dlsb9jbd5bm.apps.googleusercontent.com\",\"client_secret\":\"gx0Z4AIOGkZWtbrdCp2rast2\"}]"
+                }
+            }
+        }
+    }
+}

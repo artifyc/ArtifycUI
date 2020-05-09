@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AccountOptionsCard from './AccountOptionsCard';
-import { withStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -9,19 +8,18 @@ const styles = {
         margin: "10px",
     },
     header: {
-        width: "100%",
         maxWidth: "50%",
         margin: "0 auto",
     }
 }
 
-function AccountOptionsComponent(props) {
-    const { classes } = props;
+export default function AccountOptionsComponent(props) {
+    const classes = styles;
 
     const descriptionArray = [
         {
             title: "View Orders",
-            description: "Check status, review, or track"
+            description: "Check status, review, or track",
         },
         {
             title: "View Messages",
@@ -33,23 +31,23 @@ function AccountOptionsComponent(props) {
         },
         {
             title: "Portfolio Settings",
-            description: "Update prices, add new works, or view statistics"
+            description: "Update prices, add new works, & more"
         }
     ]
     return (
         <div>
-            <div className={classes.header}>
-        <Typography variant="h2" gutterBottom>
-        My Account
-        </Typography>
-        </div>
+            <div className={classes.header} >
+                <Typography variant="h2" gutterBottom align="center" >
+                    My Account
+                </Typography>
+            </div>
+            
         <Grid container>
             <Grid
                 container item
                 md={3}
-                sm={0}
             ></Grid>
-            <Grid className={classes.root}
+            <Grid 
                 container
                 direction="row"
                 justify="center"
@@ -57,19 +55,17 @@ function AccountOptionsComponent(props) {
                 spacing={2}
                 md={6}
                 sm={12}
+                item={true}
                 >
                 {descriptionArray.map(value => (
-                    <AccountOptionsCard {...value}/>
+                    <AccountOptionsCard key={value.title} {...value}/>
                 ))}
             </Grid>
             <Grid
                 container item
                 md={3}
-                sm={0}
             ></Grid>
         </Grid>
         </div>
     )
 }
-
-export default withStyles(styles)(AccountOptionsComponent);

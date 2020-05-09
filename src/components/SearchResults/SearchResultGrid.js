@@ -16,8 +16,9 @@ function SearchResultGrid(props) {
     useEffect(() => {
         const fetchData = async () => {
           const result = await axios(
-            `http://localhost:9000/searchResults`,
+            `https://deioiwruf2.execute-api.us-east-1.amazonaws.com/dev/search`,
           );
+          console.log(result)
           setData(result.data);
         };
         fetchData();

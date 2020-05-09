@@ -30,26 +30,52 @@ const board = {
   }
 
 class Dashboard extends React.Component {
+  constructor(props)  {
+    super(props);
+    this.state = {
+        currUser: this.props.user,
+        checked: []
+      };
+      console.log(this.props.currUser);
+    }
 
-  componentDidMount() {
+  componentDidUpdate(prevProps){
+    if (this.props.currUser !== prevProps.currUser) {
+        this.setState ({
+          currUser: this.props.currUser,
+          checked: 1
+        });
 
-    console.log('loading dashboard');
+      console.log('sending thing');
+      console.log(this.props.currUser);
+      console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
 
-    const data = {
+      const data = {
         board: board,
-    };
+      };
 
-    fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res))
+      console.log(JSON.stringify(data));
 
+      fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': this.props.currUser.signInUserSession.idToken.jwtToken
+          },
+          body: {"userId":"69",
+          "board":
+          {"columns":
+          [{"id":70,
+          "title":"Backlog",
+          "cards":[
+              {"id":1,"title":"Add card","description":"Ellery was here bitches"}]},
+              {"id":2,"title":"Doing","cards":[{"id":2,"title":"Drag-n-drop support","description":"AWS IS MY BITCH!!"}]}]}},
+        })
+          .then(res => res.json())
+          .then(res => console.log(res))
+    }
   }
+
 
     render() {
         return (

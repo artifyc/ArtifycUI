@@ -16,7 +16,7 @@ class ProtectedRoute extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currUser != prevProps.user) {
+    if (this.props.currUser !== prevProps.user) {
       this.setState ({
         loggedIn: true,
         currUser: this.props.currUser,

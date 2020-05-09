@@ -39,7 +39,7 @@ class HeaderBar extends React.Component {
           currUser: user,
           checked: 1
         })
-        console.log(this.state.currUser);
+        //console.log(this.state.currUser);
     } catch (err) {
         this.setState ({
           loggedIn: false,
@@ -59,8 +59,8 @@ class HeaderBar extends React.Component {
         </div>
         <Switch>
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
-          <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
-          <Route path="/settings" component={Dashboard} user={ this.state.user} />
+          <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
+          <Route path="/settings" component={Dashboard} currUser={ this.state.currUser} />
         </Switch>
       </div>
 

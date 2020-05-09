@@ -20,7 +20,7 @@ const Hello = () => {
         setEmail(user.attributes.email);
 
         console.log(`Load additional settings for user: ${user.username}`);
-        console.log(`Load additional settings for user: ${user.email}`);
+        console.log(`Load additional settings for user: ${user.attributes.email}`);
 
         // TBD
       }).catch(err => setError(err));

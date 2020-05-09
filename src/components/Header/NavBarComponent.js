@@ -68,7 +68,7 @@ export default function PrimarySearchAppBar(props) {
       <AppBar position="static" style={{ background: '#2E3B55' }} height="100">
         <Toolbar>
           <Link to='/' className="logo">          
-            <img alt="logo" className={"item"} src={logo} height={100}/>
+            <img alt="logo" className={"grow"} src={logo} height={50}/>
           </Link>
           <div className={classes.grow} />
           { props.loggedIn &&

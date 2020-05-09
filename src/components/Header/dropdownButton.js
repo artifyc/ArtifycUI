@@ -66,7 +66,6 @@ const titleToResourcesMap = {
   };
 
 export default function MenuListComposition({title}) {
-  console.log(title)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -79,8 +78,6 @@ export default function MenuListComposition({title}) {
   };
 
   const handleClose = (event) => {
-    console.log("regular out")
-
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }

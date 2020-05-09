@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AccountOptionsCard from './AccountOptionsCard';
-import { withStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -11,12 +10,11 @@ const styles = {
     header: {
         maxWidth: "50%",
         margin: "0 auto",
-        top: 0
     }
 }
 
-function AccountOptionsComponent(props) {
-    const { classes } = props;
+export default function AccountOptionsComponent(props) {
+    const classes = styles;
 
     const descriptionArray = [
         {
@@ -38,17 +36,18 @@ function AccountOptionsComponent(props) {
     ]
     return (
         <div>
-            <div className={classes.header}>
-                <Typography variant="h2" gutterBottom >
+            <div className={classes.header} >
+                <Typography variant="h2" gutterBottom align="center" >
                     My Account
                 </Typography>
             </div>
+            
         <Grid container>
             <Grid
                 container item
                 md={3}
             ></Grid>
-            <Grid className={classes.root}
+            <Grid 
                 container
                 direction="row"
                 justify="center"
@@ -70,5 +69,3 @@ function AccountOptionsComponent(props) {
         </div>
     )
 }
-
-export default withStyles(styles)(AccountOptionsComponent);

@@ -12,6 +12,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MailIcon from '@material-ui/icons/Mail';
 import Badge from '@material-ui/core/Badge';
 import { Link } from "react-router-dom"
+import { Auth } from 'aws-amplify';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,28 +27,38 @@ const titleToResourcesMap = {
     "Account": {
       image: <AccountCircle />,
       dropItems: [{
+        hasLink: true,
         itemName: 'Profile',
         itemLink: '/Profile'
       },
       {
+        hasLink: true,
         itemName: 'Dashboard',
         itemLink: '/Dashboard'
       },
       {
+        hasLink: true,
         itemName: 'Settings',
         itemLink: '/Settings'
+      },
+      {
+        hasLink: false,
+        itemName: 'Sign Out',
+        itemLink: ""
       }]
     },
     "Notifications": {
       image: <Badge badgeContent={0} color="secondary"><NotificationsIcon /></Badge>,
       dropItems: [{
+        hasLink: false,
         itemName: 'No new notifications',
-        itemLink: '/Notifications'
+        itemLink: ""
       }]
     },
     "Messages": {
       image: <Badge badgeContent={0} color="secondary"><MailIcon /></Badge>,
       dropItems: [{
+        hasLink: true,
         itemName: 'No new messages',
         itemLink: '/Messages'
       }]
@@ -68,10 +79,20 @@ export default function MenuListComposition({title}) {
   };
 
   const handleClose = (event) => {
+    console.log("regular out")
+
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
+    setOpen(false);
+  };
 
+  const handleCloseAndSignOut = (event) => {
+    console.log("signing out")
+    Auth.signOut({ global: true });
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
     setOpen(false);
   };
 
@@ -114,10 +135,18 @@ export default function MenuListComposition({title}) {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    {dropItems.map(value => (
-                        <MenuItem key={value.itemName} component={Link} to={value.itemLink} onClick={handleClose}>{value.itemName}</MenuItem>
-                    ))}
-    
+                    {dropItems.map(value => 
+                    (  
+                        (value["hasLink"] ?  
+                          <MenuItem key={value.itemName} component={Link} to={value.itemLink} onClick={handleClose}>{value.itemName}</MenuItem>
+                        :
+                        value["itemName"] === 'Sign Out' ? 
+                          <MenuItem key={value.itemName} onClick={handleCloseAndSignOut}>{value.itemName}</MenuItem>
+                        :
+                        <MenuItem key={value.itemName} onClick={handleClose}>{value.itemName}</MenuItem>
+                        ) 
+                    )
+                    )}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

@@ -62,14 +62,14 @@ class Dashboard extends React.Component {
             'Content-type': 'application/json',
             'Authorization': this.props.currUser.signInUserSession.idToken.jwtToken
           },
-          body: {"userId":"69",
+          body: JSON.stringify({
           "board":
           {"columns":
           [{"id":70,
           "title":"Backlog",
           "cards":[
               {"id":1,"title":"Add card","description":"Ellery was here bitches"}]},
-              {"id":2,"title":"Doing","cards":[{"id":2,"title":"Drag-n-drop support","description":"AWS IS MY BITCH!!"}]}]}},
+              {"id":2,"title":"Doing","cards":[{"id":2,"title":"Drag-n-drop support","description":"AWS IS MY BITCH!!"}]}]}}),
         })
           .then(res => res.json())
           .then(res => console.log(res))

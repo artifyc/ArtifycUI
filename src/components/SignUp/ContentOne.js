@@ -13,7 +13,7 @@ class BasicInfo extends React.Component {
         <div className="form-group">
           <label>
             I am an artist _________
-            <select name="full_time" defaultValue={this.props.full_time} onChange={this.props.handleDropdownChange}>
+            <select name="full_time">
               <option value="full-time">full-time</option>
               <option value="part-time">part-time</option>
               <option value="for fun">for fun</option>
@@ -27,8 +27,7 @@ class BasicInfo extends React.Component {
             name="years_artist"
             type="text"
             placeholder="1"
-            value={this.props.years_artist}
-            onChange={this.props.handleChange}
+           
           />
           <label htmlFor="country">Country: </label>
           <input
@@ -37,8 +36,7 @@ class BasicInfo extends React.Component {
             name="country"
             type="text"
             placeholder="United States"
-            value={this.props.country}
-            onChange={this.props.handleChange}
+            
           />
           <label htmlFor="personal_website">personal_website: </label>
           <input
@@ -47,8 +45,6 @@ class BasicInfo extends React.Component {
             name="personal_website"
             type="text"
             placeholder="mywebsite.com"
-            value={this.props.personal_website}
-            onChange={this.props.handleChange}
           />
         </div>
         </div>

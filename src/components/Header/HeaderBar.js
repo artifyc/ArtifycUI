@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../style/HeaderBar.css'
 import { Auth } from 'aws-amplify';
-import { Route, Switch, Link, Router } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
 import ProtectedRoute from './ProtectedRoute'
 import history from '../History/history'
 import Dashboard from '../Dashboard/Dashboard';

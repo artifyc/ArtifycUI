@@ -2,6 +2,7 @@ import React from 'react';
 import BasicInfo from './BasicInfo';
 import CommissionInfo from './CommissionInfo';
 import GalleryPreference from './GalleryPreference';
+import StepperDemo from './Stepper'
 
 class SignUpParentForm extends React.Component {
     constructor(props) {
@@ -133,6 +134,7 @@ class SignUpParentForm extends React.Component {
           {this.nextButton}
       
         </form>
+        <div><StepperDemo/></div>
         </React.Fragment>
       )
       }

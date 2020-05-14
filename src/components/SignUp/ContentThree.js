@@ -2,9 +2,6 @@ import React from 'react';
 
 class CommissionInfo extends React.Component {
     render() {
-      if (this.props.currentStep !== 3) { // Prop: The current step
-        return null
-      }
       // The markup for the Step 1 UI
       return(
         <div>
@@ -17,7 +14,7 @@ class CommissionInfo extends React.Component {
                 name="email"
                 type="text"
                 placeholder="Enter thing"
-               
+                
             />
             </div>
         </div>

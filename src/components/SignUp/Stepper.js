@@ -7,12 +7,20 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Check from '@material-ui/icons/Check';
 import SettingsIcon from '@material-ui/icons/Settings';
+
+import ContactsIcon from '@material-ui/icons/Contacts';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import AspectRatioIcon from '@material-ui/icons/AspectRatio';
+
 import VideoLabelIcon from '@material-ui/icons/VideoLabel';
+import ContactMailIcon from '@material-ui/icons/Mail';
 import StepConnector from '@material-ui/core/StepConnector';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import BasicInfo from './ContentOne'
+import ContentOne from './ContentOne'
+import ContentTwo from './ContentTwo'
+import ContentThree from './ContentThree'
+
 
 
 const useQontoStepIconStyles = makeStyles({
@@ -71,13 +79,13 @@ const ColorlibConnector = withStyles({
   active: {
     '& $line': {
       backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+        'linear-gradient( 95deg,rgb(153, 153, 255) 20%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
     },
   },
   completed: {
     '& $line': {
       backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+        'linear-gradient( 95deg,rgb(153, 153, 255) 20%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
     },
   },
   line: {
@@ -102,12 +110,12 @@ const useColorlibStepIconStyles = makeStyles({
   },
   active: {
     backgroundImage:
-      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+      'linear-gradient( 136deg, rgb(153, 153, 255) 0%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
     backgroundImage:
-      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+      'linear-gradient( 136deg, rgb(153, 153, 255) 0%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
   },
 });
 
@@ -116,9 +124,9 @@ function ColorlibStepIcon(props) {
   const { active, completed } = props;
 
   const icons = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
+    1: <ContactsIcon />,
+    2: <ContactMailIcon />,
+    3: <AspectRatioIcon />,
   };
 
   return (
@@ -151,6 +159,7 @@ ColorlibStepIcon.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    
   },
   button: {
     marginRight: theme.spacing(1),
@@ -162,17 +171,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Profile Information', 'Gallery Preferences', 'Commission Info'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return (<BasicInfo/>);
+      return (<ContentOne/>);
     case 1:
-      return 'What is an ad group anyways?';
+      return (<ContentTwo/>);
     case 2:
-      return 'This is the bit I really care about!';
+      return (<ContentThree/>);
     default:
       return 'Unknown step';
   }
@@ -211,15 +220,16 @@ export default function CustomizedSteppers() {
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Button onClick={handleReset} className={classes.button}>
+            <Button color="secondary" variant="contained" onClick={handleReset} className={classes.button}>
               Reset
             </Button>
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <Typography className={classes.instructions}>Step: {activeStep}</Typography>
             <div>
-              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+              <div>{getStepContent(activeStep)}</div>
+              <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
               <Button

@@ -107,7 +107,7 @@ class SignUpParentForm extends React.Component {
       return (
         <React.Fragment>
           
-        <form onSubmit={this.handleSubmit}>
+        {/* <form onSubmit={this.handleSubmit}>
   
           <BasicInfo
             currentStep={this.state.currentStep} 
@@ -133,7 +133,7 @@ class SignUpParentForm extends React.Component {
           {this.previousButton}
           {this.nextButton}
       
-        </form>
+        </form> */}
         <div><StepperDemo/></div>
         </React.Fragment>
       )

@@ -6,13 +6,8 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Check from '@material-ui/icons/Check';
-import SettingsIcon from '@material-ui/icons/Settings';
-
 import ContactsIcon from '@material-ui/icons/Contacts';
-import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
-
-import VideoLabelIcon from '@material-ui/icons/VideoLabel';
 import ContactMailIcon from '@material-ui/icons/Mail';
 import StepConnector from '@material-ui/core/StepConnector';
 import Button from '@material-ui/core/Button';
@@ -20,7 +15,6 @@ import Typography from '@material-ui/core/Typography';
 import ContentOne from './ContentOne'
 import ContentTwo from './ContentTwo'
 import ContentThree from './ContentThree'
-
 
 
 const useQontoStepIconStyles = makeStyles({
@@ -96,6 +90,7 @@ const ColorlibConnector = withStyles({
   },
 })(StepConnector);
 
+
 const useColorlibStepIconStyles = makeStyles({
   root: {
     backgroundColor: '#ccc',
@@ -116,7 +111,8 @@ const useColorlibStepIconStyles = makeStyles({
   completed: {
     backgroundImage:
       'linear-gradient( 136deg, rgb(153, 153, 255) 0%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
-  },
+  }
+
 });
 
 function ColorlibStepIcon(props) {
@@ -124,7 +120,7 @@ function ColorlibStepIcon(props) {
   const { active, completed } = props;
 
   const icons = {
-    1: <ContactsIcon />,
+    1: <ContactsIcon/>,
     2: <ContactMailIcon />,
     3: <AspectRatioIcon />,
   };
@@ -159,14 +155,20 @@ ColorlibStepIcon.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'inline-block'
   },
   button: {
-    marginRight: theme.spacing(1),
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10
   },
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 }));
 
@@ -177,7 +179,7 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return (<ContentOne/>);
+      return (<ContentOne />);
     case 1:
       return (<ContentTwo/>);
     case 2:
@@ -190,7 +192,7 @@ function getStepContent(step) {
 
 export default function CustomizedSteppers() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
   const handleNext = () => {
@@ -216,7 +218,7 @@ export default function CustomizedSteppers() {
       </Stepper>
       <div>
         {activeStep === steps.length ? (
-          <div>
+          <div className="signup-container">
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
@@ -226,8 +228,7 @@ export default function CustomizedSteppers() {
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>Step: {activeStep}</Typography>
-            <div>
+            <div className="signup-container">
               <div>{getStepContent(activeStep)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back

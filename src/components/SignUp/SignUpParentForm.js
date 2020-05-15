@@ -1,7 +1,7 @@
 import React from 'react';
-import BasicInfo from './BasicInfo';
-import CommissionInfo from './CommissionInfo';
-import GalleryPreference from './GalleryPreference';
+// import BasicInfo from './BasicInfo';
+// import CommissionInfo from './CommissionInfo';
+// import GalleryPreference from './GalleryPreference';
 import StepperDemo from './Stepper'
 
 class SignUpParentForm extends React.Component {

@@ -176,24 +176,27 @@ function getSteps() {
   return ['Profile Information', 'Gallery Preferences', 'Commission Info'];
 }
 
-function getStepContent(step) {
+function getStepContent(step, state, handleChange) {
   switch (step) {
     case 0:
-      return (<ContentOne />);
+      return (<ContentOne state={state} handleChange={handleChange}/>);
     case 1:
-      return (<ContentTwo/>);
+      return (<ContentTwo state={state} handleChange={handleChange}/>);
     case 2:
-      return (<ContentThree/>);
+      return (<ContentThree state={state} handleChange={handleChange}/>);
     default:
       return 'Unknown step';
   }
 }
 
 
-export default function CustomizedSteppers() {
+export default function CustomizedSteppers(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+  const state = props.state;
+  const handleChange = props.handleChange;
+  const handleSubmit = props.handleSubmit;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -229,7 +232,7 @@ export default function CustomizedSteppers() {
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep)}</div>
+              <div>{getStepContent(activeStep, state, handleChange)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

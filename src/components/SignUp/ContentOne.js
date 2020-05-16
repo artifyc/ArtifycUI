@@ -18,11 +18,16 @@ const menuMappings = [
 ];
 
 
-export default function BasicInfo()  {
-  const [item, setMenuItem] = React.useState('null');
-  const handleChange = (event) => {
+export default function BasicInfo(props)  {
+  const [item, setMenuItem] = React.useState(props.state);
+  const handleMenuChange = (event) => {
+    console.log("menu Change")
     setMenuItem(event.target.value);
+    handleChange(event)
   };      
+  const handleChange = props.handleChange
+  console.log(props.state)
+
       return(
         <div className="signup-container">
           <h2>About You</h2>
@@ -30,17 +35,17 @@ export default function BasicInfo()  {
             
             <TextField 
               size="medium"
-              id="standard-select-Menu"
+              id="full_time"
               select
+              name="full_time"
               label="I am an Artist"
               value={item}
-              onChange={handleChange}
               helperText="Please Select One"
             >
               {
                 menuMappings.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+                <MenuItem key={option.value} value={option.value} onClick={handleMenuChange}>
+                  {option.label} 
                 </MenuItem>
                 ))
               }
@@ -52,8 +57,8 @@ export default function BasicInfo()  {
               id="years_artist"
               name="years_artist"
               type="text"
-              placeholder="1"
-            
+              placeholder={props.state.years_artist}
+              onChange={handleChange}
             />
             <label htmlFor="country">Country: </label>
             <input
@@ -61,8 +66,8 @@ export default function BasicInfo()  {
               id="country"
               name="country"
               type="text"
-              placeholder="United States"
-              
+              placeholder={props.state.country}
+              onChange={handleChange}
             />
             <label htmlFor="personal_website">personal_website: </label>
             <input
@@ -70,7 +75,8 @@ export default function BasicInfo()  {
               id="personal_website"
               name="personal_website"
               type="text"
-              placeholder="mywebsite.com"
+              placeholder={props.state.personal_website}
+              onChange={handleChange}
             />
           </div>
         </div>

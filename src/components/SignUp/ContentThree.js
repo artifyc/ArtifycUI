@@ -2,7 +2,6 @@ import React from 'react';
 
 class CommissionInfo extends React.Component {
     render() {
-      // The markup for the Step 1 UI
       return(
         <div className="signup-container">
           <div>
@@ -11,10 +10,11 @@ class CommissionInfo extends React.Component {
               <label htmlFor="email">Some other thing</label>
               <input
                   className="form-control"
-                  id="email"
-                  name="email"
+                  id="other_thing"
+                  name="other_thing"
                   type="text"
-                  placeholder="Enter thing"
+                  placeholder={this.props.state.other_thing} 
+                  onChange={this.props.handleChange} 
               />
               </div>
           </div>

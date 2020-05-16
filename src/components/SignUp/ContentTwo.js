@@ -13,8 +13,7 @@ class GalleryPreference extends React.Component {
                   id="email"
                   name="email"
                   type="text"
-                  placeholder="Enter email"
-                  value={this.props.email} 
+                  placeholder={this.props.state.email} 
                   onChange={this.props.handleChange} 
               />
             </div>

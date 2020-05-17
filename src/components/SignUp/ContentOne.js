@@ -19,7 +19,7 @@ const menuMappings = [
 
 
 export default function BasicInfo(props)  {
-  const [item, setMenuItem] = React.useState(props.state);
+  const [setMenuItem] = React.useState(props.state);
   const handleMenuChange = (event) => {
     setMenuItem(event.target.value);
     handleChange(event)

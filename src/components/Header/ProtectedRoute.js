@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../style/HeaderBar.css'
-import { Auth } from 'aws-amplify';
 import { Route, Redirect } from "react-router-dom";
 
 class ProtectedRoute extends React.Component {

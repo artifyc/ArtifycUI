@@ -1,83 +1,48 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+import ArtistTypeButton from './ArtistTypeButton'
+import Typography from '@material-ui/core/Typography';
 
-const menuMappings = [
-  {
-    value: 'Full Time',
-    label: 'Full Time',
-  },
-  {
-    value: 'Part Time',
-    label: 'Part Time',
-  },
-  {
-    value: 'For Fun',
-    label: 'For Fun',
-  }
-];
 
 
 export default function BasicInfo(props)  {
-  const [setMenuItem] = React.useState(props.state);
-  const handleMenuChange = (event) => {
-    setMenuItem(event.target.value);
-    handleChange(event)
-  };      
   const handleChange = props.handleChange
-  console.log(props.state)
 
       return(
         <div className="signup-container">
           <h2>About You</h2>
-          <div className="form-group">
-            
-            <TextField 
-              size="medium"
-              id="full_time"
-              select
-              name="full_time"
-              label="I am an Artist"
-              value={props.state.full_time}
-              helperText="Please Select One"
-              onChange={handleMenuChange}
-            >
-              {
-                menuMappings.map((option) => (
-                <MenuItem key={option.value} value={option.value} >
-                  {option.label} 
-                </MenuItem>
-                ))
-              }
-            </TextField>
+          <div  className="form-group">
+            <div >
+              <ArtistTypeButton size="small" prefix="I am an artist - " item={props.state.full_time} handleChange={handleChange}></ArtistTypeButton>
+            </div>
             <br></br>
-            <label htmlFor="years_artist">I have been an artist for X years: </label>
-            <input
-              className="form-control"
-              id="years_artist"
-              name="years_artist"
-              type="text"
-              placeholder={props.state.years_artist}
-              onChange={handleChange}
-            />
-            <label htmlFor="country">Country: </label>
-            <input
-              className="form-control"
-              id="country"
-              name="country"
-              type="text"
-              placeholder={props.state.country}
-              onChange={handleChange}
-            />
-            <label htmlFor="personal_website">personal_website: </label>
-            <input
-              className="form-control"
-              id="personal_website"
-              name="personal_website"
-              type="text"
-              placeholder={props.state.personal_website}
-              onChange={handleChange}
-            />
+            <div style={{ display: 'inline-flex', alignSelf: 'center' }}>
+              <div className="padmeup">
+              <Typography>I am an artist - </Typography>
+              </div>
+              <ArtistTypeButton size="small" prefix="" item={props.state.full_time} handleChange={handleChange}></ArtistTypeButton>
+            </div>
+            <br></br>
+            <br></br>
+            <div> <TextField label="Years as an artist"  id="years_artist_id"
+                name="years_artist" placeholder="1" 
+                onChange={handleChange} value={props.state.years_artist}
+               />
+            </div>
+            <br></br>
+            <div>
+              <TextField label="Country"  id="country_id"
+                name="country" placeholder="United States" 
+                onChange={handleChange} value={props.state.country}
+               />
+            </div>
+            <br></br>
+            <div>
+              <TextField label="Personal Website"  id="personal_website_id"
+                name="personal_website" placeholder="www.example.com" 
+                onChange={handleChange} value={props.state.personal_website}
+               />
+            </div>
           </div>
         </div>
       )

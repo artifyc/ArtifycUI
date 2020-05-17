@@ -1,26 +1,21 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
-class GalleryPreference extends React.Component {
-    render() {
-      return(
-        <div className="signup-container">
-          <div>
-            <h2>Gallery Preferences</h2>
-            <div className="form-group">
-              <label htmlFor="email">Email address</label>
-              <input
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  type="text"
-                  placeholder={this.props.state.email} 
-                  onChange={this.props.handleChange} 
-              />
-            </div>
+export default function GalleryPreference(props)  {
+  const handleChange = props.handleChange
+  return(
+    <div className="signup-container">
+      <div>
+        <h2>Gallery Preferences</h2>
+        <div className="form-group">
+          <div> 
+            <TextField label="Email Address"  id="email"
+              name="email" placeholder="joanne.smith@email.com"
+              onChange={handleChange} value={props.state.email}
+            />
           </div>
         </div>
-      )
-    }
-  }
-
-export default GalleryPreference;
+      </div>
+    </div>
+  )
+}

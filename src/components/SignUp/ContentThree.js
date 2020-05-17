@@ -1,26 +1,20 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
-class CommissionInfo extends React.Component {
-    render() {
-      return(
-        <div className="signup-container">
-          <div>
-              <h2>Commission Information</h2>
-              <div className="form-group">
-              <label htmlFor="email">Some other thing</label>
-              <input
-                  className="form-control"
-                  id="other_thing"
-                  name="other_thing"
-                  type="text"
-                  placeholder={this.props.state.other_thing} 
-                  onChange={this.props.handleChange} 
-              />
-              </div>
+
+export default function CommissionInfo(props)  {
+  const handleChange = props.handleChange
+  return(
+    <div className="signup-container">
+      <div>
+          <h2>Commission Information</h2>
+          <div className="form-group">
+            <TextField label="Some Other Thing:"  id="other_thing"
+                  name="other_thing" placeholder="other thing"
+                  onChange={handleChange} value={props.state.other_thing}
+            />
           </div>
-        </div>
-      )
-    }
-  }
-
-export default CommissionInfo;
+      </div>
+    </div>
+  )
+}

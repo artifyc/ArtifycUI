@@ -412,3 +412,7 @@ textarea:focus {outline:none;}
 .signup-container {
   text-align: center;
 }
+
+.padmeup {
+  padding-right: 20px;
+}

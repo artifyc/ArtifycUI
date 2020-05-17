@@ -9,12 +9,14 @@ import Check from '@material-ui/icons/Check';
 import ContactsIcon from '@material-ui/icons/Contacts';
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 import ContactMailIcon from '@material-ui/icons/Mail';
+import FormatLineSpacing from '@material-ui/icons/FormatLineSpacing';
 import StepConnector from '@material-ui/core/StepConnector';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ContentOne from './ContentOne'
 import ContentTwo from './ContentTwo'
 import ContentThree from './ContentThree'
+import ContentFour from './ContentFour'
 
 
 const useQontoStepIconStyles = makeStyles({
@@ -73,13 +75,13 @@ const ColorlibConnector = withStyles({
   active: {
     '& $line': {
       backgroundImage:
-        'linear-gradient( 95deg,rgb(153, 153, 255) 20%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
+        'linear-gradient( 95deg,rgb(46, 59, 85) 20%,  rgb(46, 59, 85) 40%, rgb(138,35,135) 150%)',
     },
   },
   completed: {
     '& $line': {
       backgroundImage:
-        'linear-gradient( 95deg,rgb(153, 153, 255) 20%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
+        'linear-gradient( 95deg,rgb(46, 59, 85)20%,  rgb(46, 59, 85) 40%, rgb(138,35,135) 150%)',
     },
   },
   line: {
@@ -105,12 +107,12 @@ const useColorlibStepIconStyles = makeStyles({
   },
   active: {
     backgroundImage:
-      'linear-gradient( 136deg, rgb(153, 153, 255) 0%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
+      'linear-gradient( 136deg, rgb(24, 205, 148) 100%,  rgb(63, 81, 181) 90%, rgb(0, 245, 159) 120%)',
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
     backgroundImage:
-      'linear-gradient( 136deg, rgb(153, 153, 255) 0%,  rgb(46, 59, 85) 70%, rgb(138,35,135) 150%)',
+      'linear-gradient( 136deg, rgb(24, 205, 148) 100%, rgb(63, 81, 181) 90%,  rgb(0, 245, 159) 120%)',
   }
 
 });
@@ -123,6 +125,7 @@ function ColorlibStepIcon(props) {
     1: <ContactsIcon/>,
     2: <ContactMailIcon />,
     3: <AspectRatioIcon />,
+    4: <FormatLineSpacing />
   };
 
   return (
@@ -173,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Profile Information', 'Gallery Preferences', 'Commission Info'];
+  return ['Profile Information', 'Gallery Preferences', 'Commission Info', 'Client Forms'];
 }
 
 function getStepContent(step, state, handleChange) {
@@ -184,6 +187,8 @@ function getStepContent(step, state, handleChange) {
       return (<ContentTwo state={state} handleChange={handleChange}/>);
     case 2:
       return (<ContentThree state={state} handleChange={handleChange}/>);
+    case 3:
+      return (<ContentFour state={state} handleChange={handleChange}/>);
     default:
       return 'Unknown step';
   }

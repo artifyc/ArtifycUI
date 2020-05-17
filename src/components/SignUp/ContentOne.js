@@ -21,7 +21,6 @@ const menuMappings = [
 export default function BasicInfo(props)  {
   const [item, setMenuItem] = React.useState(props.state);
   const handleMenuChange = (event) => {
-    console.log("menu Change")
     setMenuItem(event.target.value);
     handleChange(event)
   };      
@@ -39,12 +38,13 @@ export default function BasicInfo(props)  {
               select
               name="full_time"
               label="I am an Artist"
-              value={item}
+              value={props.state.full_time}
               helperText="Please Select One"
+              onChange={handleMenuChange}
             >
               {
                 menuMappings.map((option) => (
-                <MenuItem key={option.value} value={option.value} onClick={handleMenuChange}>
+                <MenuItem key={option.value} value={option.value} >
                   {option.label} 
                 </MenuItem>
                 ))

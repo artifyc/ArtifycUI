@@ -33,8 +33,6 @@ class SignUpParentForm extends React.Component {
   
     // Use the submitted data to set the state
     handleChange(event) {
-      console.log("event change")
-      console.log(event)
       const target = event.target;
       const name = target.name;
       this.setState({
@@ -42,15 +40,17 @@ class SignUpParentForm extends React.Component {
       })    
     }
 
-    
     // Trigger an alert on form submission
     handleSubmit = (event) => {
-      event.preventDefault()
-      const { email, username, password } = this.state
-      alert(`Your registration detail: \n 
-        Email: ${email} \n 
-        Username: ${username} \n
-        Password: ${password}`)
+      // event.preventDefault()
+      alert(`Your registration detail: \n
+        Time: ${this.state.full_time} \n 
+        Years as Artist: ${this.state.years_artist} \n
+        Country: ${this.state.country} \n
+        Website: ${this.state.personal_website} \n
+        Email: ${this.state.email} \n
+        Other Thing: ${this.state.other_thing} \n
+        `)
     }
     
     render() {    

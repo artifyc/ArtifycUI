@@ -207,6 +207,7 @@ export default function CustomizedSteppers(props) {
   };
 
   const handleReset = () => {
+    handleSubmit();
     setActiveStep(0);
   };
 

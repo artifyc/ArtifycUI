@@ -5,6 +5,7 @@
   "dependencies": {
     "@lourenci/react-kanban": "^1.1.0",
     "@material-ui/core": "^4.9.12",
+    "@material-ui/icons": "^4.9.1",
     "aws-amplify": "^1.3.3",
     "bootstrap": "^4.3.1",
     "history": "^4.10.1",
@@ -12,14 +13,14 @@
     "react-bootstrap": "^1.0.0-beta.9",
     "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.6",
+    "react-hook-form": "^5.7.2",
     "react-router": "^5.1.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.3.1",
     "react-typist": "^2.0.5",
     "react-uuid": "^1.0.2",
     "semantic-ui-react": "^0.88.2",
-    "styled-components": "^5.1.0",
-    "@material-ui/icons": "^4.9.1"
+    "styled-components": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

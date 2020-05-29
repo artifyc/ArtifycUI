@@ -179,16 +179,16 @@ function getSteps() {
   return ['Profile Information', 'Gallery Preferences', 'Commission Info', 'Client Forms'];
 }
 
-function getStepContent(step, state, handleChange) {
+function getStepContent(step, state, handleChange, validateField) {
   switch (step) {
     case 0:
-      return (<ContentOne state={state} handleChange={handleChange}/>);
+      return (<ContentOne state={state} handleChange={handleChange} validateField={validateField} />);
     case 1:
-      return (<ContentTwo state={state} handleChange={handleChange}/>);
+      return (<ContentTwo state={state} handleChange={handleChange} validateField={validateField} />);
     case 2:
-      return (<ContentThree state={state} handleChange={handleChange}/>);
+      return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} />);
     case 3:
-      return (<ContentFour state={state} handleChange={handleChange}/>);
+      return (<ContentFour state={state} handleChange={handleChange} validateField={validateField} />);
     default:
       return 'Unknown step';
   }
@@ -202,7 +202,7 @@ export default function CustomizedSteppers(props) {
   const state = props.state;
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
-
+  const validateField = props.validateField;
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -238,7 +238,7 @@ export default function CustomizedSteppers(props) {
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep, state, handleChange)}</div>
+              <div>{getStepContent(activeStep, state, handleChange, validateField)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

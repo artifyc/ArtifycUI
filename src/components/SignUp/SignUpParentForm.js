@@ -22,10 +22,14 @@ class SignUpParentForm extends React.Component {
         email: '',
         other_thing:  '',
         other_thing2:  '',
-        formFields: []
+        formFields: [],
+        isEmailValid: true,
+        isYearsWorkedValid: true
       }
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
+      this.validateField = this.validateField.bind(this)
+
     }
 
     // Use the submitted data to set the state
@@ -35,6 +39,19 @@ class SignUpParentForm extends React.Component {
       this.setState({
         [name]: target.value
       })    
+    }
+
+    validateField(event, fieldName, regex) {
+      const fieldValue = event.target.value;
+      if (regex.test(fieldValue)) {
+        this.setState({
+          [fieldName]: true
+        })        
+      } else {
+        this.setState({
+          [fieldName]: false
+        })    
+      }
     }
 
     // Trigger an alert on form submission
@@ -50,6 +67,7 @@ class SignUpParentForm extends React.Component {
             state={this.state} 
             handleChange={this.handleChange} 
             handleSubmit={this.handleSubmit}
+            validateField={this.validateField}
           />
         </div>
       )

@@ -24,7 +24,18 @@ class SignUpParentForm extends React.Component {
         other_thing2:  '',
         formFields: [],
         isEmailValid: true,
-        isYearsWorkedValid: true
+        isYearsWorkedValid: true,
+        validationFields: {
+          "email": {
+            "validationFieldName": "isEmailValid",
+            "regex": /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          }, 
+          "years_artist": {
+            "validationFieldName": "isYearsWorkedValid",
+            "regex": /^(12[0-7]|1[01][0-9]|[1-9]?[0-9])$/
+          }
+        },
+        allFieldsValidated: true
       }
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
@@ -41,8 +52,10 @@ class SignUpParentForm extends React.Component {
       })    
     }
 
-    validateField(event, fieldName, regex) {
+    validateField(event) {
       const fieldValue = event.target.value;
+      const fieldName = this.state.validationFields[event.target.name]["validationFieldName"]
+      const regex = this.state.validationFields[event.target.name]["regex"]
       if (regex.test(fieldValue)) {
         this.setState({
           [fieldName]: true
@@ -52,12 +65,17 @@ class SignUpParentForm extends React.Component {
           [fieldName]: false
         })    
       }
+      // this.state.validationFields
     }
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       // event.preventDefault()
       console.log(this.state)
+      console.log(this.state.validationFields)
+      this.state.validationFields.map(e => 
+        this.state[e] && this.state ? '': this.setState({allFieldsValidated: false})
+      )
     }
     
     render() {    

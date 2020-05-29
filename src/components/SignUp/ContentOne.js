@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 export default function BasicInfo(props)  {
   const handleChange = props.handleChange
   const validateField = props.validateField
-  const regExpression = /^(12[0-7]|1[01][0-9]|[1-9]?[0-9])$/
 
       return(
         <div className="signup-container">
@@ -27,12 +26,11 @@ export default function BasicInfo(props)  {
                 onChange={handleChange} value={props.state.years_artist}
                 helperText=''
                 type="number"
-                onBlur={(e) => validateField(e,"isYearsWorkedValid", regExpression)}
+                onBlur={(e) => validateField(e)}
                 error={!props.state.isYearsWorkedValid}
                 helperText={props.state.isYearsWorkedValid ? ' ' : 'Please enter a valid Number'}
                />
             </div>
-            <br></br>
             <div>
               <TextField label="Country"  id="country_id"
                 name="country" placeholder="United States" 

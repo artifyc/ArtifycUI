@@ -231,7 +231,7 @@ export default function CustomizedSteppers(props) {
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Button disabled={true} color="secondary" variant="contained" onClick={handleReset} className={classes.button}  >
+            <Button disabled={false} color="secondary" variant="contained" onClick={handleReset} className={classes.button}  >
               Reset
             </Button>
           </div>

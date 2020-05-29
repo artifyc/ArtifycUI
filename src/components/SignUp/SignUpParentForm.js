@@ -40,6 +40,7 @@ class SignUpParentForm extends React.Component {
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
       this.validateField = this.validateField.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
 
     }
 
@@ -71,11 +72,19 @@ class SignUpParentForm extends React.Component {
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       // event.preventDefault()
-      console.log(this.state)
-      console.log(this.state.validationFields)
-      this.state.validationFields.map(e => 
-        this.state[e] && this.state ? '': this.setState({allFieldsValidated: false})
-      )
+      Object.keys(this.state.validationFields).map((field) => {
+        const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
+        if (!this.state[this.state.validationFields[field]["validationFieldName"]]) {
+          this.state.allFieldsValidated = false
+          // this.setState({
+          //   allFieldsValidated: false
+          // })
+        }   
+      })
+      console.log("All Fields Validated: ", this.state.allFieldsValidated)
+      if (!this.state.allFieldsValidated) {
+        alert("Please correct fields")
+      }
     }
     
     render() {    

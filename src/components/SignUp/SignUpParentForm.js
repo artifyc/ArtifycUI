@@ -74,13 +74,14 @@ class SignUpParentForm extends React.Component {
       // event.preventDefault()
       Object.keys(this.state.validationFields).map((field) => {
         const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
-        if (!this.state[this.state.validationFields[field]["validationFieldName"]]) {
+        if (!fieldValue) {
           this.state.allFieldsValidated = false
           // this.setState({
           //   allFieldsValidated: false
           // })
-        }   
-      })
+        }
+        return ""  
+      } )
       console.log("All Fields Validated: ", this.state.allFieldsValidated)
       if (!this.state.allFieldsValidated) {
         alert("Please correct fields")

@@ -24,11 +24,10 @@ export default function BasicInfo(props)  {
               <TextField label="Years as an artist"  id="years_artist_id"
                 name="years_artist" placeholder="1" 
                 onChange={handleChange} value={props.state.years_artist}
-                helperText=''
                 type="number"
                 onBlur={(e) => validateField(e)}
                 error={!props.state.isYearsWorkedValid}
-                helperText={props.state.isYearsWorkedValid ? ' ' : 'Please enter a valid Number'}
+                helperText={props.state.isYearsWorkedValid ? '' : 'Please enter a valid Number'}
                />
             </div>
             <div>

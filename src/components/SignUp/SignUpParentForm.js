@@ -35,12 +35,23 @@ class SignUpParentForm extends React.Component {
             "regex": /^(12[0-7]|1[01][0-9]|[1-9]?[0-9])$/
           }
         },
-        allFieldsValidated: true
+        allFieldsValidated: true,
+        birth_date: new Date('2014-08-18T21:11:54'),
+        preferred_language: '',
+        checkedNotifyText: false,
+        checkedNotifyEmail: false,
+        checkedNotifyReview: false,
+        checkedNotifyRevision: false,
+        checkedNotifyNewMsg: false,
+        checkedNotifyNewCommission: false
       }
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
+      this.handleDateChange = this.handleDateChange.bind(this)
       this.validateField = this.validateField.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleCheckChange = this.handleCheckChange.bind(this)
+
 
     }
 
@@ -50,6 +61,18 @@ class SignUpParentForm extends React.Component {
       const name = target.name;
       this.setState({
         [name]: target.value
+      })    
+    }
+
+    handleDateChange(event) {
+      this.setState({
+        birth_date: event
+      })    
+    }
+
+    handleCheckChange(event) {
+      this.setState({
+        [event.target.name]: event.target.checked
       })    
     }
 
@@ -72,20 +95,23 @@ class SignUpParentForm extends React.Component {
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       // event.preventDefault()
+      this.state.allFieldsValidated = true
       Object.keys(this.state.validationFields).map((field) => {
         const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
-        if (!fieldValue) {
+        if (!fieldValue && this.state[field] !== '') {
           this.state.allFieldsValidated = false
+          console.log(this.state.validationFields[field]["validationFieldName"])
           // this.setState({
           //   allFieldsValidated: false
           // })
         }
         return ""  
       } )
-      console.log("All Fields Validated: ", this.state.allFieldsValidated)
       if (!this.state.allFieldsValidated) {
         alert("Please correct fields")
       }
+      console.log("All Fields Validated: ", this.state.allFieldsValidated)
+      console.log(this.state)
     }
     
     render() {    
@@ -96,6 +122,8 @@ class SignUpParentForm extends React.Component {
             handleChange={this.handleChange} 
             handleSubmit={this.handleSubmit}
             validateField={this.validateField}
+            handleDateChange={this.handleDateChange}
+            handleCheckChange={this.handleCheckChange}
           />
         </div>
       )

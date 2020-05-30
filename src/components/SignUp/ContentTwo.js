@@ -1,5 +1,12 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 
 export default function GalleryPreference(props)  {
   const handleChange = props.handleChange
@@ -10,6 +17,27 @@ export default function GalleryPreference(props)  {
       <div>
         <h2>Gallery Preferences</h2>
         <div className="form-group">
+          <div> 
+            <TextField label="Preferred Language"  id="preferred_language"
+              name="preferred_language" placeholder="English"
+              onChange={handleChange} value={props.state.preferred_language}
+            />
+          </div>
+          <div> 
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                margin="normal"
+                id="date-picker-dialog"
+                label="Birth Date"
+                format="MM/dd/yyyy"
+                value={props.state.birth_date}
+                onChange={props.handleDateChange}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+              />
+            </MuiPickersUtilsProvider>          
+          </div>
           <div> 
             <TextField label="Email Address"  id="email"
               name="email" placeholder="joanne.smith@email.com"

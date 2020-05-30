@@ -30,6 +30,7 @@ export default function BasicInfo(props)  {
                 helperText={props.state.isYearsWorkedValid ? '' : 'Please enter a valid Number'}
                />
             </div>
+            <br></br>
             <div>
               <TextField label="Country"  id="country_id"
                 name="country" placeholder="United States" 

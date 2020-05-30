@@ -4,9 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { green } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import CheckIcon from '@material-ui/icons/Check';
-import SaveIcon from '@material-ui/icons/Save';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,18 +22,6 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: green[700],
     },
-  },
-  fabProgress: {
-    color: green[500],
-    display: 'inline-block',
-    position: 'relative',
-    // top: 0,
-    // left: 0,
-    // zIndex: 1,
-    // top: '50%',
-    // left: '50%',
-    // marginTop: -12,
-    // marginLeft: -12,
   },
   buttonProgress: {
     color: green[500],
@@ -76,17 +62,6 @@ export default function CircularIntegration() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.wrapper}>
-        <Fab
-          aria-label="save"
-          color="primary"
-          className={buttonClassname}
-          onClick={handleButtonClick}
-        >
-          {success ? <CheckIcon /> : <SaveIcon />}
-        </Fab>
-        {loading && <CircularProgress size={68} className={classes.fabProgress} />}
-      </div>
       <div className={classes.wrapper}>
         <Button
           variant="contained"

@@ -23,6 +23,7 @@ export default function GalleryPreference(props)  {
               onChange={handleChange} value={props.state.preferred_language}
             />
           </div>
+          <br></br>
           <div> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
@@ -38,6 +39,7 @@ export default function GalleryPreference(props)  {
               />
             </MuiPickersUtilsProvider>          
           </div>
+          <br></br>
           <div> 
             <TextField label="Email Address"  id="email"
               name="email" placeholder="joanne.smith@email.com"

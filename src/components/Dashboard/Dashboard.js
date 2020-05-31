@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
         })
           .then(res => res.json())
           .then(res => {
-            fetchedBoard = res.columns.columns;
+            fetchedBoard = res.board.columns;
             return fetchedBoard;
           })
           .then(fetchedBoard => {    

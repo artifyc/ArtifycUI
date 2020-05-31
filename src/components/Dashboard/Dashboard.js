@@ -40,7 +40,18 @@ class Dashboard extends React.Component {
           'Content-type': 'application/json',
           'Authorization': this.props.currUser.signInUserSession.idToken.jwtToken
         },
-        body: JSON.stringify(board)
+        body: JSON.stringify({
+          board: board
+        }),
+      }
+      )
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res;
+      })
+      .catch(err => {
+        console.log(err);
       })
   }
 

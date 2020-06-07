@@ -6,5 +6,29 @@
 			"dependsOn": [],
 			"customAuth": false
 		}
+	},
+	"function": {
+		"S3Triggerd19d0bc3": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true
+		}
+	},
+	"storage": {
+		"aritfycdevuserprofileimages": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "S3Triggerd19d0bc3",
+					"attributes": [
+						"Name",
+						"Arn",
+						"LambdaExecutionRole"
+					]
+				}
+			]
+		}
 	}
 }

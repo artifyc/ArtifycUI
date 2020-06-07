@@ -22,6 +22,7 @@ class Dashboard extends React.Component {
     }
 
   componentDidUpdate(prevProps){
+    //TODO: Add if not logged in logic here
     if (this.props.currUser !== prevProps.currUser) {
         this.setState ({
           currUser: this.props.currUser,
@@ -30,7 +31,7 @@ class Dashboard extends React.Component {
 
       console.log('sending thing');
       console.log(this.props.currUser);
-      console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
+      //console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
 
       fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
           method: 'GET',
@@ -40,8 +41,11 @@ class Dashboard extends React.Component {
           },
         })
           .then(res => res.json())
-          .then(res => console.log(res.columns.columns.board.columns))
-          //.then(res => this.props.board = res.columns.columns.board.columns)
+          .then((res) => {
+            console.log("Setting state?");
+            console.log(res.board.columns.board);
+            this.setState ({ board: res.board.columns.board });
+          })
     }
 
     if (this.props.board !== prevProps.board) {
@@ -58,9 +62,12 @@ class Dashboard extends React.Component {
   }
 
     render() {
+      if (this.state.board == null){
+        return null
+      }
         return (
             <div>
-                <Board initialBoard={board} />
+                <Board initialBoard={this.state.board} />
             </div>
         )
     }

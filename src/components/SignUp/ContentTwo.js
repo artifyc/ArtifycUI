@@ -6,7 +6,8 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/plain.css'
 
 export default function GalleryPreference(props)  {
   const handleChange = props.handleChange
@@ -49,6 +50,23 @@ export default function GalleryPreference(props)  {
               helperText={props.state.isEmailValid ? ' ' : 'Please enter a valid Email'}
             />
           </div>
+          <br></br>
+          <div>
+            <label>Phone Number
+            </label>
+
+            <PhoneInput
+              country={'us'}
+              value={props.state.phone_number}
+              // onChange={handleChange}
+              // enableAreaCodes={true}
+              enableAreaCodeStretch
+              // onlyCountries={['gr', 'fr', 'us']}
+              preserveOrder={[ 'preferredCountries']}
+              priority={{us: 0, ca: 1, uk:2}}
+            />
+          </div>
+         
         </div>
       </div>
     </div>

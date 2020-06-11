@@ -46,12 +46,7 @@ export default function BasicInfo(props)  {
                />
             </div>
             <br></br>
-            <div>
-              <TextField label="Phone Number"  id="phone_number"
-                name="phone_number" placeholder="111-111-1111" 
-                onChange={handleChange} value={props.state.phone_number}
-               />
-            </div>
+            
           </div>
         </div>
       )

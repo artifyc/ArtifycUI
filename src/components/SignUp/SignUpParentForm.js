@@ -96,7 +96,9 @@ class SignUpParentForm extends React.Component {
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       // event.preventDefault()
-      this.state.allFieldsValidated = true
+      this.setState({
+        allFieldsValidated: true
+      })
       Object.keys(this.state.validationFields).map((field) => {
         const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
         if (!fieldValue && this.state[field] !== '') {

@@ -32,7 +32,7 @@ export default function BasicInfo(props)  {
             </div>
             <br></br>
             <div>
-              <TextField label="Country"  id="country_id"
+              <TextField label="Country (required)"  id="country_id"
                 name="country" placeholder="United States" 
                 onChange={handleChange} value={props.state.country}
                 inputProps={{ pattern: "[a-z]" }}
@@ -43,6 +43,13 @@ export default function BasicInfo(props)  {
               <TextField label="Personal Website"  id="personal_website_id"
                 name="personal_website" placeholder="www.example.com" 
                 onChange={handleChange} value={props.state.personal_website}
+               />
+            </div>
+            <br></br>
+            <div>
+              <TextField label="Phone Number"  id="phone_number"
+                name="phone_number" placeholder="111-111-1111" 
+                onChange={handleChange} value={props.state.phone_number}
                />
             </div>
           </div>

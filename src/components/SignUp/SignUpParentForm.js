@@ -43,7 +43,8 @@ class SignUpParentForm extends React.Component {
         checkedNotifyReview: false,
         checkedNotifyRevision: false,
         checkedNotifyNewMsg: false,
-        checkedNotifyNewCommission: false
+        checkedNotifyNewCommission: false,
+        phone_number: ''
       }
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)

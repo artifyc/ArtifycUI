@@ -53,8 +53,8 @@ class HeaderBar extends React.Component {
         <div><NavBarComponent loggedIn={this.state.loggedIn}/></div>
         <Switch>
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
-          <Route path="/Dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
-          <Route path="/Settings" component={AccountOptionsComponent}/>
+          <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
+          <Route path="/settings" component={AccountOptionsComponent}/>
         </Switch>
       </div>
 
@@ -65,7 +65,7 @@ class HeaderBar extends React.Component {
         <Switch>
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
           <Route path="/signup" component={SignUpParentForm} />
-          <Route path="/Dashboard" component={Dashboard} user={ this.state.user} />
+          <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
         </Switch>
       </div>
 

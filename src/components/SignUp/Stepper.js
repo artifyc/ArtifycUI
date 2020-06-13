@@ -179,12 +179,12 @@ function getSteps() {
   return ['Profile Information', 'Gallery Preferences', 'Notification Preferences', 'Client Forms'];
 }
 
-function getStepContent(step, state, handleChange, validateField, handleDateChange, handleCheckChange) {
+function getStepContent(step, state, handleChange, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
   switch (step) {
     case 0:
       return (<ContentOne state={state} handleChange={handleChange} validateField={validateField} />);
     case 1:
-      return (<ContentTwo state={state} handleChange={handleChange} handleDateChange={handleDateChange} validateField={validateField} />);
+      return (<ContentTwo state={state} handleChange={handleChange} handleDateChange={handleDateChange} validateField={validateField} handlePhoneChange={handlePhoneChange} />);
     case 2:
       return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} handleCheckChange={handleCheckChange}/>);
     case 3:
@@ -205,6 +205,7 @@ export default function CustomizedSteppers(props) {
   const handleSubmit = props.handleSubmit;
   const validateField = props.validateField;
   const handleCheckChange = props.handleCheckChange;
+  const handlePhoneChange = props.handlePhoneChange
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -213,7 +214,7 @@ export default function CustomizedSteppers(props) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
+  const handleSubmission = () => {
     handleSubmit();
     setActiveStep(0);
   };
@@ -233,16 +234,16 @@ export default function CustomizedSteppers(props) {
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Button disabled={false} color="secondary" variant="contained" onClick={handleReset} className={classes.button}  >
+            {/* <Button disabled={false} color="secondary" variant="contained" onClick={handleReset} className={classes.button}  >
               Reset
-            </Button>
-            <SubmitButton></SubmitButton>
+            </Button> */}
+            <SubmitButton state={state} handleSubmission={handleSubmission}></SubmitButton>
 
           </div>
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep, state, handleChange, validateField, handleDateChange, handleCheckChange)}</div>
+              <div>{getStepContent(activeStep, state, handleChange, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

@@ -12,7 +12,7 @@ import 'react-phone-input-2/lib/plain.css'
 export default function GalleryPreference(props)  {
   const handleChange = props.handleChange
   const validateField = props.validateField
-
+  const handlePhoneChange = props.handlePhoneChange
   return(
     <div className="signup-container">
       <div>
@@ -58,10 +58,10 @@ export default function GalleryPreference(props)  {
             <PhoneInput
               country={'us'}
               value={props.state.phone_number}
-              // onChange={handleChange}
+              onChange={handlePhoneChange}
               // enableAreaCodes={true}
               enableAreaCodeStretch
-              // onlyCountries={['gr', 'fr', 'us']}
+              onlyCountries={['ca', 'us', 'mx', 'gb']}
               preserveOrder={[ 'preferredCountries']}
               priority={{us: 0, ca: 1, uk:2}}
             />

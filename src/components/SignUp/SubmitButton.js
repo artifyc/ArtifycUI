@@ -33,12 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CircularIntegration() {
+export default function CircularIntegration(props) {
+  // const isSignupComplete = props.state.isSignupComplete
   const classes = useStyles();
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const timer = React.useRef();
-
+  const handleSubmission = props.handleSubmission
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
@@ -50,9 +51,31 @@ export default function CircularIntegration() {
   }, []);
 
   const handleButtonClick = () => {
+
+  //   const data = {
+  //     email: this.state.email,
+  //     firstName: this.state.first,
+  //     lastName: this.state.last,
+  //     interest: this.state.value,
+  //     message: this.state.message
+  // };
+
+//   fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/prod', {
+//     method: 'POST',
+//     headers: {
+//       'Content-type': 'application/json',
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then(res => res.json())
+//     .then(res => console.log(res))
+//     this.setState({first: '', last: '', email: '', value: 'Becoming a founding artist', show: false, message: '', thanks: true});
+// }
+
     if (!loading) {
       setSuccess(false);
       setLoading(true);
+      handleSubmission();
       timer.current = setTimeout(() => {
         setSuccess(true);
         setLoading(false);
@@ -76,4 +99,5 @@ export default function CircularIntegration() {
       </div>
     </div>
   );
+  
 }

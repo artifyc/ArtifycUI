@@ -6,6 +6,7 @@ class SignUpParentForm extends React.Component {
       super(props)
       // Set the initial input values
       this.state = {
+        isSignupComplete: false,
         full_time: '',
         years_artist: '',
         country: '',
@@ -52,12 +53,13 @@ class SignUpParentForm extends React.Component {
       this.validateField = this.validateField.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleCheckChange = this.handleCheckChange.bind(this)
-
+      this.handlePhoneChange = this.handlePhoneChange.bind(this)
 
     }
 
     // Use the submitted data to set the state
     handleChange(event) {
+      console.log("change event", event)
       const target = event.target;
       const name = target.name;
       this.setState({
@@ -74,6 +76,12 @@ class SignUpParentForm extends React.Component {
     handleCheckChange(event) {
       this.setState({
         [event.target.name]: event.target.checked
+      })    
+    }
+
+    handlePhoneChange(event) {
+      this.setState({
+        phone_number: event
       })    
     }
 
@@ -115,6 +123,23 @@ class SignUpParentForm extends React.Component {
       }
       console.log("All Fields Validated: ", this.state.allFieldsValidated)
       console.log(this.state)
+      const data = {
+        email: this.state.email,
+        firstName: this.state.first,
+        lastName: this.state.last,
+        interest: this.state.value,
+        message: this.state.message
+    };
+
+      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/prod', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(res => res.json())
+        .then(res => console.log(res))      
     }
     
     render() {    
@@ -127,6 +152,7 @@ class SignUpParentForm extends React.Component {
             validateField={this.validateField}
             handleDateChange={this.handleDateChange}
             handleCheckChange={this.handleCheckChange}
+            handlePhoneChange={this.handlePhoneChange}
           />
         </div>
       )

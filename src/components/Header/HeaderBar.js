@@ -22,7 +22,7 @@ class HeaderBar extends React.Component {
   }
 
   componentDidMount() {
-    console.log("component did mount");
+    //console.log("component did mount");
     this.isLoggedIn();
     this.loggedInView();
   }
@@ -37,7 +37,7 @@ class HeaderBar extends React.Component {
           currUser: user,
           checked: 1
         })
-        console.log(this.state.currUser);
+        //console.log(this.state.currUser);
     } catch (err) {
         this.setState ({
           loggedIn: false,

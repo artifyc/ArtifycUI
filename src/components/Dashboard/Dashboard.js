@@ -2,24 +2,6 @@ import React from 'react';
 import '../../style/HomePage.css'
 import Board from '@lourenci/react-kanban'
 
-const board = {
-  "columns":
-    [
-      {"id":69,
-        "title":"Initial Render",
-        "cards":[
-          {"id":1,"title":"This is the","description":"initial render"}
-        ]
-      },
-      {"id":2,
-        "title":"This should be",
-        "cards":[
-          {"id":2,"title":"updated when","description":"the user signs in"}
-        ]
-      }
-  ]
-}
-
 class Dashboard extends React.Component {
   constructor(props)  {
     super(props);
@@ -55,9 +37,8 @@ class Dashboard extends React.Component {
       })
   }
 
-
-
   componentDidUpdate(prevProps){
+    //TODO: Add if not logged in logic here
     if (this.props.currUser !== prevProps.currUser) {
         this.setState ({
           currUser: this.props.currUser,
@@ -93,10 +74,14 @@ class Dashboard extends React.Component {
             }
           })
     }
-
+    
   }
 
     render() {
+      //TODO some loading animation?
+      if (this.state.board == null){
+        return null
+      }
         return (
           <Board
             allowRemoveLane

@@ -22,10 +22,37 @@ class SignUpParentForm extends React.Component {
         email: '',
         other_thing:  '',
         other_thing2:  '',
-        formFields: []
+        formFields: [],
+        isEmailValid: true,
+        isYearsWorkedValid: true,
+        validationFields: {
+          "email": {
+            "validationFieldName": "isEmailValid",
+            "regex": /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          }, 
+          "years_artist": {
+            "validationFieldName": "isYearsWorkedValid",
+            "regex": /^(12[0-7]|1[01][0-9]|[1-9]?[0-9])$/
+          }
+        },
+        allFieldsValidated: true,
+        birth_date: new Date('2014-08-18T21:11:54'),
+        preferred_language: '',
+        checkedNotifyText: false,
+        checkedNotifyEmail: false,
+        checkedNotifyReview: false,
+        checkedNotifyRevision: false,
+        checkedNotifyNewMsg: false,
+        checkedNotifyNewCommission: false
       }
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
+      this.handleDateChange = this.handleDateChange.bind(this)
+      this.validateField = this.validateField.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleCheckChange = this.handleCheckChange.bind(this)
+
+
     }
 
     // Use the submitted data to set the state
@@ -37,9 +64,55 @@ class SignUpParentForm extends React.Component {
       })    
     }
 
+    handleDateChange(event) {
+      this.setState({
+        birth_date: event
+      })    
+    }
+
+    handleCheckChange(event) {
+      this.setState({
+        [event.target.name]: event.target.checked
+      })    
+    }
+
+    validateField(event) {
+      const fieldValue = event.target.value;
+      const fieldName = this.state.validationFields[event.target.name]["validationFieldName"]
+      const regex = this.state.validationFields[event.target.name]["regex"]
+      if (regex.test(fieldValue)) {
+        this.setState({
+          [fieldName]: true
+        })        
+      } else {
+        this.setState({
+          [fieldName]: false
+        })    
+      }
+      // this.state.validationFields
+    }
+
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       // event.preventDefault()
+      this.setState({
+        allFieldsValidated: true
+      })
+      Object.keys(this.state.validationFields).map((field) => {
+        const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
+        if (!fieldValue && this.state[field] !== '') {
+          this.state.allFieldsValidated = false
+          console.log(this.state.validationFields[field]["validationFieldName"])
+          // this.setState({
+          //   allFieldsValidated: false
+          // })
+        }
+        return ""  
+      } )
+      if (!this.state.allFieldsValidated) {
+        alert("Please correct fields")
+      }
+      console.log("All Fields Validated: ", this.state.allFieldsValidated)
       console.log(this.state)
     }
     
@@ -50,6 +123,9 @@ class SignUpParentForm extends React.Component {
             state={this.state} 
             handleChange={this.handleChange} 
             handleSubmit={this.handleSubmit}
+            validateField={this.validateField}
+            handleDateChange={this.handleDateChange}
+            handleCheckChange={this.handleCheckChange}
           />
         </div>
       )

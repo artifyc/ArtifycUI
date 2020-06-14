@@ -1,12 +1,15 @@
 import React from 'react';
 import '../../style/HomePage.css'
 import Board from '@lourenci/react-kanban'
+import '../../style/dashboard.css'
 
 class Dashboard extends React.Component {
+  
   constructor(props)  {
     super(props);
     this.state = {
         currUser: this.props.user,
+        messages: ["You look great today!", "Have you been drinking enough water?", "You're the yee to my haw <3", "Maybe the real art is the friends we made along the way..."],
         board: null,
         checked: []
       };
@@ -47,6 +50,7 @@ class Dashboard extends React.Component {
       }
         return (
             <div>
+                <h2 className="text">{this.state.messages[Math.floor(Math.random() * this.state.messages.length)]}</h2>
                 <Board initialBoard={this.state.board} />
             </div>
         )

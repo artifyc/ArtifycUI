@@ -2,14 +2,6 @@ import React from 'react';
 import '../../style/HomePage.css'
 import Board from '@lourenci/react-kanban'
 
-const board = {
-  "columns":
-[{"id":69,
-"title":"Backlog",
-"cards":[
-    {"id":1,"title":"Add card","description":"Ellery was here bitches"}]},
-    {"id":2,"title":"Doing","cards":[{"id":2,"title":"Drag-n-drop support","description":"AWS IS MY BITCH!!"}]}]}
-
 class Dashboard extends React.Component {
   constructor(props)  {
     super(props);
@@ -29,8 +21,8 @@ class Dashboard extends React.Component {
           checked: 1
         });
 
-      console.log('sending thing');
-      console.log(this.props.currUser);
+      //console.log('sending thing');
+      //console.log(this.props.currUser);
       //console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
 
       fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
@@ -42,26 +34,14 @@ class Dashboard extends React.Component {
         })
           .then(res => res.json())
           .then((res) => {
-            console.log("Setting state?");
-            console.log(res.board.columns.board);
             this.setState ({ board: res.board.columns.board });
           })
     }
-
-    if (this.props.board !== prevProps.board) {
-        this.setState ({
-          currUser: this.props.currUser,
-          board: this.props.board,
-          checked: 1
-        });
-
-        console.log("New board:");
-        console.log(this.state.board);
-      }
     
   }
 
     render() {
+      //TODO some loading animation?
       if (this.state.board == null){
         return null
       }

@@ -22,7 +22,7 @@ class HeaderBar extends React.Component {
   }
 
   componentDidMount() {
-    console.log("component did mount");
+    //console.log("component did mount");
     this.isLoggedIn();
     this.loggedInView();
   }

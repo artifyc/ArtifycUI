@@ -13,8 +13,32 @@ class Dashboard extends React.Component {
         board: null,
         checked: []
       };
-      console.log(this.props.currUser);
-    }
+    console.log(this.props.currUser);
+    this.makePutCall = this.makePutCall.bind(this);
+
+  }
+
+  makePutCall(board) {
+      fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': this.props.currUser.signInUserSession.idToken.jwtToken
+        },
+        body: JSON.stringify({
+          newBoard: board
+        }),
+      }
+      )
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   componentDidUpdate(prevProps){
     //TODO: Add if not logged in logic here
@@ -24,10 +48,9 @@ class Dashboard extends React.Component {
           checked: 1
         });
 
-      //console.log('sending thing');
-      //console.log(this.props.currUser);
-      //console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
-
+      console.log('sending thing');
+      console.log(this.props.currUser);
+      console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
       fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
           method: 'GET',
           headers: {
@@ -46,13 +69,32 @@ class Dashboard extends React.Component {
     render() {
       //TODO some loading animation?
       if (this.state.board == null){
+        console.log("Board state is null")
         return null
       }
         return (
-            <div>
-                <h2 className="text">{this.state.messages[Math.floor(Math.random() * this.state.messages.length)]}</h2>
-                <Board initialBoard={this.state.board} />
-            </div>
+          <div>
+          <h2 className="text">{this.state.messages[Math.floor(Math.random() * this.state.messages.length)]}</h2>
+          <Board
+            allowRemoveLane
+            allowAddColumn
+            allowRenameColumn
+            allowRemoveCard
+            onLaneRemove={this.makePutCall}
+            onCardRemove={this.makePutCall}
+            onLaneRename={this.makePutCall}
+            onCardDragEnd={this.makePutCall}
+            onColumnDragEnd={this.makePutCall}
+            initialBoard={this.state.board}
+            allowAddCard={{ on: "top" }}
+            onNewCardConfirm={draftCard => ({
+              id: new Date().getTime(),
+              ...draftCard
+            })}
+            onCardNew={this.makePutCall}
+          />
+          </div>
+    
         )
     }
 }

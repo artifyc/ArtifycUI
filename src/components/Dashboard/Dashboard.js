@@ -1,12 +1,15 @@
 import React from 'react';
 import '../../style/HomePage.css'
 import Board from '@lourenci/react-kanban'
+import '../../style/dashboard.css'
 
 class Dashboard extends React.Component {
+  
   constructor(props)  {
     super(props);
     this.state = {
         currUser: this.props.user,
+        messages: ["You look great today!", "Have you been drinking enough water?", "You're the yee to my haw <3", "Maybe the real art is the friends we made along the way..."],
         board: null,
         checked: []
       };
@@ -23,7 +26,7 @@ class Dashboard extends React.Component {
           'Authorization': this.props.currUser.signInUserSession.idToken.jwtToken
         },
         body: JSON.stringify({
-          board: board
+          newBoard: board
         }),
       }
       )
@@ -48,7 +51,6 @@ class Dashboard extends React.Component {
       console.log('sending thing');
       console.log(this.props.currUser);
       console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
-      var fetchedBoard = {}
       fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
           method: 'GET',
           headers: {
@@ -57,21 +59,8 @@ class Dashboard extends React.Component {
           },
         })
           .then(res => res.json())
-          .then(res => {
-            fetchedBoard = res.board.columns;
-            return fetchedBoard;
-          })
-          .then(fetchedBoard => {    
-            if (fetchedBoard !== prevProps.board) {
-              this.setState({
-                currUser: this.props.currUser,
-                board: fetchedBoard,
-                checked: 1
-              });
-
-              console.log("New board:");
-              console.log(this.state.board);
-            }
+          .then((res) => {
+            this.setState ({ board: res.board.columns.board });
           })
     }
     
@@ -80,9 +69,12 @@ class Dashboard extends React.Component {
     render() {
       //TODO some loading animation?
       if (this.state.board == null){
+        console.log("Board state is null")
         return null
       }
         return (
+          <div>
+          <h2 className="text">{this.state.messages[Math.floor(Math.random() * this.state.messages.length)]}</h2>
           <Board
             allowRemoveLane
             allowAddColumn
@@ -93,7 +85,7 @@ class Dashboard extends React.Component {
             onLaneRename={this.makePutCall}
             onCardDragEnd={this.makePutCall}
             onColumnDragEnd={this.makePutCall}
-            initialBoard={board}
+            initialBoard={this.state.board}
             allowAddCard={{ on: "top" }}
             onNewCardConfirm={draftCard => ({
               id: new Date().getTime(),
@@ -101,6 +93,7 @@ class Dashboard extends React.Component {
             })}
             onCardNew={this.makePutCall}
           />
+          </div>
     
         )
     }

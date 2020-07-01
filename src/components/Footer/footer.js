@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import '../style/footer.css';
-import '../style/grid.css';
-import { Grid, Paper, makeStyles } from '@material-ui/core';
+import '../../style/footer.css';
+import '../../style/grid.css';
 
 class Footer extends React.Component {
   render() {

@@ -6,10 +6,10 @@ import ProtectedRoute from './ProtectedRoute'
 import history from '../History/history'
 import Dashboard from '../Dashboard/Dashboard';
 import SignUpParentForm from '../SignUp/SignUpParentForm';
-import HomePage from '../HomePage/HomePage';
+import HomePage from '../Homepage/HomePage';
 import AccountOptionsComponent from '../AccountOptions/AccountOptionsComponent';
 import NavBarComponent from './NavBarComponent'
-
+import FooterBar from '../Footer/footer'
 class HeaderBar extends React.Component {
 
   constructor(props)  {
@@ -56,6 +56,7 @@ class HeaderBar extends React.Component {
           <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
           <Route path="/settings" component={AccountOptionsComponent}/>
         </Switch>
+        <div><FooterBar/></div>
       </div>
 
       :
@@ -67,6 +68,7 @@ class HeaderBar extends React.Component {
           <Route path="/signup" component={SignUpParentForm} />
           <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
         </Switch>
+        <div><FooterBar/></div>
       </div>
 
   }

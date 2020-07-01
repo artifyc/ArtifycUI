@@ -234,9 +234,6 @@ export default function CustomizedSteppers(props) {
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            {/* <Button disabled={false} color="secondary" variant="contained" onClick={handleReset} className={classes.button}  >
-              Reset
-            </Button> */}
             <SubmitButton state={state} handleSubmission={handleSubmission}></SubmitButton>
 
           </div>

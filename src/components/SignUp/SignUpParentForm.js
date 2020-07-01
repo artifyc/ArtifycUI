@@ -123,15 +123,15 @@ class SignUpParentForm extends React.Component {
       }
       console.log("All Fields Validated: ", this.state.allFieldsValidated)
       console.log(this.state)
-      const data = {
-        email: this.state.email,
-        firstName: this.state.first,
-        lastName: this.state.last,
-        interest: this.state.value,
-        message: this.state.message
-    };
-
-      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/prod', {
+    //   const data = {
+    //     email: this.state.email,
+    //     first_name: this.state.first_name,
+    //     last_name: this.state.last_name,
+    //     interest: this.state.value,
+    //     message: this.state.message
+    // };
+      const data = this.state
+      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/creator-signup', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

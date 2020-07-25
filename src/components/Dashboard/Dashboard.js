@@ -1,7 +1,8 @@
 import React from 'react';
-import '../../style/HomePage.css'
-import Board from '@lourenci/react-kanban'
-import '../../style/dashboard.css'
+import '../../style/HomePage.css';
+import { Spinner } from 'react-bootstrap';
+import Board from '@lourenci/react-kanban';
+import '../../style/dashboard.css';
 
 class Dashboard extends React.Component {
   
@@ -26,7 +27,7 @@ class Dashboard extends React.Component {
           'Authorization': this.props.currUser.signInUserSession.idToken.jwtToken
         },
         body: JSON.stringify({
-          newBoard: board
+          board: board
         }),
       }
       )
@@ -48,9 +49,9 @@ class Dashboard extends React.Component {
           checked: 1
         });
 
-      console.log('sending thing');
+      //console.log('sending thing');
       console.log(this.props.currUser);
-      console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
+      //console.log(this.props.currUser.signInUserSession.idToken.jwtToken);
       fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
           method: 'GET',
           headers: {
@@ -60,7 +61,8 @@ class Dashboard extends React.Component {
         })
           .then(res => res.json())
           .then((res) => {
-            this.setState ({ board: res.board.columns.board });
+            console.log(res);
+            this.setState ({ board: res.board.columns });
           })
     }
     
@@ -70,7 +72,11 @@ class Dashboard extends React.Component {
       //TODO some loading animation?
       if (this.state.board == null){
         console.log("Board state is null")
-        return null
+        return (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )
       }
         return (
           <div>

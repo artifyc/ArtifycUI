@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import ArtistTypeButton from './ArtistTypeButton'
 import Typography from '@material-ui/core/Typography';
+import Expand from "react-expand-animated";
 
 export default function BasicInfo(props)  {
   const handleChange = props.handleChange

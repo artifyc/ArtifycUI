@@ -43,8 +43,8 @@ class Dashboard extends React.Component {
           .then(res => res.json())
           .then((res) => {
             console.log("Setting state?");
-            console.log(res.board.columns.board);
-            this.setState ({ board: res.board.columns.board });
+            console.log( res.board.columns.columns );
+            this.setState ({ board: res.board.columns });
           })
     }
 

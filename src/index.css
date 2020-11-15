@@ -397,9 +397,20 @@ textarea:focus {outline:none;}
   background: #4db8ff;
 }
 
+.expand-form {
+  text-align: center;
+  margin: auto auto;
+  padding: 0 0 1.5em 0;
+  width:60%;
+}
+
+.card-fix {
+  margin-top: 1em;
+}
+
 .form-group {
   width: 30%;
-  margin: auto, auto;
+  margin: auto auto;
   text-align: left;
   display: inline-block;
 }

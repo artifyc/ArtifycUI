@@ -5,7 +5,7 @@ import '../../style/grid.css';
 class Footer extends React.Component {
   render() {
     return (
-       <div class="grid-container">  
+       <div className="grid-container">  
         <grid-header></grid-header>
         <grid-header></grid-header>
         <grid-header></grid-header>
@@ -44,12 +44,11 @@ class Footer extends React.Component {
         <div></div>
         <div></div>
         <div></div>
-        <div class="grid-base">
-          <ad></ad>
-          <div class="twitter"></div>
-          <div class="instagram"></div>
-          <div class="facebook"></div>
-          <div class="pinterest"></div>
+        <div className="grid-base">
+          <div className="twitter"></div>
+          <div className="instagram"></div>
+          <div className="facebook"></div>
+          <div className="pinterest"></div>
         </div>
       </div>
     )

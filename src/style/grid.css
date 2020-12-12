@@ -1,0 +1,64 @@
+.grid-container {
+    position: relative; 
+    
+    display: grid;
+    grid-template-columns: 5% 8% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    grid-gap: 3%;
+    grid-row-gap: 10%;
+    align-content: center;
+    
+    text-align: center;
+    margin-top: 10%;
+    padding-top: 5%;
+    padding-bottom: 16%;
+
+    background-image: url(../assets/paint_smear.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .grid-base {
+    display: grid;
+    grid-template-columns: 250% auto auto auto auto;
+  }
+
+  .grid-base > ad {
+    position: relative;
+    text-align: left;
+    color: black;
+    font-size: 115%;
+  }
+  
+  .grid-container > div {
+    position: relative;
+    text-align: left;
+    color: white;
+    font-size: 115%;
+  }
+
+  .grid-container > grid-header {
+    font-weight: 400;
+    font-size: 180%;
+    color: white;
+    text-align: left;
+  }
+  
+  .twitter {
+      content: url(../assets/twitter_logo.png);
+      height:40px;
+  }
+
+    .instagram {
+        content: url(../assets/instagram.jpg);
+        height:40px;
+    }
+
+    .facebook {
+    content: url(../assets/facebook.png);
+    height:40px;
+    }
+
+    .pinterest {
+    content: url(../assets/pinterest.png);
+    height:40px;
+    }

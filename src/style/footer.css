@@ -1,13 +1,14 @@
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  position: relative;
   width: 100%;
-  background-color: #fafafa;
-  color: #969696;
+  height: 30%;
   text-align: center;
+  margin-top: 7%;
+
+  background-image: url(../assets/paint_smear.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-h2{
-  font-size: small;
-}
+

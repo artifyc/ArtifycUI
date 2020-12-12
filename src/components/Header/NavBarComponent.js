@@ -80,7 +80,9 @@ export default function PrimarySearchAppBar(props) {
           }
           { !props.loggedIn &&
             <div>
-              <Button className={classes.buttonBoxing} variant="contained" color="secondary" >Become a Creator</Button>
+              <Link to='/signup'>
+                <Button className={classes.buttonBoxing}  variant="contained" color="secondary" >Become a Creator</Button>
+              </Link>
               <Button className={classes.buttonBoxing} variant="contained" color="primary" onClick={() => Auth.federatedSignIn()}>Sign In</Button>
             </div>
           }

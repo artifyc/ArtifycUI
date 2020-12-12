@@ -50,6 +50,7 @@ class Form extends React.Component {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
+            'Authorization': this.props.user
         },
         body: JSON.stringify(data),
         })

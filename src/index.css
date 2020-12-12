@@ -396,3 +396,34 @@ textarea:focus {outline:none;}
   color: white;
   background: #4db8ff;
 }
+
+.expand-form {
+  text-align: center;
+  margin: auto auto;
+  padding: 0 0 1.5em 0;
+  width:60%;
+}
+
+.card-fix {
+  margin-top: 1em;
+}
+
+.form-group {
+  width: 30%;
+  margin: auto auto;
+  text-align: left;
+  display: inline-block;
+}
+
+.form-control {
+  text-align: left;
+  margin: 0 auto;
+}
+
+.signup-container {
+  text-align: center;
+}
+
+.padmeup {
+  padding-right: 20px;
+}

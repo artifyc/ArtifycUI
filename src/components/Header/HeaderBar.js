@@ -6,7 +6,7 @@ import ProtectedRoute from './ProtectedRoute'
 import history from '../History/history'
 import Dashboard from '../Dashboard/Dashboard';
 import SignUpParentForm from '../SignUp/SignUpParentForm';
-import HomePage from '../Homepage/HomePage';
+import HomePage from '../HomePage/homePage';
 import AccountOptionsComponent from '../AccountOptions/AccountOptionsComponent';
 import NavBarComponent from './NavBarComponent'
 import FooterBar from '../Footer/footer'

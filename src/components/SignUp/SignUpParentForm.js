@@ -131,7 +131,7 @@ class SignUpParentForm extends React.Component {
         message: this.state.message
     };
 
-      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/prod', {
+      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/creator-signup', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

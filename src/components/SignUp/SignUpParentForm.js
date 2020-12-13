@@ -25,7 +25,6 @@ class SignUpParentForm extends React.Component {
         other_thing2:  '',
         formFields: [],
         isEmailValid: true,
-        open: true,
         isYearsWorkedValid: true,
         validationFields: {
           "email": {
@@ -55,21 +54,8 @@ class SignUpParentForm extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleCheckChange = this.handleCheckChange.bind(this)
       this.handlePhoneChange = this.handlePhoneChange.bind(this)
-      this.toggle = this.toggle.bind(this)
 
     }
-
-    toggle(event) {
-      console.log("toggle trigger")
-      this.setState({
-        birth_date: event
-      })    
-    }
-
-    //toggle(event) {
-      //console.log("toggle trigger")
-      //this.setState(prevState => ({ open: !prevState.open }))
-    //}
 
     // Use the submitted data to set the state
     handleChange(event) {
@@ -137,8 +123,14 @@ class SignUpParentForm extends React.Component {
       }
       console.log("All Fields Validated: ", this.state.allFieldsValidated)
       console.log(this.state)
+      const data = {
+        email: this.state.email,
+        firstName: this.state.first,
+        lastName: this.state.last,
+        interest: this.state.value,
+        message: this.state.message
+    };
 
-      const data = this.state
       fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/creator-signup', {
         method: 'POST',
         headers: {

@@ -1,64 +1,53 @@
 .grid-container {
-    position: relative; 
-    
+    position: relative;
+
     display: grid;
-    grid-template-columns: 5% 8% 12.5% 12.5% 12.5% 12.5% 12.5%;
-    grid-gap: 3%;
-    grid-row-gap: 10%;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-row-gap: 8%;
     align-content: center;
-    
+
     text-align: center;
-    margin-top: 10%;
-    padding-top: 5%;
-    padding-bottom: 16%;
+    padding-left: 35%;
+    padding-top: 2%;
 
-    background-image: url(../assets/paint_smear.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .grid-base {
-    display: grid;
-    grid-template-columns: 250% auto auto auto auto;
-  }
+    bottom: 0;
+    width: 85%;
+}
 
-  .grid-base > ad {
-    position: relative;
-    text-align: left;
-    color: black;
-    font-size: 115%;
-  }
-  
-  .grid-container > div {
+.social-tags {
+    display: flex;
+}
+
+.grid-container > div {
     position: relative;
     text-align: left;
     color: white;
-    font-size: 115%;
-  }
+    font-size: 80%;
+}
 
-  .grid-container > grid-header {
-    font-weight: 400;
-    font-size: 180%;
+.grid-container > grid-header {
+    font-size: 150%;
+    font-weight: bold;
     color: white;
     text-align: left;
-  }
-  
-  .twitter {
-      content: url(../assets/twitter_logo.png);
-      height:40px;
-  }
+}
 
-    .instagram {
-        content: url(../assets/instagram.jpg);
-        height:40px;
-    }
+.twitter {
+    content: url(../assets/twitter_logo.png);
+    height:25px;
+}
 
-    .facebook {
+.instagram {
+    content: url(../assets/instagram.jpg);
+    height:25px;
+}
+
+.facebook {
     content: url(../assets/facebook.png);
-    height:40px;
-    }
+    height:25px;
+}
 
-    .pinterest {
+.pinterest {
     content: url(../assets/pinterest.png);
-    height:40px;
-    }
+    height:25px;
+}

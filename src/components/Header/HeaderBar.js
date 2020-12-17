@@ -56,7 +56,7 @@ class HeaderBar extends React.Component {
           <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
           <Route path="/settings" component={AccountOptionsComponent}/>
         </Switch>
-        <div><FooterBar/></div>
+        <footer><FooterBar/></footer>
       </div>
 
       :
@@ -68,7 +68,7 @@ class HeaderBar extends React.Component {
           <Route path="/signup" component={SignUpParentForm} />
           <Route path="/dashboard" component={Dashboard} user={ this.state.user} />
         </Switch>
-        <div><FooterBar/></div>
+        <footer><FooterBar/></footer>
       </div>
 
   }

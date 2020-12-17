@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
-import CommissionTypeButton from './CommissionTypeButton';
 
 const DynamicInputs = ({ idx, DynamicState, props }) => {
     const commissionId = `commission-${idx}`;
-    const priceId = `price-${idx}`;
+    const minPriceId = `minprice-${idx}`;
+    const maxPriceId = `maxprice-${idx}`;
     const deliveryId = `delivery-${idx}`;
     const revisionsId = `revisions-${idx}`;
     const waitlistId = `waitlist-${idx}`;
@@ -13,50 +13,43 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
     
     return (
         <div key={`Dynamic-${idx}`}>
-            <label htmlFor={priceId}>Commission Type</label>
-            <div>
-              <CommissionTypeButton size="small" prefix="" item={props.state.commission} handleChange={handleDynamicChange}></CommissionTypeButton>
-            </div>
-            <label htmlFor={priceId}>Base Price</label>
-            <input
-                type="text"
-                name={priceId}
-                data-idx={idx}
-                id={priceId}
-                className="base-price"
-                value={DynamicState[idx].price}
+            <TextField label="Commission Type"
+                id={commissionId}
+                placeholder="Full-body" 
                 onChange={handleDynamicChange}
-            />
-            <label htmlFor={deliveryId}>Expected Delivery</label>
-            <input
-                type="text"
-                name={deliveryId}
-                data-idx={idx}
+                value={DynamicState[idx].commissionId}
+               />
+            <TextField label="Min Price"
+                id={minPriceId}
+                placeholder="$" 
+                onChange={handleDynamicChange}
+                value={DynamicState[idx].minPriceId}
+               />
+            <TextField label="Max Price"
+                id={maxPriceId}
+                placeholder="$$$" 
+                onChange={handleDynamicChange}
+                value={DynamicState[idx].maxPriceId}
+               />
+            <TextField label="Expected Delivery (in days)"
                 id={deliveryId}
-                className="expected-delivery"
-                value={DynamicState[idx].delivery}
+                placeholder="$$$" 
                 onChange={handleDynamicChange}
-            />
-            <label htmlFor={revisionsId}>Number of Revisions</label>
-            <input
-                type="text"
-                name={revisionsId}
-                data-idx={idx}
+                value={DynamicState[idx].deliveryId}
+               />
+            <TextField label="Revisions Offered"
                 id={revisionsId}
-                className="revisions"
-                value={DynamicState[idx].revisions}
+                placeholder="$$$" 
                 onChange={handleDynamicChange}
-            />
-            <label htmlFor={waitlistId}>Max Waitlist Size</label>
-            <input
-                type="text"
-                name={waitlistId}
-                data-idx={idx}
+                value={DynamicState[idx].revisionsId}
+               />
+            <TextField label="Max Accepted Until Waitlist"
                 id={waitlistId}
-                className="waitlist"
-                value={DynamicState[idx].waitlist}
+                placeholder="$$$" 
                 onChange={handleDynamicChange}
-            />
+                value={DynamicState[idx].waitlistId}
+               />
+            <label htmlFor={waitlistId}>Max Waitlist Size</label>
         </div>
     );
 };

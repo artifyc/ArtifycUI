@@ -5,8 +5,17 @@ class SignUpParentForm extends React.Component {
     constructor(props) {
       super(props)
       // Set the initial input values
+      
       this.state = {
         isSignupComplete: false,
+        blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' },
+        DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }]),
+        setDynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }]),
+        addDynamic: () => { 
+            this.setState (
+              this.state.DynamicState = ([...this.state.DynamicState, {...this.state.blankDynamic}])
+            )
+        },
         full_time: '',
         years_artist: '',
         country: '',
@@ -26,6 +35,7 @@ class SignUpParentForm extends React.Component {
         formFields: [],
         isEmailValid: true,
         isYearsWorkedValid: true,
+        DynamicState: [{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }],
         validationFields: {
           "email": {
             "validationFieldName": "isEmailValid",
@@ -54,6 +64,7 @@ class SignUpParentForm extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleCheckChange = this.handleCheckChange.bind(this)
       this.handlePhoneChange = this.handlePhoneChange.bind(this)
+      this.handleDynamicChange = this.handleDynamicChange.bind(this)
 
     }
 
@@ -100,6 +111,15 @@ class SignUpParentForm extends React.Component {
       }
       // this.state.validationFields
     }
+
+   handleDynamicChange(e) {
+    const updatedDynamics = [...this.state.DynamicState];
+    updatedDynamics[e.target.dataset.idx][e.target.className] = e.target.value;
+    this.setState ({
+      DynamicState: updatedDynamics
+    })
+  };
+   
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
@@ -148,6 +168,7 @@ class SignUpParentForm extends React.Component {
           <StepperDemo 
             state={this.state} 
             handleChange={this.handleChange} 
+            handleDynamicChange={this.handleDynamicChange}
             handleSubmit={this.handleSubmit}
             validateField={this.validateField}
             handleDateChange={this.handleDateChange}

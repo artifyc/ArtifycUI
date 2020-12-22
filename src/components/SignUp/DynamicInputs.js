@@ -1,55 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
 
 const DynamicInputs = ({ idx, DynamicState, props }) => {
     const commissionId = `commission-${idx}`;
-    const minPriceId = `minprice-${idx}`;
-    const maxPriceId = `maxprice-${idx}`;
+    const minPriceId = `minPrice-${idx}`;
+    const maxPriceId = `minPrice-${idx}`;
     const deliveryId = `delivery-${idx}`;
     const revisionsId = `revisions-${idx}`;
     const waitlistId = `waitlist-${idx}`;
     const handleDynamicChange = props.handleDynamicChange;
-    
+    const handleRemoveDynamicFields = props.handleRemoveDynamicFields;
+
     return (
         <div key={`Dynamic-${idx}`}>
-            <TextField label="Commission Type"
+            <label htmlFor={commissionId}>Commission Type</label>
+            <input
+                type="text"
+                name={commissionId}
+                data-idx={idx}
                 id={commissionId}
-                placeholder="Full-body" 
-                onChange={handleDynamicChange}
+                className="commissionId"
                 value={DynamicState[idx].commissionId}
-               />
-            <TextField label="Min Price"
+                onChange={handleDynamicChange}
+            />
+            <label htmlFor={minPriceId}>Minimum Price</label>
+            <input
+                type="text"
+                name={minPriceId}
+                data-idx={idx}
                 id={minPriceId}
-                placeholder="$" 
-                onChange={handleDynamicChange}
+                className="minPriceId"
                 value={DynamicState[idx].minPriceId}
-               />
-            <TextField label="Max Price"
+                onChange={handleDynamicChange}
+            />
+            <label htmlFor={minPriceId}>Maximum Price</label>
+            <input
+                type="text"
+                name={maxPriceId}
+                data-idx={idx}
                 id={maxPriceId}
-                placeholder="$$$" 
-                onChange={handleDynamicChange}
+                className="maxPriceId"
                 value={DynamicState[idx].maxPriceId}
-               />
-            <TextField label="Expected Delivery (in days)"
+                onChange={handleDynamicChange}
+            />
+            <label htmlFor={deliveryId}>Expected Delivery</label>
+            <input
+                type="text"
+                name={deliveryId}
+                data-idx={idx}
                 id={deliveryId}
-                placeholder="$$$" 
-                onChange={handleDynamicChange}
+                className="deliveryId"
                 value={DynamicState[idx].deliveryId}
-               />
-            <TextField label="Revisions Offered"
+                onChange={handleDynamicChange}
+            />
+            <label htmlFor={revisionsId}>Number of Revisions</label>
+            <input
+                type="text"
+                name={revisionsId}
+                data-idx={idx}
                 id={revisionsId}
-                placeholder="$$$" 
-                onChange={handleDynamicChange}
+                className="revisionsId"
                 value={DynamicState[idx].revisionsId}
-               />
-            <TextField label="Max Accepted Until Waitlist"
-                id={waitlistId}
-                placeholder="$$$" 
                 onChange={handleDynamicChange}
-                value={DynamicState[idx].waitlistId}
-               />
+            />
             <label htmlFor={waitlistId}>Max Waitlist Size</label>
+            <input
+                type="text"
+                name={waitlistId}
+                data-idx={idx}
+                id={waitlistId}
+                className="waitlistId"
+                value={DynamicState[idx].waitlistId}
+                onChange={handleDynamicChange}
+            />
+            <button
+                className="btn btn-link"
+                type="button"
+                onClick={() => handleRemoveDynamicFields(idx)}
+            >Remove Commission</button>
         </div>
     );
 };

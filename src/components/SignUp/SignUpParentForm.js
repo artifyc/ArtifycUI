@@ -10,16 +10,6 @@ class SignUpParentForm extends React.Component {
         isSignupComplete: false,
         blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' },
         DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }]),
-        setDynamicState: () => { 
-          this.setState (
-            this.state.DynamicState = ([...this.state.DynamicState, {...this.state.blankDynamic}])
-          )
-        },
-        addDynamic: () => { 
-          this.setState (
-            this.state.DynamicState = ([...this.state.DynamicState, {...this.state.blankDynamic}])
-          )
-        },
         full_time: '',
         years_artist: '',
         country: '',
@@ -68,7 +58,28 @@ class SignUpParentForm extends React.Component {
       this.handleCheckChange = this.handleCheckChange.bind(this)
       this.handlePhoneChange = this.handlePhoneChange.bind(this)
       this.handleDynamicChange = this.handleDynamicChange.bind(this)
+      this.handleRemoveDynamicFields = this.handleRemoveDynamicFields.bind(this)
+      this.setDynamicState = this.setDynamicState.bind(this)
+      this.addDynamic = this.addDynamic.bind(this)
 
+
+    }
+    /*
+    componentDidUpdate() {
+      console.log(this.state.DynamicState)
+    }
+    */
+
+    setDynamicState(updatedDynamics) { 
+      this.setState ({
+        DynamicState: updatedDynamics
+      })
+    }
+
+    addDynamic(){ 
+      this.setState ({
+        DynamicState: ([...this.state.DynamicState, {...this.state.blankDynamic}])
+      })
     }
 
     // Use the submitted data to set the state
@@ -116,13 +127,16 @@ class SignUpParentForm extends React.Component {
     }
 
    handleDynamicChange(e) {
-    console.log(e);
     const updatedDynamics = [...this.state.DynamicState];
     updatedDynamics[e.target.dataset.idx][e.target.className] = e.target.value;
-    this.setState ({
-      DynamicState: updatedDynamics
-    })
+    this.setDynamicState(updatedDynamics);
   };
+  
+    handleRemoveDynamicFields = index => {
+      const updatedDynamics = [...this.state.DynamicState];
+      updatedDynamics.splice(index, 1);
+      this.setDynamicState(updatedDynamics);
+    };
    
 
     // Trigger an alert on form submission
@@ -175,6 +189,9 @@ class SignUpParentForm extends React.Component {
             state={this.state} 
             handleChange={this.handleChange} 
             handleDynamicChange={this.handleDynamicChange}
+            handleRemoveDynamicFields={this.handleRemoveDynamicFields}
+            addDynamic={this.addDynamic}
+            setDynamicState={this.setDynamicState}
             handleSubmit={this.handleSubmit}
             validateField={this.validateField}
             handleDateChange={this.handleDateChange}

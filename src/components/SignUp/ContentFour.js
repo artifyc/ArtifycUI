@@ -4,7 +4,7 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import DynamicInputs from './DynamicInputs';
 
 export default function CommissionInfo(props)  {
-  console.log(props)
+  //console.log(props)
   const [isOpen, setIsOpen] = React.useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -27,14 +27,15 @@ export default function CommissionInfo(props)  {
             </div>
           <div className="form-group">
           <form>
-            <Button color="primary" onClick={props.state.addDynamic}>Add New Commission</Button>
+            <Button color="primary" onClick={props.addDynamic}>Add New Commission</Button>
             {
                 props.state.DynamicState.map((val, idx) => (
                     <DynamicInputs
                         key={`dynamic-${idx}`}
                         idx={idx}
                         DynamicState={props.state.DynamicState}
-                        handleDynamicChange={props.state.handleDynamicChange}
+                        handleDynamicChange={props.handleDynamicChange}
+                        handleRemoveDynamicFields={props.handleRemoveDynamicFields}
                         props={props}
                     />
                 ))

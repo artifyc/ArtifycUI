@@ -179,7 +179,7 @@ function getSteps() {
   return ['Profile Information', 'Gallery Preferences', 'Notification Preferences', 'Client Forms'];
 }
 
-function getStepContent(step, state, handleChange, handleDynamicChange, addDynamic, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
+function getStepContent(step, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
   switch (step) {
     case 0:
       return (<ContentOne state={state} handleChange={handleChange} validateField={validateField} />);
@@ -188,7 +188,7 @@ function getStepContent(step, state, handleChange, handleDynamicChange, addDynam
     case 2:
       return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} handleCheckChange={handleCheckChange}/>);
     case 3:
-      return (<ContentFour state={state} addDynamic={addDynamic} handleChange={handleChange} handleDynamicChange={handleDynamicChange} validateField={validateField} />);
+      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} validateField={validateField} />);
     default:
       return 'Unknown step';
   }
@@ -205,9 +205,11 @@ export default function CustomizedSteppers(props) {
   const handleSubmit = props.handleSubmit;
   const validateField = props.validateField;
   const handleDynamicChange = props.handleDynamicChange;
+  const handleRemoveDynamicFields = props.handleRemoveDynamicFields;
   const handleCheckChange = props.handleCheckChange;
   const handlePhoneChange = props.handlePhoneChange;
   const addDynamic = props.addDynamic;
+  const setDynamicState = props.setDynamicState;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -246,7 +248,7 @@ export default function CustomizedSteppers(props) {
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep, state, handleChange, handleDynamicChange, addDynamic, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
+              <div>{getStepContent(activeStep, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

@@ -29,6 +29,7 @@ class SignUpParentForm extends React.Component {
         formFields: [],
         isEmailValid: true,
         isYearsWorkedValid: true,
+        credit_info: '',
         validationFields: {
           "email": {
             "validationFieldName": "isEmailValid",

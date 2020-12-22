@@ -10,11 +10,15 @@ class SignUpParentForm extends React.Component {
         isSignupComplete: false,
         blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' },
         DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }]),
-        setDynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }]),
+        setDynamicState: () => { 
+          this.setState (
+            this.state.DynamicState = ([...this.state.DynamicState, {...this.state.blankDynamic}])
+          )
+        },
         addDynamic: () => { 
-            this.setState (
-              this.state.DynamicState = ([...this.state.DynamicState, {...this.state.blankDynamic}])
-            )
+          this.setState (
+            this.state.DynamicState = ([...this.state.DynamicState, {...this.state.blankDynamic}])
+          )
         },
         full_time: '',
         years_artist: '',
@@ -35,7 +39,6 @@ class SignUpParentForm extends React.Component {
         formFields: [],
         isEmailValid: true,
         isYearsWorkedValid: true,
-        DynamicState: [{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }],
         validationFields: {
           "email": {
             "validationFieldName": "isEmailValid",
@@ -113,6 +116,7 @@ class SignUpParentForm extends React.Component {
     }
 
    handleDynamicChange(e) {
+    console.log(e);
     const updatedDynamics = [...this.state.DynamicState];
     updatedDynamics[e.target.dataset.idx][e.target.className] = e.target.value;
     this.setState ({
@@ -130,7 +134,9 @@ class SignUpParentForm extends React.Component {
       Object.keys(this.state.validationFields).map((field) => {
         const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
         if (!fieldValue && this.state[field] !== '') {
-          this.state.allFieldsValidated = false
+          this.setState({
+            allFieldsValidated: false
+          })
           console.log(this.state.validationFields[field]["validationFieldName"])
           // this.setState({
           //   allFieldsValidated: false

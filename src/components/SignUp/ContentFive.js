@@ -1,11 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import ArtistTypeButton from './ArtistTypeButton'
-import Typography from '@material-ui/core/Typography';
 
 export default function PaymentInfo(props)  {
   const handleChange = props.handleChange
-  const validateField = props.validateField
+  //const validateField = props.validateField
 
       return(
         <div className="signup-container">

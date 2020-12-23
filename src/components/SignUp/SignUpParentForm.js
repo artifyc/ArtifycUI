@@ -65,11 +65,12 @@ class SignUpParentForm extends React.Component {
 
 
     }
-    /*
+    
     componentDidUpdate() {
-      console.log(this.state.DynamicState)
+      //for debugging
+      //console.log(this.state.DynamicState)
     }
-    */
+    
 
     setDynamicState(updatedDynamics) { 
       this.setState ({
@@ -129,7 +130,10 @@ class SignUpParentForm extends React.Component {
 
    handleDynamicChange(e) {
     const updatedDynamics = [...this.state.DynamicState];
-    updatedDynamics[e.target.dataset.idx][e.target.className] = e.target.value;
+    console.log(e.target.dataset.idx);
+    console.log(e.target.dataset);
+    console.log(e.target.id);
+    updatedDynamics[e.target.dataset.idx][e.target.id] = e.target.value;
     this.setDynamicState(updatedDynamics);
   };
   

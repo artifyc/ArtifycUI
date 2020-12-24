@@ -8,8 +8,8 @@ class SignUpParentForm extends React.Component {
       
       this.state = {
         isSignupComplete: false,
-        blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' },
-        DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '' }]),
+        blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: null },
+        DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: null }]),
         full_time: '',
         years_artist: '',
         country: '',
@@ -62,13 +62,14 @@ class SignUpParentForm extends React.Component {
       this.handleRemoveDynamicFields = this.handleRemoveDynamicFields.bind(this)
       this.setDynamicState = this.setDynamicState.bind(this)
       this.addDynamic = this.addDynamic.bind(this)
+      this.handleDynamicFileChange = this.handleDynamicFileChange.bind(this)
 
 
     }
     
     componentDidUpdate() {
       //for debugging
-      //console.log(this.state.DynamicState)
+      console.log(this.state.DynamicState)
     }
     
 
@@ -130,18 +131,24 @@ class SignUpParentForm extends React.Component {
 
    handleDynamicChange(e) {
     const updatedDynamics = [...this.state.DynamicState];
-    console.log(e.target.dataset.idx);
-    console.log(e.target.dataset);
-    console.log(e.target.id);
     updatedDynamics[e.target.dataset.idx][e.target.id] = e.target.value;
     this.setDynamicState(updatedDynamics);
   };
+
+  handleDynamicFileChange(e, idx) {
+    const updatedDynamics = [...this.state.DynamicState];
+    //handling for file upload array
+    updatedDynamics[idx]['fileId'] = e.target.files;
+    this.setDynamicState(updatedDynamics);
+    console.log(updatedDynamics);
+
+  };
   
-    handleRemoveDynamicFields = index => {
-      const updatedDynamics = [...this.state.DynamicState];
-      updatedDynamics.splice(index, 1);
-      this.setDynamicState(updatedDynamics);
-    };
+  handleRemoveDynamicFields = index => {
+    const updatedDynamics = [...this.state.DynamicState];
+    updatedDynamics.splice(index, 1);
+    this.setDynamicState(updatedDynamics);
+  };
    
 
     // Trigger an alert on form submission
@@ -195,6 +202,7 @@ class SignUpParentForm extends React.Component {
             handleChange={this.handleChange} 
             handleDynamicChange={this.handleDynamicChange}
             handleRemoveDynamicFields={this.handleRemoveDynamicFields}
+            handleDynamicFileChange={this.handleDynamicFileChange}
             addDynamic={this.addDynamic}
             setDynamicState={this.setDynamicState}
             handleSubmit={this.handleSubmit}

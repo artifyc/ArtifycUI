@@ -182,7 +182,7 @@ function getSteps() {
   return ['Profile Information', 'Gallery Preferences', 'Notification Preferences', 'Client Forms', 'Payment Info'];
 }
 
-function getStepContent(step, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
+function getStepContent(step, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
   switch (step) {
     case 0:
       return (<ContentOne state={state} handleChange={handleChange} validateField={validateField} />);
@@ -191,7 +191,7 @@ function getStepContent(step, state, handleChange, handleRemoveDynamicFields, ha
     case 2:
       return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} handleCheckChange={handleCheckChange}/>);
     case 3:
-      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} validateField={validateField} />);
+      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} handleDynamicFileChange={handleDynamicFileChange} validateField={validateField} />);
     case 4: 
       return (<ContentFive state={state} handleChange={handleChange} />)
     default:
@@ -215,6 +215,7 @@ export default function CustomizedSteppers(props) {
   const handlePhoneChange = props.handlePhoneChange;
   const addDynamic = props.addDynamic;
   const setDynamicState = props.setDynamicState;
+  const handleDynamicFileChange = props.handleDynamicFileChange;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -253,7 +254,7 @@ export default function CustomizedSteppers(props) {
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
+              <div>{getStepContent(activeStep, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {TextField} from '@material-ui/core';
+import axios from 'axios'; 
+import {DropzoneArea} from 'material-ui-dropzone';
 
 const DynamicInputs = ({ idx, DynamicState, props }) => {
     const commissionId = `commission-${idx}`;
@@ -10,11 +12,13 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
     const revisionsId = `revisions-${idx}`;
     const waitlistId = `waitlist-${idx}`;
     const handleDynamicChange = props.handleDynamicChange;
+    const handleDynamicFileChange = props.handleDynamicFileChange;
     const handleRemoveDynamicFields = props.handleRemoveDynamicFields;
 
     return (
         <div key={`Dynamic-${idx}`}>
             <TextField
+                label="Commission Type"
                 inputProps={{
                     'data-idx': idx,
                     type: "text",
@@ -25,6 +29,7 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                  }}
             />
             <TextField
+                label="Minimum Price"
                 inputProps={{
                     'data-idx': idx,
                     type: "text",
@@ -35,6 +40,7 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                  }}
             />
             <TextField
+                label="Maximum Price"
                 inputProps={{
                     'data-idx': idx,
                     type: "text",
@@ -45,6 +51,7 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                  }}
             />
             <TextField
+                label="Estimated Delivery"
                 inputProps={{
                     'data-idx': idx,
                     type: "text",
@@ -55,6 +62,7 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                  }}
             />
             <TextField
+                label="Number of Revisions"
                 inputProps={{
                     'data-idx': idx,
                     type: "text",
@@ -65,6 +73,7 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                  }}
             />
             <TextField
+                label="Maxiumum Waitlist"
                 inputProps={{
                     'data-idx': idx,
                     type: "text",
@@ -72,6 +81,14 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                     id: "waitlistId",
                     value: DynamicState[idx].waitlistId,
                     onChange: handleDynamicChange
+                 }}
+            />
+            <DropzoneArea
+                 acceptedFiles={['image/*']}
+                 type={'file'}
+                 dropzoneText={"Drag and drop a sample image here"}
+                 inputProps={{
+                     onChange: ((event) => handleDynamicFileChange(event, idx))
                  }}
             />
             <button

@@ -8,8 +8,8 @@ class SignUpParentForm extends React.Component {
       
       this.state = {
         isSignupComplete: false,
-        blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: null },
-        DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: null }]),
+        blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: [] },
+        DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: [] }]),
         full_time: '',
         years_artist: '',
         country: '',
@@ -70,6 +70,7 @@ class SignUpParentForm extends React.Component {
     componentDidUpdate() {
       //for debugging
       console.log(this.state.DynamicState)
+
     }
     
 
@@ -135,19 +136,34 @@ class SignUpParentForm extends React.Component {
     this.setDynamicState(updatedDynamics);
   };
 
-  handleDynamicFileChange(e, idx) {
-    const updatedDynamics = [...this.state.DynamicState];
-    //handling for file upload array
-    updatedDynamics[idx]['fileId'] = e.target.files;
-    this.setDynamicState(updatedDynamics);
-    console.log(updatedDynamics);
+  /**
+    * handleDynamicFileChange
+    * @desc opens a modal window to display a message
+    * @param string $msg - the message to be displayed
+    * @return bool - success or failure
+*/
 
+  handleDynamicFileChange(e, idx, isAdd=true) {
+    console.log("handleDynamicFileChange Entered")
+    const updatedDynamics = [...this.state.DynamicState];
+    if (!isAdd){
+      const guiltyIndex = updatedDynamics[idx]['fileId'].findIndex(element => element.name == e.name)
+      //console.log("guilyIndex: " + guiltyIndex);
+      updatedDynamics[idx]['fileId'].splice(guiltyIndex, 1);
+    } else {
+      //console.log("else entered")
+      updatedDynamics[idx]['fileId'].push(e.target.files[0]);
+    }
+    //handling for file upload array
+    this.setDynamicState(updatedDynamics);
+    //console.log(updatedDynamics);
   };
   
   handleRemoveDynamicFields = index => {
     const updatedDynamics = [...this.state.DynamicState];
     updatedDynamics.splice(index, 1);
     this.setDynamicState(updatedDynamics);
+    this.forceUpdate();
   };
    
 

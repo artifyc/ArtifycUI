@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {TextField} from '@material-ui/core';
 import axios from 'axios'; 
 import {DropzoneArea} from 'material-ui-dropzone';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 
 const DynamicInputs = ({ idx, DynamicState, props }) => {
     const commissionId = `commission-${idx}`;
@@ -14,6 +15,15 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
     const handleDynamicChange = props.handleDynamicChange;
     const handleDynamicFileChange = props.handleDynamicFileChange;
     const handleRemoveDynamicFields = props.handleRemoveDynamicFields;
+
+    const useStyles = makeStyles(theme => createStyles({
+        previewChip: {
+          minWidth: 160,
+          maxWidth: 210
+        },
+      }));
+    
+    const classes = useStyles();
 
     return (
         <div key={`Dynamic-${idx}`}>
@@ -84,12 +94,22 @@ const DynamicInputs = ({ idx, DynamicState, props }) => {
                  }}
             />
             <DropzoneArea
-                 acceptedFiles={['image/*']}
-                 type={'file'}
-                 dropzoneText={"Drag and drop a sample image here"}
-                 inputProps={{
-                     onChange: ((event) => handleDynamicFileChange(event, idx))
-                 }}
+                showPreviews={true}
+                acceptedFiles={['image/*']}
+                showPreviewsInDropzone={false}
+                useChipsForPreview
+                previewGridProps={{container: { spacing: 1, direction: 'row' }}}
+                previewChipProps={{
+                    classes: { root: classes.previewChip },
+                }}
+                previewText="Selected files"
+                onDelete= {(event) => handleDynamicFileChange(event, idx, false)}
+                dropzoneProps={{
+                    maxSize: 8e+6
+                }}
+                inputProps={{
+                    onChange: ((event) => handleDynamicFileChange(event, idx)),
+                }}
             />
             <button
                 className="btn btn-link"

@@ -191,7 +191,7 @@ function getStepContent(step, state, handleChange, handleRemoveDynamicFields, ha
     case 2:
       return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} handleCheckChange={handleCheckChange}/>);
     case 3:
-      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicFileChange} handleDynamicFileChange={handleDynamicFileChange} validateField={validateField} />);
+      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} handleDynamicFileChange={handleDynamicFileChange} validateField={validateField} />);
     case 4: 
       return (<ContentFive state={state} handleChange={handleChange} />)
     default:

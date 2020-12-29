@@ -60,7 +60,7 @@ const titleToResourcesMap = {
       dropItems: [{
         hasLink: true,
         itemName: 'No new messages',
-        itemLink: '/Messages'
+        itemLink: '/messages'
       }]
     },
   };

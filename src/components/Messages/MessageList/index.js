@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Compose from '../Compose';
 import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
 import Message from '../Message';
 import moment from 'moment';
 import './MessageList.css';
-import SendIcon from '@material-ui/icons/Send';
 
 const MY_USER_ID = 'apple';
 
@@ -77,6 +75,42 @@ export default function MessageList(props) {
           id: 10,
           author: 'orange',
           message: 'I blocked you, go get help',
+          timestamp: new Date().getTime()
+        },
+        {
+          id: 11,
+          author: 'apple',
+          message: 'Dude',
+          timestamp: new Date().getTime()
+        },
+        {
+          id: 12,
+          author: 'apple',
+          message: 'Quit fucking around',
+          timestamp: new Date().getTime()
+        },
+        {
+          id: 13,
+          author: 'apple',
+          message: 'There is no blocking feature here',
+          timestamp: new Date().getTime()
+        },
+        {
+          id: 14,
+          author: 'apple',
+          message: 'And no read receipts either',
+          timestamp: new Date().getTime()
+        },
+        {
+          id: 15,
+          author: 'apple',
+          message: 'If you ever read this, I want you to know that you\'re a cunt and your art sucked to begin with',
+          timestamp: new Date().getTime()
+        },
+        {
+          id: 16,
+          author: 'apple',
+          message: '🖕',
           timestamp: new Date().getTime()
         },
       ]
@@ -154,10 +188,6 @@ export default function MessageList(props) {
         />
 
         <div className="message-list-container">{renderMessages()}</div>
-
-        <Compose rightItems={[
-            <SendIcon style={{color:"#3f51b5", fontSize: 30}} />
-        ]}/>
       </div>
     );
 }

@@ -5,8 +5,11 @@ class SignUpParentForm extends React.Component {
     constructor(props) {
       super(props)
       // Set the initial input values
+      
       this.state = {
         isSignupComplete: false,
+        blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: [] },
+        DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: [] }]),
         full_time: '',
         years_artist: '',
         country: '',
@@ -26,6 +29,7 @@ class SignUpParentForm extends React.Component {
         formFields: [],
         isEmailValid: true,
         isYearsWorkedValid: true,
+        credit_info: '',
         validationFields: {
           "email": {
             "validationFieldName": "isEmailValid",
@@ -47,6 +51,7 @@ class SignUpParentForm extends React.Component {
         checkedNotifyNewCommission: false,
         phone_number: ''
       }
+
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
       this.handleDateChange = this.handleDateChange.bind(this)
@@ -54,7 +59,32 @@ class SignUpParentForm extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleCheckChange = this.handleCheckChange.bind(this)
       this.handlePhoneChange = this.handlePhoneChange.bind(this)
+      this.handleDynamicChange = this.handleDynamicChange.bind(this)
+      this.handleRemoveDynamicFields = this.handleRemoveDynamicFields.bind(this)
+      this.setDynamicState = this.setDynamicState.bind(this)
+      this.addDynamic = this.addDynamic.bind(this)
+      this.handleDynamicFileChange = this.handleDynamicFileChange.bind(this)
 
+
+    }
+    
+    componentDidUpdate() {
+      //for debugging
+      console.log(this.state.DynamicState)
+
+    }
+    
+
+    setDynamicState(updatedDynamics) { 
+      this.setState ({
+        DynamicState: updatedDynamics
+      })
+    }
+
+    addDynamic(){ 
+      this.setState ({
+        DynamicState: ([{...this.state.blankDynamic}, ...this.state.DynamicState ])
+      })
     }
 
     // Use the submitted data to set the state
@@ -101,6 +131,42 @@ class SignUpParentForm extends React.Component {
       // this.state.validationFields
     }
 
+   handleDynamicChange(e) {
+    const updatedDynamics = [...this.state.DynamicState];
+    updatedDynamics[e.target.dataset.idx][e.target.id] = e.target.value;
+    this.setDynamicState(updatedDynamics);
+  };
+
+  /**
+    * handleDynamicFileChange
+    * @desc opens a modal window to display a message
+    * @param string $msg - the message to be displayed
+    * @return bool - success or failure
+*/
+
+  handleDynamicFileChange(e, idx, isAdd=true) {
+    console.log("handleDynamicFileChange Entered")
+    const updatedDynamics = [...this.state.DynamicState];
+    if (!isAdd){
+      const guiltyIndex = updatedDynamics[idx]['fileId'].findIndex(element => element.name === e.name)
+      //console.log("guilyIndex: " + guiltyIndex);
+      updatedDynamics[idx]['fileId'].splice(guiltyIndex, 1);
+    } else {
+      //console.log("else entered")
+      updatedDynamics[idx]['fileId'].push(e.target.files[0]);
+    }
+    //handling for file upload array
+    this.setDynamicState(updatedDynamics);
+    //console.log(updatedDynamics);
+  };
+  
+  handleRemoveDynamicFields = index => {
+    const updatedDynamics = [...this.state.DynamicState];
+    updatedDynamics.splice(index, 1);
+    this.setDynamicState(updatedDynamics);
+  };
+   
+
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       // event.preventDefault()
@@ -110,7 +176,9 @@ class SignUpParentForm extends React.Component {
       Object.keys(this.state.validationFields).map((field) => {
         const fieldValue = this.state[this.state.validationFields[field]["validationFieldName"]]
         if (!fieldValue && this.state[field] !== '') {
-          this.state.allFieldsValidated = false
+          this.setState({
+            allFieldsValidated: false
+          })
           console.log(this.state.validationFields[field]["validationFieldName"])
           // this.setState({
           //   allFieldsValidated: false
@@ -148,6 +216,11 @@ class SignUpParentForm extends React.Component {
           <StepperDemo 
             state={this.state} 
             handleChange={this.handleChange} 
+            handleDynamicChange={this.handleDynamicChange}
+            handleRemoveDynamicFields={this.handleRemoveDynamicFields}
+            handleDynamicFileChange={this.handleDynamicFileChange}
+            addDynamic={this.addDynamic}
+            setDynamicState={this.setDynamicState}
             handleSubmit={this.handleSubmit}
             validateField={this.validateField}
             handleDateChange={this.handleDateChange}

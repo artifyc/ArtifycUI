@@ -10,6 +10,7 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 import ContactMailIcon from '@material-ui/icons/Mail';
 import FormatLineSpacing from '@material-ui/icons/FormatLineSpacing';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 import StepConnector from '@material-ui/core/StepConnector';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -17,6 +18,7 @@ import ContentOne from './ContentOne'
 import ContentTwo from './ContentTwo'
 import ContentThree from './ContentThree'
 import ContentFour from './ContentFour'
+import ContentFive from './ContentFive'
 import SubmitButton from './SubmitButton'
 
 const useQontoStepIconStyles = makeStyles({
@@ -125,7 +127,8 @@ function ColorlibStepIcon(props) {
     1: <ContactsIcon/>,
     2: <ContactMailIcon />,
     3: <AspectRatioIcon />,
-    4: <FormatLineSpacing />
+    4: <FormatLineSpacing />,
+    5: <CreditCardIcon />
   };
 
   return (
@@ -176,10 +179,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Profile Information', 'Gallery Preferences', 'Notification Preferences', 'Client Forms'];
+  return ['Profile Information', 'Gallery Preferences', 'Notification Preferences', 'Client Forms', 'Payment Info'];
 }
 
-function getStepContent(step, state, handleChange, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
+function getStepContent(step, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange) {
   switch (step) {
     case 0:
       return (<ContentOne state={state} handleChange={handleChange} validateField={validateField} />);
@@ -188,7 +191,9 @@ function getStepContent(step, state, handleChange, validateField, handleDateChan
     case 2:
       return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} handleCheckChange={handleCheckChange}/>);
     case 3:
-      return (<ContentFour state={state} handleChange={handleChange} validateField={validateField} />);
+      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} handleDynamicFileChange={handleDynamicFileChange} validateField={validateField} />);
+    case 4: 
+      return (<ContentFive state={state} handleChange={handleChange} />)
     default:
       return 'Unknown step';
   }
@@ -204,8 +209,14 @@ export default function CustomizedSteppers(props) {
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
   const validateField = props.validateField;
+  const handleDynamicChange = props.handleDynamicChange;
+  const handleRemoveDynamicFields = props.handleRemoveDynamicFields;
   const handleCheckChange = props.handleCheckChange;
-  const handlePhoneChange = props.handlePhoneChange
+  const handlePhoneChange = props.handlePhoneChange;
+  const addDynamic = props.addDynamic;
+  const setDynamicState = props.setDynamicState;
+  const handleDynamicFileChange = props.handleDynamicFileChange;
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -243,7 +254,7 @@ export default function CustomizedSteppers(props) {
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep, state, handleChange, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
+              <div>{getStepContent(activeStep, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

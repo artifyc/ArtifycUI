@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ConversationSearch from '../ConversationSearch';
 import ConversationListItem from '../ConversationListItem';
 import Toolbar from '../Toolbar';
-import ToolbarButton from '../ToolbarButton';
+import SearchIcon from '@material-ui/icons/Search';
 
 import './ConversationList.css';
 
@@ -32,12 +32,12 @@ export default function ConversationList(props) {
     return (
       <div className="conversation-list">
         <Toolbar
-          title="Messenger"
+          title="Conversations"
           leftItems={[
-            <ToolbarButton key="cog" icon="ion-ios-cog" />
+
           ]}
           rightItems={[
-            <ToolbarButton key="add" icon="ion-ios-add-circle-outline" />
+            <SearchIcon id="messenger-icons"/>
           ]}
         />
         <ConversationSearch />

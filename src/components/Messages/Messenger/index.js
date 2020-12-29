@@ -19,8 +19,8 @@ export default function Messenger(props) {
         </div>
       <div className="message-grid-filler"/>
         <Compose rightItems={[
-          <AttachFileIcon style={{color:"#3f51b5", fontSize: 30}} />,
-          <SendIcon style={{color:"#3f51b5", fontSize: 30}} />
+          <AttachFileIcon id="messenger-icons"/>,
+          <SendIcon id="messenger-icons" />
         ]}/>
       </div>
     </div>

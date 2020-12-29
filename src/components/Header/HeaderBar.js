@@ -56,7 +56,7 @@ class HeaderBar extends React.Component {
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
           <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
           <Route path="/settings" component={AccountOptionsComponent}/>
-          <Route path="/Messages" render={(props) => <Messenger {...props} currUser={this.state.currUser}/>}/>
+          <Route path="/messages" render={(props) => <Messenger {...props} currUser={this.state.currUser}/>}/>
         </Switch>
         <footer><FooterBar/></footer>
       </div>

@@ -29,8 +29,10 @@ export default function CommissionInfo(props)  {
           <div className="form-group">
           <form>
             <Button color="primary" variant="contained" onClick={props.addDynamic}>Add New Commission</Button>
+            <br></br><br></br>
             {
                 props.state.DynamicState.map((val, idx) => (
+
                     <DynamicInputs
                         key={`dynamic-${idx}`}
                         idx={idx}
@@ -39,6 +41,7 @@ export default function CommissionInfo(props)  {
                         handleRemoveDynamicFields={props.handleRemoveDynamicFields}
                         props={props}
                     />
+
                 ))
             }
           </form>

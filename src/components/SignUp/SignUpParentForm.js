@@ -1,6 +1,5 @@
 import React from 'react';
 import StepperDemo from './Stepper'
-import DynamicInputs from './DynamicInputs'
 
 class SignUpParentForm extends React.Component {
     constructor(props) {
@@ -149,7 +148,7 @@ class SignUpParentForm extends React.Component {
     console.log("handleDynamicFileChange Entered")
     const updatedDynamics = [...this.state.DynamicState];
     if (!isAdd){
-      const guiltyIndex = updatedDynamics[idx]['fileId'].findIndex(element => element.name == e.name)
+      const guiltyIndex = updatedDynamics[idx]['fileId'].findIndex(element => element.name === e.name)
       //console.log("guilyIndex: " + guiltyIndex);
       updatedDynamics[idx]['fileId'].splice(guiltyIndex, 1);
     } else {

@@ -1,6 +1,7 @@
 
 import React from "react";
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, CardBody, Card } from 'reactstrap';
+import Button from '@material-ui/core/Button';
 import DynamicInputs from './DynamicInputs';
 
 export default function CommissionInfo(props)  {
@@ -13,7 +14,7 @@ export default function CommissionInfo(props)  {
       <div>
           <h2>Commission Information</h2>
           <div className="expand-form">
-              <Button color="primary" onClick={toggle} >What's this?</Button>
+              <Button color="primary" variant="contained" onClick={toggle} >What's this?</Button>
               <Collapse isOpen={isOpen}>
                 <Card className="card-fix">
                   <CardBody>
@@ -27,7 +28,7 @@ export default function CommissionInfo(props)  {
             </div>
           <div className="form-group">
           <form>
-            <Button color="primary" onClick={props.addDynamic}>Add New Commission</Button>
+            <Button color="primary" variant="contained" onClick={props.addDynamic}>Add New Commission</Button>
             {
                 props.state.DynamicState.map((val, idx) => (
                     <DynamicInputs

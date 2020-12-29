@@ -1,5 +1,6 @@
 import React from 'react';
 import StepperDemo from './Stepper'
+import DynamicInputs from './DynamicInputs'
 
 class SignUpParentForm extends React.Component {
     constructor(props) {
@@ -51,6 +52,7 @@ class SignUpParentForm extends React.Component {
         checkedNotifyNewCommission: false,
         phone_number: ''
       }
+
       // Bind the submission to handleChange() 
       this.handleChange = this.handleChange.bind(this)
       this.handleDateChange = this.handleDateChange.bind(this)
@@ -163,7 +165,6 @@ class SignUpParentForm extends React.Component {
     const updatedDynamics = [...this.state.DynamicState];
     updatedDynamics.splice(index, 1);
     this.setDynamicState(updatedDynamics);
-    this.forceUpdate();
   };
    
 

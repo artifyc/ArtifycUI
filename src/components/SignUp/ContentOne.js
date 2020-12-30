@@ -12,6 +12,27 @@ export default function BasicInfo(props)  {
           <h2>About You</h2>
           <div  className="form-group">
             <br></br>
+            <div>
+              <TextField label="First Name"  id="first_name"
+                name="first_name" placeholder="" 
+                onChange={handleChange} value={props.state.first_name}
+               />
+            </div>
+            <br></br>
+            <div>
+              <TextField label="Last Name"  id="last_name"
+                name="last_name" placeholder="" 
+                onChange={handleChange} value={props.state.last_name}
+               />
+            </div>
+            <br></br>
+            <div>
+              <TextField label="User Name"  id="username"
+                name="username" placeholder="" 
+                onChange={handleChange} value={props.state.username}
+               />
+            </div>
+            <br></br>
             <div style={{ display: 'inline-flex', alignSelf: 'center' }}>
               <div className="padmeup">
               <Typography>I am an artist - </Typography>

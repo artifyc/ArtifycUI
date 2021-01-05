@@ -15,7 +15,7 @@ export default function Messenger(props) {
         </div>
 
         <div className="scrollable message-content">
-          <MessageList />
+          <MessageList {...props.currUser}/>
         </div>
       <div className="message-grid-filler"/>
         <Compose rightItems={[

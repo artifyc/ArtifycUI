@@ -60,7 +60,7 @@ const titleToResourcesMap = {
       dropItems: [{
         hasLink: true,
         itemName: 'No new messages',
-        itemLink: '/Messages'
+        itemLink: '/messages'
       }]
     },
   };
@@ -113,7 +113,7 @@ export default function MenuListComposition({title}) {
   return (
     <div className={classes.root}>
       
-      <div>
+      <div id="poper">
         <Button
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}

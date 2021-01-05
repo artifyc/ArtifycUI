@@ -10,6 +10,7 @@ import HomePage from '../HomePage/homePage';
 import AccountOptionsComponent from '../AccountOptions/AccountOptionsComponent';
 import NavBarComponent from './NavBarComponent'
 import FooterBar from '../Footer/footer'
+import Messenger from "../Messages/Messenger";
 class HeaderBar extends React.Component {
 
   constructor(props)  {
@@ -55,6 +56,7 @@ class HeaderBar extends React.Component {
           <ProtectedRoute exact path='/' loggedIn={ this.state.loggedIn } currUser={ this.state.currUser } component={HomePage} />
           <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={ this.state.currUser} />} />
           <Route path="/settings" component={AccountOptionsComponent}/>
+          <Route path="/messages" render={(props) => <Messenger {...props} currUser={this.state.currUser}/>}/>
         </Switch>
         <footer><FooterBar/></footer>
       </div>

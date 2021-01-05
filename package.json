@@ -60,5 +60,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "moment": "^2.29.1",
+    "shave": "^2.5.10"
   }
 }

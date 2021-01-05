@@ -1,0 +1,37 @@
+.compose {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 7px;
+  padding-top: 7px;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-top: 1px solid #eeeef1;
+}
+
+.compose-input {
+  flex: 1;
+  border: none;
+  font-size: 16px;
+  height: 40px;
+  background-color: #f4f4f8;
+  margin-right: 5px;
+  padding-left: 15px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.compose-input::placeholder {
+  opacity: 0.9;
+}
+
+.compose .toolbar-button {
+  color: #bbbbbf;
+  margin-left: 15px;
+}
+
+.compose .toolbar-button:hover {
+  color: #99999c;
+}

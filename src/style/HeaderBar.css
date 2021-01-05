@@ -11,10 +11,6 @@
     box-shadow: 2px 3px 5px #888888;
   }
 
-  .menuButton {
-    margin-right: 2;
-  }
-
   .noBoxShadow {
     border-style: solid;
   }
@@ -37,9 +33,13 @@
   .icon {
     max-width: 50px;
     height: auto;
-    float: center;
   }
 
   .inputRoot {
     color: #ffffff;
+  }
+
+  #poper {
+      position: relative;
+      z-index: 1000;
   }

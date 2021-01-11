@@ -10,11 +10,14 @@ export default function MessageList(props) {
 
   useEffect(() => {
     getMessages();
-  },[])
+  },[props.currConvo])
 
   
   const getMessages = () => {
-    fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/messages?userId=koomasi_blue", { // TODO: use currUser from props here
+    if (props.currConvo === undefined || props.currConvo.length == 0)
+      return
+
+    fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/messages?orderId=" + props.currConvo, {
         method: "GET",
         headers: {
           'Content-type': 'application/json',
@@ -29,9 +32,8 @@ export default function MessageList(props) {
             timestamp: item["time_stamp"]
           }
         })
-        setMessages([...messages, ...tempMessages]);
+        setMessages([...[], ...tempMessages]);
       }).catch(err => console.error(err))
-
   }
 
   const renderMessages = () => {

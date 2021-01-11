@@ -19,7 +19,7 @@ export default function ConversationList(props) {
    let newConversations = convos.map(convo => {
      return {
        id: convo["order_id"],
-       photo: pics[(Math.random() * (8)) << 0]["small"],
+       photo: pics[(Math.random() * (pics.length)) << 0]["small"],
        name: convo["customer_id"],
        text: convo["status"]
      }

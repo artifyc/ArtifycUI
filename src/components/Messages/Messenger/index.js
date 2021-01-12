@@ -9,8 +9,8 @@ import SendIcon from "@material-ui/icons/Send";
 export default function Messenger(props) {
   const [currConvo, setCurrConvo] = useState([])
 
-  function setConvo(id) {
-    setCurrConvo(id);
+  function setConvo(convo) {
+    setCurrConvo(convo);
   }
 
   return (

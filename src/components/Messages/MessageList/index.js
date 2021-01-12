@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Message from '../Message';
 import moment from 'moment';
 import './MessageList.css';
+import Toolbar from "../Toolbar";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const MY_USER_ID = 'apple';
 
@@ -14,10 +16,10 @@ export default function MessageList(props) {
 
   
   const getMessages = () => {
-    if (props.currConvo === undefined || props.currConvo.length == 0)
+    if (props.currConvo === undefined)
       return
 
-    fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/messages?orderId=" + props.currConvo, {
+    fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/messages?orderId=" + props.currConvo.id, {
         method: "GET",
         headers: {
           'Content-type': 'application/json',
@@ -97,6 +99,12 @@ export default function MessageList(props) {
 
     return(
       <div className="message-list">
+        <Toolbar
+          title={props.currConvo.name}
+          rightItems={[
+            <DeleteIcon id="messenger-icons"/>
+          ]}
+        />
         <div className="message-list-container">{renderMessages()}</div>
       </div>
     );

@@ -11,7 +11,7 @@ export default function ConversationListItem(props) {
   const { id, photo, name, text } = props.data;
 
   function setId() {
-    props.changeConvo(id)
+    props.changeConvo({id, name})
   }
 
   return (

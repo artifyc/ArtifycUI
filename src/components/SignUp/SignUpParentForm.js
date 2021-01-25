@@ -29,7 +29,7 @@ class SignUpParentForm extends React.Component {
         formFields: [],
         isEmailValid: true,
         isYearsWorkedValid: true,
-        credit_info: '',
+        stripeReady: false,
         validationFields: {
           "email": {
             "validationFieldName": "isEmailValid",
@@ -63,8 +63,8 @@ class SignUpParentForm extends React.Component {
       this.handleRemoveDynamicFields = this.handleRemoveDynamicFields.bind(this)
       this.setDynamicState = this.setDynamicState.bind(this)
       this.addDynamic = this.addDynamic.bind(this)
+      this.updateResponse = this.updateResponse.bind(this)
       this.handleDynamicFileChange = this.handleDynamicFileChange.bind(this)
-
 
     }
     
@@ -73,7 +73,13 @@ class SignUpParentForm extends React.Component {
       console.log(this.state.DynamicState)
 
     }
-    
+
+    updateResponse(url) {
+      this.setState ({
+        stripeReady: url
+      })
+
+    }
 
     setDynamicState(updatedDynamics) { 
       this.setState ({
@@ -222,6 +228,7 @@ class SignUpParentForm extends React.Component {
             addDynamic={this.addDynamic}
             setDynamicState={this.setDynamicState}
             handleSubmit={this.handleSubmit}
+            updateResponse={this.updateResponse}
             validateField={this.validateField}
             handleDateChange={this.handleDateChange}
             handleCheckChange={this.handleCheckChange}

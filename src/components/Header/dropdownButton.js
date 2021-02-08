@@ -29,17 +29,17 @@ const titleToResourcesMap = {
       dropItems: [{
         hasLink: true,
         itemName: 'Profile',
-        itemLink: '/Profile'
+        itemLink: '/profile'
       },
       {
         hasLink: true,
         itemName: 'Dashboard',
-        itemLink: '/Dashboard'
+        itemLink: '/dashboard'
       },
       {
         hasLink: true,
         itemName: 'Settings',
-        itemLink: '/Settings'
+        itemLink: '/settings'
       },
       {
         hasLink: false,
@@ -60,7 +60,7 @@ const titleToResourcesMap = {
       dropItems: [{
         hasLink: true,
         itemName: 'No new messages',
-        itemLink: '/Messages'
+        itemLink: '/messages'
       }]
     },
   };

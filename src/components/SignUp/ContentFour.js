@@ -45,6 +45,7 @@ export default function CommissionInfo(props)  {
                 ))
             }
           </form>
+          <h5>Almost done! <br></br><br></br> Click "next" to give your payment info to Stripe, while we finish setting up your account in the meantime!</h5>
           </div>
       </div>
     </div>

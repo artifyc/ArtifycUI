@@ -1,5 +1,6 @@
 import React from 'react';
 import StepperDemo from './Stepper'
+import Cookies from 'universal-cookie';
 
 class SignUpParentForm extends React.Component {
     constructor(props) {
@@ -49,7 +50,8 @@ class SignUpParentForm extends React.Component {
         checkedNotifyRevision: false,
         checkedNotifyNewMsg: false,
         checkedNotifyNewCommission: false,
-        phone_number: ''
+        phone_number: '',
+        cookie: new Cookies()
       }
 
       // Bind the submission to handleChange() 
@@ -78,7 +80,6 @@ class SignUpParentForm extends React.Component {
       this.setState ({
         stripeReady: url
       })
-
     }
 
     setDynamicState(updatedDynamics) { 

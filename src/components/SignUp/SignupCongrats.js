@@ -48,7 +48,7 @@ class SignupCongrats extends React.Component {
     if (req.session.state != req.query.state) {
         return res.redirect('/pilots/signup');
     }
-    fetch('https://8vmazpdvrb.execute-api.us-east-1.amazonaws.com/qa/boards', {
+    fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/creator-signup', {
         method: 'POST',
         headers: {
         'Content-type': 'application/json',

@@ -12,43 +12,60 @@ export default function ConversationList(props) {
     getConversations()
   },[])
 
- const getConversations = () => {
-      // getting convos from server goes here
-        let newConversations = [
-          {
-            photo: "https://avatars0.githubusercontent.com/u/19934651?s=460&u=63e4e3b3f4e3e5b8a0ce31eea96b2d0a9e4d5d46&v=4",
-            name: "Janky Leeroy",
-            text: "I hate React"
-          },
-        {
-            photo: "https://giantbomb1.cbsistatic.com/uploads/scale_small/0/1976/224310-cv_sotn_succubus.jpg", // don't visit this site
-            name: "Kal Shooshi",
-            text: "Suh breh!"
-        }
-        ];
-        setConversations([...conversations, ...newConversations])
-    };
+ const getConversations = async () => {
+   const pics = await getProfPic()
+   const convos = await getConvos(); // TODO: pass currUser from props here
 
-    return (
-      <div className="conversation-list">
-        <Toolbar
-          title="Conversations"
-          leftItems={[
+   let newConversations = convos.map(convo => {
+     return {
+       id: convo["order_id"],
+       photo: pics[(Math.random() * (pics.length)) << 0]["small"],
+       name: convo["customer_id"],
+       text: convo["status"]
+     }
+   })
+   setConversations([...conversations, ...newConversations])
+ };
 
-          ]}
-          rightItems={[
-            <SearchIcon id="messenger-icons"/>
-          ]}
-        />
-        <ConversationSearch />
-        {
-          conversations.map(conversation =>
-            <ConversationListItem
-              key={conversation.name}
-              data={conversation}
-            />
-          )
-        }
-      </div>
-    );
+  return (
+    <div className="conversation-list">
+      <Toolbar
+        title="Conversations"
+        leftItems={[
+
+        ]}
+        rightItems={[
+          <SearchIcon id="messenger-icons"/>
+        ]}
+      />
+      <ConversationSearch />
+      {
+        conversations.map(conversation =>
+          <ConversationListItem
+            key={conversation.id}
+            data={conversation}
+            changeConvo={props.changeConvo}
+          />
+        )
+      }
+    </div>
+  );
+}
+
+async function getProfPic() {
+  const r = ((Math.random() * (7)) << 0) + 1
+  const res = await fetch("https://api.jikan.moe/v3/character/" + r + "/pictures", {
+    method: "GET"
+  }).then(res => res.json())
+
+  return res["pictures"];
+}
+
+async function getConvos() {
+  return await fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/orders?userId=koomasi_blue", {
+    method: "GET",
+    headers: {
+      'Content-type': 'application/json',
+    },
+  }).then(res => res.json())
 }

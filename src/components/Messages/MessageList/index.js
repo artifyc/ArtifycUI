@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Message from '../Message';
 import moment from 'moment';
 import './MessageList.css';
+import Toolbar from "../Toolbar";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const MY_USER_ID = 'apple';
 
@@ -10,109 +12,30 @@ export default function MessageList(props) {
 
   useEffect(() => {
     getMessages();
-  },[])
+  },[props.currConvo])
 
   
   const getMessages = () => {
-     var tempMessages = [
-        {
-          id: 1,
-          author: 'apple',
-          message: 'Suh mate!',
-          timestamp: new Date().getTime()
+    if (props.currConvo === undefined)
+      return
+
+    fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/messages?orderId=" + props.currConvo.id, {
+        method: "GET",
+        headers: {
+          'Content-type': 'application/json',
         },
-        {
-          id: 2,
-          author: 'apple',
-          message: 'I\'m in dire need for some furry art',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 3,
-          author: 'orange',
-          message: 'Sure, I make the best furry art',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 4,
-          author: 'orange',
-          message: 'What are you thinking?',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 5,
-          author: 'apple',
-          message: 'I have always wanted to top a furry, no homo',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 6,
-          author: 'apple',
-          message: 'You think you can help me with that?',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 7,
-          author: 'orange',
-          message: 'I don\'t usually judge but that\'s gross, bro',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 8,
-          author: 'orange',
-          message: 'You need jesus, bro',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 9,
-          author: 'apple',
-          message: '...',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 10,
-          author: 'orange',
-          message: 'I blocked you, go get help',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 11,
-          author: 'apple',
-          message: 'Dude',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 12,
-          author: 'apple',
-          message: 'Quit fucking around',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 13,
-          author: 'apple',
-          message: 'There is no blocking feature here',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 14,
-          author: 'apple',
-          message: 'And no read receipts either',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 15,
-          author: 'apple',
-          message: 'If you ever read this, I want you to know that you\'re a cunt and your art sucked to begin with',
-          timestamp: new Date().getTime()
-        },
-        {
-          id: 16,
-          author: 'apple',
-          message: '🖕',
-          timestamp: new Date().getTime()
-        },
-      ]
-      setMessages([...messages, ...tempMessages])
+    }).then(res => res.json())
+      .then(res => {
+        const tempMessages = res.map((item, i) => {
+          return {
+            id: i++,
+            author: MY_USER_ID,
+            message: item["msg_payload"],
+            timestamp: item["time_stamp"]
+          }
+        })
+        setMessages([...[], ...tempMessages]);
+      }).catch(err => console.error(err))
   }
 
   const renderMessages = () => {
@@ -176,6 +99,12 @@ export default function MessageList(props) {
 
     return(
       <div className="message-list">
+        <Toolbar
+          title={props.currConvo.name}
+          rightItems={[
+            <DeleteIcon id="messenger-icons"/>
+          ]}
+        />
         <div className="message-list-container">{renderMessages()}</div>
       </div>
     );

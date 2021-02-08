@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AccountOptionsCard from './AccountOptionsCard';
 import Typography from '@material-ui/core/Typography';
+import '../../style/App.css';
 
 const styles = {
     root: {
@@ -35,7 +36,7 @@ export default function AccountOptionsComponent(props) {
         }
     ]
     return (
-        <div>
+        <div className="content-container">
             <div className={classes.header} >
                 <Typography variant="h2" gutterBottom align="center" >
                     My Account

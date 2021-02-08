@@ -1,17 +1,16 @@
 .grid-container {
     position: relative;
-
     display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-columns: auto auto auto;
     grid-row-gap: 8%;
-    align-content: center;
-
     text-align: center;
-    padding-left: 35%;
-    padding-top: 2%;
-
-    bottom: 0;
-    width: 85%;
+    padding-top: 1.5%;
+    padding-bottom: 2.5%;
+    padding-left: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    height: 180px;
 }
 
 .social-tags {
@@ -23,31 +22,16 @@
     text-align: left;
     color: white;
     font-size: 80%;
+    padding-right: 15%;
+    width: fit-content;
 }
 
 .grid-container > grid-header {
+    position: relative;
     font-size: 150%;
     font-weight: bold;
     color: white;
     text-align: left;
-}
-
-.twitter {
-    content: url(../assets/twitter_logo.png);
-    height:25px;
-}
-
-.instagram {
-    content: url(../assets/instagram.jpg);
-    height:25px;
-}
-
-.facebook {
-    content: url(../assets/facebook.png);
-    height:25px;
-}
-
-.pinterest {
-    content: url(../assets/pinterest.png);
-    height:25px;
+    padding-right: 25%;
+    width: fit-content;
 }

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .nav {
@@ -7,6 +7,22 @@
 }
 
 .navbar {
-  text-align: right !important;
+    text-align: right !important;
 }
 
+.loading-gif {
+    display: block;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading-container {
+    min-height: 69.2vh;
+    display: flex;
+    align-items: center;
+}
+
+.content-container {
+    min-height: 69.2vh;
+}

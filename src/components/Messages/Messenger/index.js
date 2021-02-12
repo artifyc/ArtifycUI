@@ -14,21 +14,21 @@ export default function Messenger(props) {
   }
 
   return (
-  <div className="message-container">
-    <div className="messenger">
-      <div className="scrollable sidebar">
-        <ConversationList {...props.username} changeConvo={setConvo}/>
-      </div>
+    <div className="message-container">
+      <div className="messenger">
+        <div className="scrollable sidebar">
+          <ConversationList {...props.username} changeConvo={setConvo}/>
+        </div>
 
-      <div className="scrollable message-content">
-        <MessageList {...props.username} currConvo={currConvo}/>
+        <div className="scrollable message-content">
+          <MessageList {...props.username} currConvo={currConvo}/>
+        </div>
+        <div className="message-grid-filler"/>
+        <Compose rightItems={[
+          <AttachFileIcon id="messenger-icons"/>,
+          <SendIcon id="messenger-icons"/>
+        ]}/>
       </div>
-    <div className="message-grid-filler"/>
-      <Compose rightItems={[
-        <AttachFileIcon id="messenger-icons"/>,
-        <SendIcon id="messenger-icons" />
-      ]}/>
     </div>
-  </div>
   );
 }

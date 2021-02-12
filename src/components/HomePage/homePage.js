@@ -7,16 +7,16 @@ import React from 'react';
 
 class HomePage extends React.Component {
 
-    render() {
-        return (
-            <div>
-                <div><TopSection /></div>
-                <div><AboutSite /></div>
-                <div><HowItWorks /></div>
-                <div><Form /></div>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <div><TopSection/></div>
+        <div><AboutSite/></div>
+        <div><HowItWorks/></div>
+        <div><Form/></div>
+      </div>
+    )
+  }
 }
 
 export default HomePage;

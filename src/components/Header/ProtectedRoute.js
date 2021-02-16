@@ -27,7 +27,7 @@ class ProtectedRoute extends React.Component {
   render() {
     if(!this.state.checked) return null;
     const { component: Component, ...props } = this.props
-
+    
     return (
 
       <Route 

@@ -12,6 +12,7 @@ import NavBarComponent from './NavBarComponent'
 import FooterBar from '../Footer/footer'
 import Messenger from "../Messages/Messenger";
 import '../../style/footer.css';
+import RequestForm from '../RequestForm/RequestForm';
 
 class HeaderBar extends React.Component {
 
@@ -59,6 +60,9 @@ class HeaderBar extends React.Component {
           <Route path="/dashboard" render={(props) => <Dashboard {...props} currUser={this.state.currUser}/>}/>
           <Route path="/settings" component={AccountOptionsComponent}/>
           <Route path="/messages" render={(props) => <Messenger {...props} username={this.state.currUser.username}/>}/>
+          <Route path="/request/:id" component={RequestForm}/>
+          <Route path="/request" component={RequestForm}/>
+
         </Switch>
         <footer className="site-footer"><FooterBar/></footer>
       </div>
@@ -71,6 +75,9 @@ class HeaderBar extends React.Component {
           <ProtectedRoute exact path='/' loggedIn={this.state.loggedIn} currUser={this.state.currUser} component={HomePage}/>
           <Route path="/signup" component={SignUpParentForm}/>
           <Route path="/dashboard" component={Dashboard} user={this.state.user}/>
+          <Route path="/request/:id" component={RequestForm}/>
+          <Route path="/request" component={RequestForm}/>
+
         </Switch>
         <footer className="site-footer"><FooterBar/></footer>
       </div>

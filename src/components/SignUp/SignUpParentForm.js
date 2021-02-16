@@ -8,10 +8,10 @@ class SignUpParentForm extends React.Component {
       // Set the initial input values
       
       this.state = {
-        isSignupComplete: false,
         blankDynamic: { commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: [] },
         DynamicState: ([{ commissionId: '', minPriceId: '', maxPriceId: '', deliveryId: '', revisionsId: '', waitlistId: '', fileId: [] }]),
         full_time: '',
+        password: '',
         years_artist: '',
         country: '',
         state: '',
@@ -22,12 +22,8 @@ class SignUpParentForm extends React.Component {
         last_name: '',
         company_name: '',
         language: '',
-        concurrent_commissions: '',
         will_not_draw: [],
         email: '',
-        other_thing:  '',
-        other_thing2:  '',
-        formFields: [],
         isEmailValid: true,
         isYearsWorkedValid: true,
         stripeReady: false,
@@ -51,7 +47,7 @@ class SignUpParentForm extends React.Component {
         checkedNotifyNewMsg: false,
         checkedNotifyNewCommission: false,
         phone_number: '',
-        cookie: new Cookies()
+        cookie: this.props.cookies
       }
 
       // Bind the submission to handleChange() 
@@ -72,7 +68,7 @@ class SignUpParentForm extends React.Component {
     
     componentDidUpdate() {
       //for debugging
-      console.log(this.state.DynamicState)
+      //console.log(this.state.DynamicState)
 
     }
 
@@ -96,7 +92,7 @@ class SignUpParentForm extends React.Component {
 
     // Use the submitted data to set the state
     handleChange(event) {
-      console.log("change event", event)
+      //console.log("change event", event)
       const target = event.target;
       const name = target.name;
       this.setState({
@@ -234,6 +230,7 @@ class SignUpParentForm extends React.Component {
             handleDateChange={this.handleDateChange}
             handleCheckChange={this.handleCheckChange}
             handlePhoneChange={this.handlePhoneChange}
+            setCookies={this.props.setCookies}
           />
         </div>
       )

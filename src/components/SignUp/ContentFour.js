@@ -3,11 +3,14 @@ import React from "react";
 import { Collapse, CardBody, Card } from 'reactstrap';
 import Button from '@material-ui/core/Button';
 import DynamicInputs from './DynamicInputs';
+import Cookies from 'universal-cookie';
 
 export default function CommissionInfo(props)  {
   //console.log(props)
   const [isOpen, setIsOpen] = React.useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  props.setCookies("username", props.state.username, "/")
 
   return(
     <div className="signup-container">

@@ -182,16 +182,16 @@ function getSteps() {
   return ['Profile Information', 'Gallery Preferences', 'Notification Preferences', 'Client Forms', 'Payment Info'];
 }
 
-function getStepContent(step, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange, updateResponse) {
+function getStepContent(step, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange, updateResponse, setCookies) {
   switch (step) {
     case 0:
-      return (<ContentOne state={state} handleChange={handleChange} validateField={validateField} />);
+      return (<ContentOne state={state} handleChange={handleChange} validateField={validateField}/>);
     case 1:
       return (<ContentTwo state={state} handleChange={handleChange} handleDateChange={handleDateChange} validateField={validateField} handlePhoneChange={handlePhoneChange} />);
     case 2:
       return (<ContentThree state={state} handleChange={handleChange} validateField={validateField} handleCheckChange={handleCheckChange}/>);
     case 3:
-      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} handleDynamicFileChange={handleDynamicFileChange} validateField={validateField} />);
+      return (<ContentFour state={state} addDynamic={addDynamic} setDynamicState={setDynamicState} handleChange={handleChange} handleRemoveDynamicFields={handleRemoveDynamicFields} handleDynamicChange={handleDynamicChange} handleDynamicFileChange={handleDynamicFileChange} validateField={validateField} setCookies={setCookies}/>);
     case 4: 
     //set this to invoke lambda to stripe redirect
       return (<ContentFive state={state} handleChange={handleChange} updateResponse={updateResponse} />)
@@ -218,6 +218,7 @@ export default function CustomizedSteppers(props) {
   const addDynamic = props.addDynamic;
   const setDynamicState = props.setDynamicState;
   const handleDynamicFileChange = props.handleDynamicFileChange;
+  const setCookies = props.setCookies;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -256,7 +257,7 @@ export default function CustomizedSteppers(props) {
         ) : (
           <div>
             <div className="signup-container">
-              <div>{getStepContent(activeStep, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange, updateResponse)}</div>
+              <div>{getStepContent(activeStep, state, handleChange, handleRemoveDynamicFields, handleDynamicChange, handleDynamicFileChange, addDynamic, setDynamicState, validateField, handleDateChange, handleCheckChange, handlePhoneChange, updateResponse, setCookies)}</div>
               <Button color="secondary" variant="contained" disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>

@@ -33,13 +33,12 @@ export default function BasicInfo(props)  {
                />
             </div>
             <br></br>
-            <div style={{ display: 'inline-flex', alignSelf: 'center' }}>
-              <div className="padmeup">
-              <Typography>I am an artist - </Typography>
-              </div>
-              <ArtistTypeButton size="small" prefix="" item={props.state.full_time} handleChange={handleChange}></ArtistTypeButton>
+            <div>
+              <TextField label="Password"  id="password"
+                name="password" placeholder="" type="password"
+                onChange={handleChange} value={props.state.password}
+               />
             </div>
-            <br></br>
             <br></br>
             <div> 
               <TextField label="Years as an artist"  id="years_artist_id"
@@ -67,7 +66,15 @@ export default function BasicInfo(props)  {
                />
             </div>
             <br></br>
-            
+            <br></br>
+            <div style={{ display: 'inline-flex', alignSelf: 'center' }}>
+              <div className="padmeup">
+              <Typography>I am an artist - </Typography>
+              </div>
+              <ArtistTypeButton size="small" prefix="" item={props.state.full_time} handleChange={handleChange}></ArtistTypeButton>
+            </div>
+            <br></br>
+            <br></br>
           </div>
         </div>
       )

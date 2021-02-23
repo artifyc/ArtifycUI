@@ -5,38 +5,12 @@ import './MessageList.css';
 import Toolbar from "../Toolbar";
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const MY_USER_ID = 'apple';
-
 export default function MessageList(props) {
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
-    getMessages();
-  },[props.currConvo])
-
-  
-  const getMessages = () => {
-    if (props.currConvo === undefined)
-      return
-
-    fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/messages?orderId=" + props.currConvo.id, {
-        method: "GET",
-        headers: {
-          'Content-type': 'application/json',
-        },
-    }).then(res => res.json())
-      .then(res => {
-        const tempMessages = res.map((item, i) => {
-          return {
-            id: i++,
-            author: MY_USER_ID,
-            message: item["msg_payload"],
-            timestamp: item["time_stamp"]
-          }
-        })
-        setMessages([...[], ...tempMessages]);
-      }).catch(err => console.error(err))
-  }
+    setMessages(props.messages)
+  },[props.messages])
 
   const renderMessages = () => {
     let i = 0;
@@ -47,7 +21,7 @@ export default function MessageList(props) {
       let previous = messages[i - 1];
       let current = messages[i];
       let next = messages[i + 1];
-      let isMine = current.author === MY_USER_ID;
+      let isMine = current.author !== props.currConvo.name;
       let currentMoment = moment(current.timestamp);
       let prevBySameAuthor = false;
       let nextBySameAuthor = false;

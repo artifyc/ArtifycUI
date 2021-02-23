@@ -62,7 +62,7 @@ async function getProfPic() {
 }
 
 async function getConvos() {
-  return await fetch("https://zwn5735jke.execute-api.us-east-1.amazonaws.com/qa/orders?userId=koomasi_blue", {
+  return await fetch("https://t0sdxxjt2h.execute-api.us-east-1.amazonaws.com/qa/orders?userId=koomasi_blue", {
     method: "GET",
     headers: {
       'Content-type': 'application/json',

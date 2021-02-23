@@ -52,4 +52,6 @@
 #messenger-icons {
   color: #3f51b5;
   font-size: 30px;
+  cursor: pointer;
+  margin-left: 5px;
 }

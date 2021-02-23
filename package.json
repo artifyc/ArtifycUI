@@ -8,6 +8,7 @@
     "@material-ui/core": "^4.11.1",
     "@material-ui/icons": "^4.11.1",
     "@material-ui/pickers": "^3.2.10",
+    "@use-it/interval": "^1.0.0",
     "aws-amplify": "^3.3.11",
     "bootstrap": "^4.5.0",
     "date-fns": "^2.16.1",

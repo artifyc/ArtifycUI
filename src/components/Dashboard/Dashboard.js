@@ -3,6 +3,7 @@ import '../../style/HomePage.css'
 import Board from '@lourenci/react-kanban'
 import '../../style/dashboard.css'
 import '../../style/App.css'
+import NotFound from "../../Errors/NotFound";
 
 export default function Dashboard(props) {
   const [dashboardState, setDashboardState] = useState([]);
@@ -56,7 +57,9 @@ export default function Dashboard(props) {
   }
 
   function renderDashboard() {
-    //TODO: Add if not logged in logic here
+    if (props.currUser === undefined) {
+      return (<NotFound/>)
+    }
     if (dashboardState.board == null) {
       return ([<div className="loading-container">
         <img className="loading-gif" src={require("../../assets/loading_brush_new.gif")} alt={"loading..."}/>

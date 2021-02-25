@@ -1,0 +1,27 @@
+.not-found-header {
+    text-align: center;
+    font-family: Athelas;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.text-error {
+    background: linear-gradient(45deg, #fc122d 30%, #FF8E53 90%);
+    border: 0;
+    border-radius: .5em;
+    box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+    color: white;
+    width: 40%;
+    font-size: xx-large;
+    text-align: center;
+    margin: .75em auto;
+    padding: .6em;
+}
+
+.not-found-gif {
+    display: block;
+    height: 400px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}

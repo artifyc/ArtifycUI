@@ -5,8 +5,9 @@ import './Messenger.css';
 import Compose from "../Compose";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import SendIcon from "@material-ui/icons/Send";
+import useInterval from "@use-it/interval";
 
-const MY_USER_ID = 'apple';
+const MESSAGES_API_PATH = "https://t0sdxxjt2h.execute-api.us-east-1.amazonaws.com/qa/messages";
 
 export default function Messenger(props) {
   const [currConvo, setCurrConvo] = useState([{
@@ -23,6 +24,10 @@ export default function Messenger(props) {
     }
   }, [currConvo.id])
 
+  useInterval(() => {
+    getMessages()
+  }, 5000)
+
   function setConvo(convo) {
     setCurrConvo(convo);
   }
@@ -31,7 +36,7 @@ export default function Messenger(props) {
     if (currConvo.id === undefined)
       return
 
-    fetch("https://t0sdxxjt2h.execute-api.us-east-1.amazonaws.com/qa/messages?orderId=" + currConvo.id, {
+    fetch(MESSAGES_API_PATH + "?orderId=" + currConvo.id, {
       method: "GET",
       headers: {
         'Content-type': 'application/json',
@@ -47,13 +52,22 @@ export default function Messenger(props) {
           }
         })
         setCurrMessages(tempMessages);
-      }).catch(err => console.error(err))
+      })
+      .catch(err => console.error(err))
   }
 
   function sendComposeMessage(event) {
     if (currConvo.id === undefined) {
       return
     }
+    fetch(MESSAGES_API_PATH, {
+      method: "POST",
+      body: JSON.stringify({
+        userId: "koomasi_blue",
+        convId: currConvo.id,
+        message: composeMessage
+      })
+    }).then(() => getMessages());
     event.preventDefault();
     setComposeMessage("");
   }
@@ -70,7 +84,7 @@ export default function Messenger(props) {
         </div>
 
         <div className="scrollable message-content">
-          <MessageList {...props.username} currConvo={currConvo} messages={currMessages} myUserId={MY_USER_ID}/>
+          <MessageList {...props.username} currConvo={currConvo} messages={currMessages}/>
         </div>
         <div className="message-grid-filler"/>
         <Compose currMessage={composeMessage}

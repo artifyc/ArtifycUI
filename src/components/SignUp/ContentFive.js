@@ -88,6 +88,89 @@ class ContentFive extends React.Component {
     
   }
 
+  async getS3URL(username, DynamicState){
+
+    var fileinfo=[];
+
+    for (let index in DynamicState){
+      for(let file in DynamicState[index].fileId){
+        fileinfo.push(DynamicState[index].commissionId + ":" + DynamicState[index].fileId[file]["name"]);
+      }
+    }
+
+    const queryString = "?username=" + username + "&fileinfo=" + fileinfo
+
+    fetch('https://e51gjov0i4.execute-api.us-east-1.amazonaws.com/qa/signup' + queryString, {
+      method: 'GET',
+      headers: {
+          'Content-type': 'application/json',
+          //'Authorization': this.props.user
+      },
+
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          this.uploadImageToS3(res, DynamicState);
+          return res;
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    
+  }
+
+  async uploadImageToS3(apiResponse, DynamicState){
+
+    // first, parse apiResponse to get number of file uploads:
+
+    for (let index in apiResponse){
+
+      console.log(this.determineImage(apiResponse[index], DynamicState));
+
+      fetch(apiResponse[index].trim(), {
+        method: 'PUT',
+        headers: {
+            "content-type": "application/octet-stream",
+            "x-amz-acl": "public-read"
+        },
+        body: this.determineImage(apiResponse[index], DynamicState)
+      })
+        .then(res => {
+          console.log(res);
+          return res;
+        })
+        .catch(err => {
+          console.log("Error");
+          console.log(String(err));
+        })
+
+    }
+
+  }
+
+  /*
+    Returns the index of the matching image with URL
+  */
+  determineImage(url, DynamicState){
+
+    for (let index in DynamicState){
+      for(let file in DynamicState[index].fileId){
+        if (url.includes(DynamicState[index].fileId[file]["name"].replace(" ", "%20"))){
+          return DynamicState[index].fileId[file]
+        }
+      }
+    }
+
+  }
+
+  determineFileType(url){
+    if(url.includes(".png")){
+      return "png"
+    }
+    else return "jpeg"
+  }
+
   async registerUser(){
 
     const data = {
@@ -132,8 +215,9 @@ class ContentFive extends React.Component {
 
   componentDidMount(prevProps){
       // calculate session token first  &  save as cookie
-    this.userCognitoSignup();
-    this.registerUser();
+    this.getS3URL(this.props.state.username, this.props.state.DynamicState);
+    //this.userCognitoSignup();
+    //this.registerUser();
 
   }
 

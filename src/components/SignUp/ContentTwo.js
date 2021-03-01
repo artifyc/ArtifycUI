@@ -9,6 +9,7 @@ import {
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/plain.css'
 
+
 export default function GalleryPreference(props)  {
   const handleChange = props.handleChange
   const validateField = props.validateField
@@ -26,6 +27,13 @@ export default function GalleryPreference(props)  {
           </div>
           <br></br>
           <div> 
+            <TextField label="Will Not Draw (Separate with commas)"  id="will_not_draw"
+              name="will_not_draw" placeholder="nsfw"
+              onChange={handleChange} value={props.state.will_not_draw}
+            />
+          </div>
+          <br></br>
+          <div> 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
                 margin="normal"
@@ -39,16 +47,6 @@ export default function GalleryPreference(props)  {
                 }}
               />
             </MuiPickersUtilsProvider>          
-          </div>
-          <br></br>
-          <div> 
-            <TextField label="Email Address"  id="email"
-              name="email" placeholder="joanne.smith@email.com"
-              onChange={handleChange} value={props.state.email}
-              onBlur={(e) => validateField(e)}
-              error={!props.state.isEmailValid}
-              helperText={props.state.isEmailValid ? ' ' : 'Please enter a valid Email'}
-            />
           </div>
           <br></br>
           <div>

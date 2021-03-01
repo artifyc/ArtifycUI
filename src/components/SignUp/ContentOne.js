@@ -33,6 +33,16 @@ export default function BasicInfo(props)  {
                />
             </div>
             <br></br>
+            <div> 
+              <TextField label="Email Address"  id="email"
+                name="email" placeholder="joanne.smith@email.com"
+                onChange={handleChange} value={props.state.email}
+                onBlur={(e) => validateField(e)}
+                error={!props.state.isEmailValid}
+                helperText={props.state.isEmailValid ? ' ' : 'Please enter a valid Email'}
+              />
+            </div>
+            <br></br>
             <div>
               <TextField label="Password"  id="password"
                 name="password" placeholder="" type="password"

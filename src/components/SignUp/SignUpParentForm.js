@@ -24,6 +24,7 @@ class SignUpParentForm extends React.Component {
         language: '',
         will_not_draw: [],
         email: '',
+        will_not_draw: '',
         isEmailValid: true,
         isYearsWorkedValid: true,
         stripeReady: false,

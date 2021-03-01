@@ -31,7 +31,6 @@ export default function CommissionInfo(props)  {
             </div>
           <div className="form-group">
           <form>
-            <Button color="primary" variant="contained" onClick={props.addDynamic}>Add New Commission</Button>
             <br></br><br></br>
             {
                 props.state.DynamicState.map((val, idx) => (
@@ -47,7 +46,10 @@ export default function CommissionInfo(props)  {
 
                 ))
             }
+            <Button color="primary" variant="contained" onClick={props.addDynamic}>Add New Commission</Button>
+
           </form>
+          <br></br><br></br>
           <h5>Almost done! <br></br><br></br> Click "next" to give your payment info to Stripe, while we finish setting up your account in the meantime!</h5>
           </div>
       </div>

@@ -132,7 +132,7 @@ class ContentFive extends React.Component {
         method: 'PUT',
         headers: {
             "content-type": "application/octet-stream",
-            "x-amz-acl": "public-read"
+            //"x-amz-acl": "public-read"
         },
         body: this.determineImage(apiResponse[index], DynamicState)
       })

@@ -86,7 +86,7 @@ class SignUpParentForm extends React.Component {
 
     addDynamic(){ 
       this.setState ({
-        DynamicState: ([{...this.state.blankDynamic}, ...this.state.DynamicState ])
+        DynamicState: ([...this.state.DynamicState, {...this.state.blankDynamic}])
       })
     }
 

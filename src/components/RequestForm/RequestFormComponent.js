@@ -20,7 +20,7 @@ export default function AccountOptionsComponent(props) {
     const descriptionArray = [
         {
             title: "Commission Type 1",
-            description: "Check status, review, or track",
+            description: "2 months, 30$",
         },
         {
             title: "Commission Type 2",

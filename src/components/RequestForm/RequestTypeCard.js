@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
     actionArea: {
     "&:hover $focusHighlight": {
-      opacity: 0.35,
+      opacity: 0.5,
     }
   },
   focusHighlight: {color: 'white'},
@@ -74,8 +74,11 @@ export default function ComplexGrid({title, description}) {
     <CardActionArea className={classes.root} classes={{
       root: classes.actionArea,
       focusHighlight: classes.focusHighlight
-    }} component={Link} to={path} disableRipple>
-      <Box border={5} borderColor={bcolor} margin={'5px'}>
+    }} disableRipple>
+      <Box border={5} borderColor={bcolor} margin={'5px'} classes={{
+      root: classes.actionArea,
+      focusHighlight: classes.focusHighlight
+    }}>
         <Grid container spacing={2} justify="center" alignContent="center">
           <Grid item xs={12} sm>
               {icon}

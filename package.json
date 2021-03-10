@@ -12,7 +12,7 @@
     "aws-amplify": "^3.3.11",
     "bootstrap": "^4.5.0",
     "date-fns": "^2.16.1",
-    "elliptic": "^6.5.3",
+    "elliptic": "^6.5.4",
     "history": "^5.0.0",
     "http-proxy": "^1.18.1",
     "ini": "^2.0.0",

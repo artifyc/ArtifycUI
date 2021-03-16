@@ -28,8 +28,11 @@ export default function BasicInfo(props)  {
             <br></br>
             <div>
               <TextField label="User Name"  id="username"
-                name="username" placeholder="" 
+                name="username" placeholder="Username" 
                 onChange={handleChange} value={props.state.username}
+                onBlur={(e) => validateField(e)}
+                error={!props.state.isUsernameValid}
+                helperText={props.state.username_invalid_text_helper }
                />
             </div>
             <br></br>
@@ -39,7 +42,7 @@ export default function BasicInfo(props)  {
                 onChange={handleChange} value={props.state.email}
                 onBlur={(e) => validateField(e)}
                 error={!props.state.isEmailValid}
-                helperText={props.state.isEmailValid ? ' ' : 'Please enter a valid Email'}
+                helperText={props.state.email_invalid_text_helper}
               />
             </div>
             <br></br>
@@ -57,7 +60,7 @@ export default function BasicInfo(props)  {
                 type="number"
                 onBlur={(e) => validateField(e)}
                 error={!props.state.isYearsWorkedValid}
-                helperText={props.state.isYearsWorkedValid ? '' : 'Please enter a valid Number'}
+                helperText={props.state.years_worked_invalid_text}
                />
             </div>
             <br></br>

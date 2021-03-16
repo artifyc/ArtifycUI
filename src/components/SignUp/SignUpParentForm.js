@@ -26,16 +26,33 @@ class SignUpParentForm extends React.Component {
         email: '',
         will_not_draw: '',
         isEmailValid: true,
+        isUsernameValid: true,
         isYearsWorkedValid: true,
         stripeReady: false,
+        email_invalid_text_helper: '',
+        username_invalid_text_helper: '',
+        years_worked_invalid_text: '',
         validationFields: {
           "email": {
             "validationFieldName": "isEmailValid",
+            "helperField":"email_invalid_text_helper",
+            "uiErrorFieldName": "Email Address",
+            "validateUnique": true,
             "regex": /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           }, 
           "years_artist": {
             "validationFieldName": "isYearsWorkedValid",
+            "uiErrorFieldName": "number for Years as an artist",
+            "helperField":"years_worked_invalid_text",
+            "validateUnique": false,
             "regex": /^(12[0-7]|1[01][0-9]|[1-9]?[0-9])$/
+          },
+          "username" : {
+            "validationFieldName": "isUsernameValid",
+            "uiErrorFieldName": "Username",
+            "validateUnique": true,
+            "helperField":"username_invalid_text_helper",
+            "regex": /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
           }
         },
         allFieldsValidated: true,
@@ -121,19 +138,47 @@ class SignUpParentForm extends React.Component {
 
     validateField(event) {
       const fieldValue = event.target.value;
-      const fieldName = this.state.validationFields[event.target.name]["validationFieldName"]
-      const regex = this.state.validationFields[event.target.name]["regex"]
+      const fieldObj = this.state.validationFields[event.target.name]
+      const fieldName = fieldObj["validationFieldName"]
+      const regex = fieldObj["regex"]
+      const helperText =fieldObj["helperField"]
+      const validateUnique = fieldObj["validateUnique"]
+      var errorResult = true
+      var errorSentence = ''
+
       if (regex.test(fieldValue)) {
-        this.setState({
-          [fieldName]: true
-        })        
+        if (validateUnique && this.validateUniqueField(event.target.name, fieldValue)) {
+          errorResult = false
+          errorSentence = fieldObj["uiErrorFieldName"] + " is taken. Please try again"
+        } else {
+          errorResult = true
+          errorSentence = ''
+        }     
       } else {
-        this.setState({
-          [fieldName]: false
-        })    
+        errorResult = false
+        errorSentence = "Please enter a valid " + fieldObj["uiErrorFieldName"]
       }
+
+      this.setState({
+        [fieldName]: errorResult,
+        [helperText]: errorSentence
+      })    
+      
+      
+      
       // this.state.validationFields
     }
+
+    validateUniqueField(fieldName, fieldValue) {
+      //response = fetch
+      //isUnique = response.getBody
+      //
+      console.log("validate unqiue field")
+      return true 
+      
+    }
+
+    
 
    handleDynamicChange(e) {
     const updatedDynamics = [...this.state.DynamicState];

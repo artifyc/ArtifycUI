@@ -144,10 +144,12 @@ class SignUpParentForm extends React.Component {
       const helperText =fieldObj["helperField"]
       const validateUnique = fieldObj["validateUnique"]
       var errorResult = true
-      var errorSentence = ''
+      var errorSentence =  "Please enter a valid " + fieldObj["uiErrorFieldName"]
+      var errorSentenceTake = "This " +fieldObj["uiErrorFieldName"] + " has been taken. Please try a different one."
+      console.log("validate Unique: "+ validateUnique)
 
       if (regex.test(fieldValue)) {
-        if (validateUnique && this.validateUniqueField(event.target.name, fieldValue)) {
+        if (validateUnique && this.validateUniqueField(event.target.name, fieldValue, fieldName, helperText, errorSentenceTake)) {
           errorResult = false
           errorSentence = fieldObj["uiErrorFieldName"] + " is taken. Please try again"
         } else {
@@ -169,23 +171,34 @@ class SignUpParentForm extends React.Component {
       // this.state.validationFields
     }
 
-    validateUniqueField(fieldName, fieldValue) {
+    validateUniqueField(fieldName, fieldValue, errorField, helperText, errorSentence) {
       //response = fetch
       //isUnique = response.getBody
       //
+      const queryString = "?fieldName=" + fieldName + "&fieldValue=" + fieldValue
+
       console.log("validate unqiue field")
-      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/is-unique-field', {
-        method: 'POST',
+      const resp = fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/is-unique-field' + queryString, {
+        method: 'GET',
         headers: {
           'Content-type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        }
       })
         .then(res => res.json())
-        .then(res => console.log(res))      
-      
-      return true 
-      
+        .then(res =>{
+          console.log(res)
+          if (res == true || res == false) {
+            if (res) {
+              errorSentence = ''
+            }
+            console.log("returning a check")
+            this.setState({
+              [errorField]: res,
+              [helperText]:  errorSentence
+            })    
+            return res
+          }   
+        })
     }
 
     

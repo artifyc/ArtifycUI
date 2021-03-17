@@ -174,6 +174,16 @@ class SignUpParentForm extends React.Component {
       //isUnique = response.getBody
       //
       console.log("validate unqiue field")
+      fetch('https://nqga4cwr46.execute-api.us-east-1.amazonaws.com/beta/is-unique-field', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(res => res.json())
+        .then(res => console.log(res))      
+      
       return true 
       
     }
